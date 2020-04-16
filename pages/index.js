@@ -4,25 +4,30 @@ import { Nav, Card } from "../lib/blocks/";
 import Reducer from "../lib/reducers";
 import useObserver from "../lib/interface/useObserver";
 import { Button, Heading, Modal, Layout } from "../lib/components";
-import Theme from "../lib/theme";
 import { buildThresholdList } from "../lib/util";
-import { animated, useSpring, useTrail, useSprings } from "react-spring";
-import { Cash_Sack, Computer, Hand_Slap, Horn } from "../lib/static/";
-import { Login, Registration } from "../lib/forms/forms";
+import { animated, useSpring, useTrail } from "react-spring";
+import { Login_Form, User_Registration_Form } from "../lib/forms/Forms";
+import { FadeIn_Wrapper } from "../lib/animations/spring";
 import withAuth from "../lib/interface/withAuth";
-
-const { Body, Container, Viewport_Container } = Layout;
+import {
+  Container_2_Styles,
+  Container_1_Styles,
+} from "../lib/blocks/home/Index_Styles";
+const { Body, Viewport_Container } = Layout;
 
 const initalState = {
   scrolled: false,
   modal: false,
 };
-const Forms = { Login, Registration };
+const Forms = { Login_Form, User_Registration_Form };
 
 function HomePage({ user }) {
   const [store, dispatch] = useReducer(Reducer.HomePage, initalState);
   const [formType, setForm] = useState();
   const Modal_Form = Forms[formType];
+  useEffect(() => {
+    window.scrollY > 0 && dispatch({ type: "SCROLLED" });
+  }, []);
   return (
     <Body>
       <Nav
@@ -34,7 +39,7 @@ function HomePage({ user }) {
       />
       <Container_1 store={store} dispatch={dispatch} />
       <Container_2 store={store} dispatch={dispatch} />
-      <Container_3 />
+      {/* <Container_3 /> */}
       {store.modal && (
         <Modal
           show={store.modal}
@@ -49,54 +54,13 @@ function HomePage({ user }) {
   );
 }
 
-const Container_1_Styles = styled.div`
-  overflow: hidden;
-  .Splash_Image {
-    width: 100%;
-    height: 100%;
-    background-image: url("https://res.cloudinary.com/dxjse9tsv/image/upload/v1556242581/NationalYouthSports/action-activity-athlete.jpg");
-    background-size: cover;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    z-index: -1;
-    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-
-  .Splash_Logo {
-    position: absolute;
-    margin: 15px;
-  }
-
-  .Splash_Nav_Container {
-    position: absolute;
-    bottom: 0;
-    max-width: 500px;
-    width: 100%;
-
-    .Splash_Nav_Background {
-      position: absolute;
-      background-color: ${Theme.colors.c1};
-      top: 0;
-      left: 0;
-      width: 250vw;
-      height: 300%;
-    }
-
-    .Splash_Nav_SubContainer {
-      position: relative;
-      padding: 20px;
-    }
-  }
-`;
-
 const Container_1 = ({ dispatch, store }) => {
   const [ref, entries] = useObserver({
     threshold: buildThresholdList(20),
   });
 
-  const [{ xyr, opacity, y }, setAnim] = useSpring(() => {
-    return { opacity: 1, xyr: [-32, 0, 17], y: 0 };
+  const [{ opacity }, setAnim] = useSpring(() => {
+    return { opacity: 1 };
   });
 
   const isIntersecting = entries.isIntersecting;
@@ -111,118 +75,37 @@ const Container_1 = ({ dispatch, store }) => {
       ir > Scrolled_Threshold &&
         store.scrolled &&
         dispatch({ type: "NOT_SCROLLED" });
+
       //Set Animations
       setAnim({
-        opacity: ir,
-        xyr: [-10 - 52 * ir, -10, ir * 17],
+        opacity: ir < 0.6 || store.scrolled ? 0 : ir,
       });
     }
-  });
+  }, [store.scrolled, entries.intersectionRatio]);
 
   return (
-    <Container_1_Styles>
-      <Viewport_Container ref={ref}>
-        <img
-          className="Splash_Logo"
-          src="https://res.cloudinary.com/dxjse9tsv/image/upload/v1556240214/General_Icons/NYS_Logo.png"
-        />
-        <div className="Splash_Nav_Container">
-          <animated.div
-            className="Splash_Nav_Background"
-            style={{
-              transform: xyr.interpolate(
-                (x, y, r) => `translate(${x}%,${y}%) rotate(${r}deg)`
-              ),
-            }}
-          />
-          <animated.div
-            style={{ opacity: opacity.interpolate((val) => val) }}
-            className="Splash_Nav_SubContainer"
-          >
-            <Heading type="Big">Spring</Heading>
-            <Heading type="Sub">Register Today</Heading>
-            <Button type="Small">Sign Up</Button>
-            <Button
-              onClick={() => dispatch({ type: "SHOW_LOGIN" })}
-              type="Small"
-            >
-              Login
-            </Button>
-          </animated.div>
-        </div>
-        <div
-          className="Splash_Image"
-          style={{ opacity: store.login ? 0 : 1 }}
-        />
-      </Viewport_Container>
+    <Container_1_Styles ref={ref}>
+      <img
+        className="Splash_Logo"
+        src="https://res.cloudinary.com/dxjse9tsv/image/upload/v1556240214/General_Icons/NYS_Logo.png"
+      />
+      <animated.div className="Splash_Image" style={{ opacity }} />
+      <div className="Splash_Nav_Container">
+        <animated.div
+          style={{ opacity }}
+          className="Splash_Nav_Container_SubContainer"
+        >
+          <Heading type="Big">Spring</Heading>
+          <Heading type="Sub">Register Today</Heading>
+          <Button type="Small">Sign Up</Button>
+          <Button onClick={() => dispatch({ type: "SHOW_LOGIN" })} type="Small">
+            Login
+          </Button>
+        </animated.div>
+      </div>
     </Container_1_Styles>
   );
 };
-
-const Container_2_Styles = styled.div`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  transition: opacity 2s cubic-bezier(0.23, 1, 0.32, 1);
-
-  .Heading_Container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-
-    .Heading_Container_Headings {
-      position: sticky;
-      top: 70vh;
-      margin-top: 80vh;
-      white-space: pre-line;
-      align-self: self-start;
-      z-index: 1;
-      & > * {
-        margin-bottom: -45px;
-      }
-    }
-  }
-
-  .Card_Background_Container {
-    width: 100%;
-  }
-
-  .Card_Container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    z-index: 1;
-    /* margin-top: 40vh; */
-
-    .Card {
-      height: 80vh;
-      /* width: 100vw; */
-      margin-top: 84px;
-      margin-bottom: 20rem;
-      background-size: cover;
-    }
-    & > * {
-    }
-  }
-
-  .Background_Container {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 0;
-  }
-
-  .Background_Sub_Container {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-  }
-`;
 
 const Background_Stripe = animated(styled.div`
   position: absolute;
@@ -234,8 +117,6 @@ const Background_Stripe = animated(styled.div`
   background-color: ${({ index }) =>
     index % 2 === 0 ? "#ffffff1f" : "#0e0d0d38"};
 `);
-
-const Card_Anim = animated(Card);
 
 const Container_2 = ({ store }) => {
   const fadeIn = useTrail(10, { opacity: store.scrolled ? 1 : 0 });
@@ -268,16 +149,15 @@ const Container_2 = ({ store }) => {
   return (
     <Viewport_Container
       style={{
-        background: "black",
+        background: "whtie",
         height: "100%",
       }}
     >
       <Container_2_Styles>
-        <div className="Heading_Container">
+        {/* <div className="Heading_Container">
           <animated.div
             className="Heading_Container_Headings"
             style={{
-              ...fadeIn[4],
               transform: swoopIn.xy.interpolate(
                 (x, y) => `translate(${x}px,${y}px)`
               ),
@@ -287,35 +167,37 @@ const Container_2 = ({ store }) => {
             <Heading type="Big">League In</Heading>
             <Heading type="Big">Scottsdale</Heading>
           </animated.div>
-        </div>
+        </div> */}
         <div className="Card_Background_Container">
           <div className="Card_Container">
-            <Card_Anim
-              title="Awards"
-              background="https://res.cloudinary.com/dxjse9tsv/image/upload/v1586591862/NationalYouthSports/abigail-keenan-8-s5QuUBtyM-unsplash.jpg"
-              caption={
-                "GYS is part of the ONLY major multi-sport league based in the east valley!"
-              }
-              style={fadeIn[0]}
-            />
-            <Card_Anim
-              background="https://res.cloudinary.com/dxjse9tsv/image/upload/v1586595987/NationalYouthSports/adria-crehuet-cano-yndHHu2kJAw-unsplash.jpg"
-              title="Fun"
-              style={fadeIn[1]}
-              img={Hand_Slap}
-            />
-            <Card_Anim
-              background="https://res.cloudinary.com/dxjse9tsv/image/upload/v1586593941/NationalYouthSports/johann-rosch-JgDjK1c4UIU-unsplash.jpg"
-              title="Tournament"
-              style={fadeIn[2]}
-              img={Horn}
-            />
-            <Card_Anim
-              background="https://res.cloudinary.com/dxjse9tsv/image/upload/v1586594243/NationalYouthSports/ben-hershey-Ql2n3JsUpww-unsplash.jpg"
-              title="Modern"
-              style={fadeIn[3]}
-              img={Computer}
-            />
+            <FadeIn_Wrapper>
+              <Card
+                title="Awards"
+                background="https://res.cloudinary.com/dxjse9tsv/image/upload/v1586905436/NationalYouthSports/ball-basketball-basketball-court-basketball-hoop-1752757.jpg"
+                caption={
+                  "GYS is part of the ONLY major multi-sport league based in the east valley!"
+                }
+                button={<Button type="Small">Join Us</Button>}
+              />
+            </FadeIn_Wrapper>
+            <FadeIn_Wrapper className="Cards_Wrapper Double">
+              <Card
+                background="https://res.cloudinary.com/dxjse9tsv/image/upload/v1586910899/a-boy-seated-holding-a-basket-ball.jpg"
+                title="Believe"
+                caption=""
+              />
+              <Card
+                background="https://res.cloudinary.com/dxjse9tsv/image/upload/v1586593941/NationalYouthSports/johann-rosch-JgDjK1c4UIU-unsplash.jpg"
+                title="Fulfillment"
+              />
+            </FadeIn_Wrapper>
+            <FadeIn_Wrapper></FadeIn_Wrapper>
+            <FadeIn_Wrapper>
+              <Card
+                background="https://res.cloudinary.com/dxjse9tsv/image/upload/v1586594243/NationalYouthSports/ben-hershey-Ql2n3JsUpww-unsplash.jpg"
+                title="Modern"
+              />
+            </FadeIn_Wrapper>
           </div>
           <div className="Background_Container">
             <div className="Background_Sub_Container">

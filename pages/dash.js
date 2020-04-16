@@ -1,83 +1,14 @@
 import { useReducer } from "react";
 import Reducer from "../lib/reducers";
-import styled from "styled-components";
 import { useEffect } from "react";
 import { withAuth, useNav } from "../lib/interface";
 import { Layout, Modal, Heading } from "../lib/components";
 import { Nav } from "../lib/blocks";
-import { Dash_Views, User_Overview } from "../lib/blocks/dash/";
+import { User_Overview } from "../lib/blocks/dash/User";
+import { Dash_Views } from "../lib/blocks/dash/";
 import { useTransition, animated } from "react-spring";
-import Theme from "../lib/theme";
-import dumpStyles from "../lib/components/style_templates";
-import { FaRProject } from "react-icons/fa";
-
-const { Body, Container, Wrapper } = Layout;
-const styles = Theme.dash;
-
-const Dash_Body = styled(Body)`
-  ${dumpStyles(styles.body)}
-
-  .Dash_Overview {
-    ${dumpStyles(styles.overview)}
-    padding-top: 1em;
-    padding-bottom: 1em;
-    display: flex;
-    justify-content: space-between;
-    height: initial;
-    border-bottom: 1px solid;
-    opacity: 0.5;
-
-    h3 {
-      border-left: 1px solid;
-      padding-left: 10px;
-    }
-
-    & > * {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  .Dash_View {
-    display: flex;
-    .Dash_View_Nav {
-      ${dumpStyles(styles.nav)}
-      position: relative;
-      border-right: 1px solid;
-
-      .Dash_View_Nav_Caption {
-        margin-left: 2em;
-        padding-top: 3em;
-        opacity: 0.7;
-        padding-bottom: 3em;
-        font-size: 0.5em;
-        & > * {
-          padding: 0;
-          margin: 0;
-        }
-      }
-
-      .Dash_View_Nav_Controlls {
-        padding-top: 1em;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        border-top: 1px solid black;
-
-        & > * {
-          color: black;
-          text-align: left;
-        }
-      }
-    }
-    .Dash_View_SubContainer {
-      color: black;
-      height: 100%;
-      width: 100%;
-    }
-  }
-`;
+import { Dash_Body_Styles } from "../lib/blocks/dash/Dash_Styles";
+const { Container, Wrapper } = Layout;
 
 const initalState = {
   loggedIn: false,
@@ -87,9 +18,9 @@ const Dash = ({ user }) => {
   const [store, dispatch] = useReducer(Reducer.DashPage, initalState);
   const { firstName, lastName } = user;
   const Views = user.role.includes("Admin")
-    ? Dash_Views.Admin
-    : Dash_Views.User;
-  const [NavButtons, ActiveView, view_name] = useNav(Views, "DASH_NAV");
+    ? Dash_Views.Admin_View
+    : Dash_Views.User_View;
+  const [NavButtons, _, view_name] = useNav(Views, "DASH_NAV");
 
   const transitions = useTransition(view_name, (view) => view, {
     unique: true,
@@ -106,8 +37,10 @@ const Dash = ({ user }) => {
     tag.style.overflow = "hidden";
   }, []);
 
+  console.log(store.modal);
+
   return (
-    <Dash_Body>
+    <Dash_Body_Styles>
       <Nav isLoggedIn={user} show={true} store={store} dispatch={dispatch} />
       <User_Overview name={firstName + " " + lastName} {...user} />
       <Wrapper className="Dash_View">
@@ -121,13 +54,21 @@ const Dash = ({ user }) => {
           {transitions.map(({ key, props, item }) => {
             return (
               <animated.div key={key} style={props}>
-                {Views[item]()}
+                {Views[item]({ dispatch, store })}
               </animated.div>
             );
           })}
         </Container>
       </Wrapper>
-    </Dash_Body>
+      {store.modal && (
+        <Modal
+          backdrop={true}
+          hideModal={() => dispatch({ type: "HIDE_MODAL" })}
+        >
+          <store.input />
+        </Modal>
+      )}
+    </Dash_Body_Styles>
   );
 };
 

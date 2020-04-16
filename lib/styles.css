@@ -18,5 +18,9 @@ p {
 
 body {
   color: white;
-  background-color: black;
+  background-color: white;
+}
+
+p {
+  font-family: "Work Sans", sans-serif;
 }

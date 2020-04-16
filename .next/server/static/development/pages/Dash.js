@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -97,7 +97,7 @@ module.exports =
 /*!*******************************!*\
   !*** ./lib/animations/css.js ***!
   \*******************************/
-/*! exports provided: rotate, fadeIn, default */
+/*! exports provided: rotate, fadeIn */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -109,32 +109,6 @@ __webpack_require__.r(__webpack_exports__);
 
 const rotate = (pos1, pos2) => Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["keyframes"])(["from{transform:rotate(0deg) translate(", "%,", "%);}to{transform:rotate(360deg) translate(", "%,", "%);}"], pos1[0], pos1[1], pos2[0], pos2[1]);
 const fadeIn = () => Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["keyframes"])(["from{opacity:0;}to{opacity:1}"]);
-const css = {
-  fadeIn,
-  rotate
-};
-/* harmony default export */ __webpack_exports__["default"] = (css);
-
-/***/ }),
-
-/***/ "./lib/animations/index.js":
-/*!*********************************!*\
-  !*** ./lib/animations/index.js ***!
-  \*********************************/
-/*! exports provided: css, spring */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _css_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css.js */ "./lib/animations/css.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "css", function() { return _css_js__WEBPACK_IMPORTED_MODULE_0__["default"]; });
-
-/* harmony import */ var _spring_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./spring.js */ "./lib/animations/spring.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "spring", function() { return _spring_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
-
-// @create-index
-
-
 
 /***/ }),
 
@@ -142,28 +116,55 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************!*\
   !*** ./lib/animations/spring.js ***!
   \**********************************/
-/*! exports provided: default */
+/*! exports provided: slideInRight, slideInDown, slideInLeft, slideInBottom, fadeIn, FadeIn_Wrapper */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// React Spring Animations
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideInRight", function() { return slideInRight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideInDown", function() { return slideInDown; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideInLeft", function() { return slideInLeft; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideInBottom", function() { return slideInBottom; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fadeIn", function() { return fadeIn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FadeIn_Wrapper", function() { return FadeIn_Wrapper; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _interface___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../interface/ */ "./lib/interface/index.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./lib/util.js");
+/* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-spring */ "react-spring");
+/* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_spring__WEBPACK_IMPORTED_MODULE_3__);
+var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/animations/spring.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+ // React Spring Animations
+
 const slideInRight = state => ({
   transform: `translateX(${state ? 0 : -100}%)`
 });
-
 const slideInDown = state => ({
   transform: `translateY(${state ? 0 : -100}%)`
 });
-
 const slideInLeft = state => ({
   transform: `translateX(${state ? 0 : 100}%)`
 });
-
 const slideInBottom = state => ({
   transform: `translateY(${state ? 0 : 100}%)`
 });
-
 const fadeIn = state => ({
   from: {
     opacity: 0
@@ -171,16 +172,42 @@ const fadeIn = state => ({
   to: {
     opacity: 1
   }
-});
+}); // Wrappers
 
-const spring = {
-  fadeIn,
-  slideInBottom,
-  slideInDown,
-  slideInLeft,
-  slideInRight
+const FadeIn_Wrapper = (_ref) => {
+  let {
+    children
+  } = _ref,
+      props = _objectWithoutProperties(_ref, ["children"]);
+
+  const [ref, entries] = Object(_interface___WEBPACK_IMPORTED_MODULE_1__["useObserver"])({
+    threshold: Object(_util__WEBPACK_IMPORTED_MODULE_2__["buildThresholdList"])(40)
+  });
+  const [animation, setAnimation] = Object(react_spring__WEBPACK_IMPORTED_MODULE_3__["useSpring"])(() => ({
+    opacity: [0]
+  }));
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (entries.isIntersecting) {
+      const ir = entries.intersectionRatio;
+      const opacity = ir;
+      setAnimation({
+        opacity: [opacity]
+      });
+    }
+  });
+  return __jsx(react_spring__WEBPACK_IMPORTED_MODULE_3__["animated"].div, _extends({}, props, {
+    style: _objectSpread({}, animation, {
+      willChange: "opacity"
+    }),
+    ref: ref,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 5
+    }
+  }), children);
 };
-/* harmony default export */ __webpack_exports__["default"] = (spring);
 
 /***/ }),
 
@@ -195,12 +222,10 @@ const spring = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../theme */ "./lib/theme.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util */ "./lib/util.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components */ "./lib/components/index.js");
-/* harmony import */ var _components_style_templates__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/style_templates */ "./lib/components/style_templates.js");
+/* harmony import */ var _home_Index_Styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home/Index_Styles */ "./lib/blocks/home/Index_Styles.js");
+/* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-spring */ "react-spring");
+/* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_spring__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components */ "./lib/components/index.js");
 var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/blocks/Card.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -215,71 +240,70 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
-
-const styles = _theme__WEBPACK_IMPORTED_MODULE_2__["default"].cards;
-
 const Card = (_ref) => {
   let {
     background,
+    button,
     title,
     caption,
     img: Img
   } = _ref,
-      props = _objectWithoutProperties(_ref, ["background", "title", "caption", "img"]);
+      props = _objectWithoutProperties(_ref, ["background", "button", "title", "caption", "img"]);
 
-  return __jsx(Styled_Card, _extends({
+  return __jsx(_home_Index_Styles__WEBPACK_IMPORTED_MODULE_1__["Index_Card_Styles"], _extends({
     background: background,
     className: "Card"
   }, props, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 6,
       columnNumber: 3
     }
-  }), Img && __jsx(Img, {
+  }), Img ? __jsx(Img, {
     className: "Card_Img",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 13
+      lineNumber: 7,
+      columnNumber: 12
     }
-  }), __jsx("div", {
-    className: "Heading_Caption_Container",
+  }) : __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 7,
+      columnNumber: 43
+    }
+  }), __jsx("div", {
+    className: "Card_SubContainer",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
       columnNumber: 5
     }
-  }, title && __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["Heading"], {
+  }, title && __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["Heading"], {
     className: "Heading",
     type: "Big",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 10,
       columnNumber: 9
     }
-  }, title), caption && __jsx("p", {
-    className: "Card_Caption",
+  }, title), button && button, caption && __jsx("p", {
+    className: "Caption",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 15,
       columnNumber: 19
     }
   }, caption)));
 };
 
-const Styled_Card = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
-  displayName: "Card__Styled_Card",
-  componentId: "at05zo-0"
-})(["align-items:center;grid-template-columns:1fr 2fr;background:url(", ");.Card{}svg{min-height:15rem;height:40vh;height:100%;}.Card_Img{height:100%;justify-self:center;}text-align:center;display:grid;.Heading_Caption_Container{}", ""], ({
-  background
-}) => background, Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_5__["default"])(styles.cards));
-/* harmony default export */ __webpack_exports__["default"] = (Card);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_spring__WEBPACK_IMPORTED_MODULE_2__["animated"])(Card));
 
 /***/ }),
 
@@ -331,9 +355,9 @@ const Nav_Button_Tiny = Object(react_spring__WEBPACK_IMPORTED_MODULE_1__["animat
 const Container = Object(react_spring__WEBPACK_IMPORTED_MODULE_1__["animated"])(styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
   displayName: "Nav__Container",
   componentId: "sc-58li5f-0"
-})(["position:", ";left:0;top:0;width:100%;z-index:99;backdrop-filter:blur(6px);background-color:", ";border-bottom:1px solid ", ";.Nav_SubContainer{position:relative;margin-right:2em;display:flex;padding-bottom:5px;}.Nav_SubContainer_Alt_Buttons{transform:translateY(5px);& > *{margin-left:0.5em;margin-right:0.5em;}margin-left:auto;display:flex;align-items:center;}"], ({
+})(["position:", ";will-change:transform;left:0;top:0;width:100%;z-index:99;backdrop-filter:blur(6px);background-color:#00000052;.Nav_SubContainer{position:relative;margin-right:2em;display:flex;padding-bottom:5px;}.Nav_SubContainer_Alt_Buttons{transform:translateY(5px);& > *{margin-left:0.5em;margin-right:0.5em;}margin-left:auto;display:flex;align-items:center;}"], ({
   fixed
-}) => fixed ? "fixed" : "relative", _theme__WEBPACK_IMPORTED_MODULE_5__["default"].colors.c1, _theme__WEBPACK_IMPORTED_MODULE_5__["default"].colors.p2));
+}) => fixed ? "fixed" : "relative"));
 
 function Nav({
   fixed,
@@ -379,7 +403,8 @@ function Nav({
     }
   }, __jsx(Nav_Button, {
     style: _objectSpread({}, o[0], {
-      marginLeft: 0
+      marginLeft: 0,
+      willChange: "opacity"
     }),
     __self: this,
     __source: {
@@ -388,19 +413,23 @@ function Nav({
       columnNumber: 9
     }
   }, "Sports"), __jsx(Nav_Button, {
-    style: o[1],
+    style: _objectSpread({}, o[1], {
+      willChange: "opacity"
+    }),
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 60,
       columnNumber: 9
     }
-  }, " Roster"), __jsx(Nav_Button, {
-    style: o[2],
+  }, " ", "Roster"), __jsx(Nav_Button, {
+    style: _objectSpread({}, o[2], {
+      willChange: "opacity"
+    }),
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 64,
       columnNumber: 9
     }
   }, "Contact"), __jsx("div", {
@@ -408,22 +437,12 @@ function Nav({
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 67,
       columnNumber: 9
     }
   }, __jsx(Nav_Button_Tiny, {
-    onClick: () => handleCLick("SHOW_MODAL", "Registration"),
+    onClick: () => handleCLick("SHOW_MODAL", "User_Registration_Form"),
     style: o[3],
-    type: "Tiny",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 61,
-      columnNumber: 11
-    }
-  }, "Register"), __jsx(Nav_Button_Tiny, {
-    onClick: () => isLoggedIn ? Object(_util__WEBPACK_IMPORTED_MODULE_4__["locateTo"])("/Dash") : handleCLick("SHOW_MODAL", "Login"),
-    style: o[4],
     type: "Tiny",
     __self: this,
     __source: {
@@ -431,19 +450,29 @@ function Nav({
       lineNumber: 68,
       columnNumber: 11
     }
+  }, "Register"), __jsx(Nav_Button_Tiny, {
+    onClick: () => isLoggedIn ? Object(_util__WEBPACK_IMPORTED_MODULE_4__["locateTo"])("/Dash") : handleCLick("SHOW_MODAL", "Login_Form"),
+    style: o[4],
+    type: "Tiny",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75,
+      columnNumber: 11
+    }
   }, isLoggedIn ? "Dash" : "Login"), isLoggedIn && __jsx(Nav_Button_Tiny, {
     onClick: () => Object(_util__WEBPACK_IMPORTED_MODULE_4__["locateTo"])("http://localhost:4000" + "/auth/logout"),
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80,
+      lineNumber: 87,
       columnNumber: 13
     }
   }, "Logout"), __jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__["FaFacebook"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88,
+      lineNumber: 95,
       columnNumber: 11
     }
   }, "content"))));
@@ -457,18 +486,20 @@ function Nav({
 /*!*************************************!*\
   !*** ./lib/blocks/dash/Calendar.js ***!
   \*************************************/
-/*! exports provided: default */
+/*! exports provided: Event, Day, Calendar, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Event", function() { return Event; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Day", function() { return Day; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Calendar", function() { return Calendar; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/ */ "./lib/components/index.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "moment");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Team__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Team */ "./lib/blocks/dash/Team.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/blocks/dash/Calendar.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -476,75 +507,215 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-const {
-  Container
-} = _components___WEBPACK_IMPORTED_MODULE_1__["Layout"];
-const Calendar_Container = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(Container)`
-  .Calendar_Day_Container {
-    margin-top: 2em;
-  }
 
-  .Calendar_Day_Heading {
-    font-family: "Poiret One", cursive;
-  }
-`;
 
-const buildWeek = () => {
+const buildWeek = (daysInWeek = "7") => {
   let week = [];
-  const daysInWeek = 7;
 
   for (let i = 0; i < daysInWeek; ++i) {
-    week.push(moment__WEBPACK_IMPORTED_MODULE_2___default()().add(i, "days"));
+    week.push(moment__WEBPACK_IMPORTED_MODULE_3___default()().add(i, "days"));
   }
 
   return week;
 };
 
-const Day = ({
-  date
+const sudo_event_data = {
+  time: "8pm",
+  teams: [{
+    name: "Blue Devils"
+  }, {
+    name: "Hopchowda"
+  }],
+  location: "Royal Palms"
+};
+const Event = ({
+  time,
+  teams,
+  location
 }) => __jsx("div", {
-  className: "Calendar_Day_Container",
+  className: "Calendar_Event",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 22,
+    columnNumber: 3
+  }
+}, __jsx(_components___WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+  type: "Small",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 23,
+    columnNumber: 5
+  }
+}, __jsx(_components___WEBPACK_IMPORTED_MODULE_1__["Icon"], {
+  className: "Icon Clock",
+  type: "clock",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 24,
+    columnNumber: 7
+  }
+}), time), teams && __jsx("div", {
+  className: "Calendar_Event_Teams",
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 28,
-    columnNumber: 3
+    columnNumber: 7
   }
-}, __jsx(_components___WEBPACK_IMPORTED_MODULE_1__["Heading"], {
-  className: "Calendar_Day_Heading",
-  type: "Sub",
+}, __jsx(_Team__WEBPACK_IMPORTED_MODULE_2__["Team_Overview"], {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 29,
+    columnNumber: 9
+  }
+}), "vs", __jsx(_Team__WEBPACK_IMPORTED_MODULE_2__["Team_Overview"], {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 31,
+    columnNumber: 9
+  }
+})), __jsx(_components___WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+  className: "Calendar_Event_Venue_Heading",
+  type: "Small",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 34,
     columnNumber: 5
   }
-}, date));
-
-const Calendar = params => {
-  const Days = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(buildWeek());
-  console.log(Days);
-  return __jsx(Calendar_Container, {
+}, " ", "@ ", location));
+function Day({
+  date,
+  events = [sudo_event_data]
+}) {
+  return __jsx("div", {
+    className: "Calendar_Day_Container",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43,
+      columnNumber: 5
+    }
+  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    className: "Calendar_Day_Heading",
+    type: "Sub",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44,
+      columnNumber: 7
+    }
+  }, date), __jsx("div", {
+    className: "Calendar_Event_Container",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47,
+      columnNumber: 7
+    }
+  }, events.map(({
+    time,
+    teams,
+    location
+  }) => __jsx(Event, {
+    time: time,
+    teams: teams,
+    location: location,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49,
+      columnNumber: 11
+    }
+  }))));
+}
+const Calendar = ({
+  length,
+  Calendar_Day = Day
+}) => {
+  const Days = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(buildWeek(length));
+  return __jsx("div", {
+    className: "Calendar_Entry",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 59,
       columnNumber: 5
     }
-  }, Days.current.map((day, i) => {
-    return __jsx(Day, {
-      date: day.format("dddd/D"),
+  }, Days.current.map((date, i) => {
+    return __jsx(Calendar_Day, {
+      date: date.format("dddd/D"),
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 41,
+        lineNumber: 61,
         columnNumber: 16
       }
     });
   }));
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (Calendar);
+
+/***/ }),
+
+/***/ "./lib/blocks/dash/Dash_Styles.js":
+/*!****************************************!*\
+  !*** ./lib/blocks/dash/Dash_Styles.js ***!
+  \****************************************/
+/*! exports provided: Dash_Container, Dash_View_Players_Styles, Dash_View_Schedule_Styles, Dash_View_Billing_Styles, User_Overview_Styles, Team_List_Styles, Dash_Body_Styles */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Dash_Container", function() { return Dash_Container; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Dash_View_Players_Styles", function() { return Dash_View_Players_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Dash_View_Schedule_Styles", function() { return Dash_View_Schedule_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Dash_View_Billing_Styles", function() { return Dash_View_Billing_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User_Overview_Styles", function() { return User_Overview_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Team_List_Styles", function() { return Team_List_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Dash_Body_Styles", function() { return Dash_Body_Styles; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components */ "./lib/components/index.js");
+
+
+const {
+  Container,
+  Body
+} = _components__WEBPACK_IMPORTED_MODULE_1__["Layout"];
+const Dash_Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(Container).withConfig({
+  displayName: "Dash_Styles__Dash_Container",
+  componentId: "sc-12jrkod-0"
+})([".Dash_Block{button{color:black;border-color:black;}& > *{border:1px solid;border-radius:3px;margin:20px;padding:1em;box-shadow:-1px 3px 9px 0px rgba(0,0,0,0.38);}}"]);
+const Dash_View_Players_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "Dash_Styles__Dash_View_Players_Styles",
+  componentId: "sc-12jrkod-1"
+})(["display:grid;text-align:center;.Player_Card_Button_Group{grid-template-columns:1fr 3fr 3fr;display:grid;}button{color:black;border-color:black;}.Calendar_Entry{max-height:40vh;overflow:scroll;padding:1em;}.Calendar_Event_Teams{display:grid;justify-content:center;}.Calendar_Event_Container{margin-top:0;margin-bottom:0;}.Calendar_Event_Teams{display:flex;justify-content:space-around;}.Calendar_Day_Container{padding:1em;margin-bottom:1em;margin-top:1em;background-color:#b7abb538;border-radius:5px;}.Calendar_Event_Venue_Heading{border-bottom:1px solid black;padding:1em;max-width:200px;margin:auto;}.Player_Entry{padding:1em;display:flex;flex-direction:column;align-items:center;}.Shirt_Icon{margin-top:3em;margin-bottom:3em;}"]);
+const Dash_View_Schedule_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "Dash_Styles__Dash_View_Schedule_Styles",
+  componentId: "sc-12jrkod-2"
+})(["@media (max-width:800px){.Calendar_Entry{flex-direction:column;}}.Calendar_Entry{display:flex;}"]);
+const Dash_View_Billing_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "Dash_Styles__Dash_View_Billing_Styles",
+  componentId: "sc-12jrkod-3"
+})([""]);
+const User_Overview_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(Container).withConfig({
+  displayName: "Dash_Styles__User_Overview_Styles",
+  componentId: "sc-12jrkod-4"
+})(["color:black;padding-top:1em;padding-bottom:1em;display:flex;justify-content:space-between;height:initial;border-bottom:1px solid;opacity:0.5;h3{border-left:1px solid;padding-left:10px;}& > *{display:flex;align-items:center;}"]);
+const Team_List_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "Dash_Styles__Team_List_Styles",
+  componentId: "sc-12jrkod-5"
+})([".Team_List_SubContainer{display:flex;align-items:center;padding-left:1em;padding-right:1em;padding-top:0.5em;padding-bottom:0.5em;border-radius:3px;border:1px solid;}"]);
+const Dash_Body_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(Body).withConfig({
+  displayName: "Dash_Styles__Dash_Body_Styles",
+  componentId: "sc-12jrkod-6"
+})(["background-color:#e5dee8;.Dash_View{display:flex;.Dash_View_Nav{color:black;position:relative;border-right:1px solid;.Dash_View_Nav_Caption{margin-left:2em;padding-top:3em;opacity:0.7;padding-bottom:3em;font-size:0.5em;& > *{padding:0;margin:0;}}.Dash_View_Nav_Controlls{padding-top:1em;height:100%;width:100%;display:flex;flex-direction:column;border-top:1px solid black;button::after{background-color:black;}& > *{color:black;text-align:left;}}}.Dash_View_SubContainer{color:black;height:100%;width:100%;overflow-y:scroll;}}"]);
 
 /***/ }),
 
@@ -559,40 +730,95 @@ const Calendar = params => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components */ "./lib/components/index.js");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ */ "./lib/blocks/dash/index.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components */ "./lib/components/index.js");
+/* harmony import */ var _Calendar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Calendar */ "./lib/blocks/dash/Calendar.js");
+/* harmony import */ var _Player__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Player */ "./lib/blocks/dash/Player.js");
+/* harmony import */ var _Dash_Styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Dash_Styles */ "./lib/blocks/dash/Dash_Styles.js");
+/* harmony import */ var _Team__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Team */ "./lib/blocks/dash/Team.js");
+/* harmony import */ var _forms_Forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../forms/Forms */ "./lib/forms/Forms.js");
+/* harmony import */ var react_stripe_elements__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-stripe-elements */ "react-stripe-elements");
+/* harmony import */ var react_stripe_elements__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_stripe_elements__WEBPACK_IMPORTED_MODULE_7__);
 var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/blocks/dash/Dash_Views.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
-const {
-  Container
-} = _components__WEBPACK_IMPORTED_MODULE_2__["Layout"];
+
+
+
+
+
+
 
 const billing = () => {
-  return __jsx(Container, {
+  const Stripe_User_Billing = Object(react_stripe_elements__WEBPACK_IMPORTED_MODULE_7__["injectStripe"])(_forms_Forms__WEBPACK_IMPORTED_MODULE_6__["User_Billing_Form"]);
+  return __jsx(react_stripe_elements__WEBPACK_IMPORTED_MODULE_7__["StripeProvider"], {
+    apiKey: "pk_test_CFWtG6ajKXWCe31wnZRpW4bK00lV9TwQ2H",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 10
-    }
-  }, "content");
-};
-
-const schedule = () => {
-  return __jsx(Container, {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 17,
       columnNumber: 5
     }
-  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["Heading"], {
+  }, __jsx(_Dash_Styles__WEBPACK_IMPORTED_MODULE_4__["Dash_Container"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 7
+    }
+  }, __jsx(_Dash_Styles__WEBPACK_IMPORTED_MODULE_4__["Dash_View_Billing_Styles"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    className: "Dash_Block",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 11
+    }
+  }, __jsx(react_stripe_elements__WEBPACK_IMPORTED_MODULE_7__["Elements"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 13
+    }
+  }, __jsx(Stripe_User_Billing, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 15
+    }
+  }))))));
+}; // const ScheduleDay = React.cloneElement(Day, { record: false }, null);
+
+
+const schedule = () => {
+  return __jsx(_Dash_Styles__WEBPACK_IMPORTED_MODULE_4__["Dash_Container"], {
+    className: "Schedule_View_Entry",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 5
+    }
+  }, __jsx(_Dash_Styles__WEBPACK_IMPORTED_MODULE_4__["Dash_View_Schedule_Styles"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 7
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
     style: {
       textAlign: "right",
       borderBottom: "1px solid black"
@@ -600,83 +826,369 @@ const schedule = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 7
+      lineNumber: 37,
+      columnNumber: 9
     }
-  }, "Calendar"), __jsx(___WEBPACK_IMPORTED_MODULE_3__["Calendar"], {
+  }, "Calendar"), __jsx(_Calendar__WEBPACK_IMPORTED_MODULE_2__["Calendar"], {
+    Calendar_Day: props => __jsx(_Calendar__WEBPACK_IMPORTED_MODULE_2__["Day"], _extends({}, porps, {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 42,
+        columnNumber: 44
+      }
+    })),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 7
+      lineNumber: 42,
+      columnNumber: 9
     }
-  }));
+  })));
 };
 
-const players = () => {
-  return __jsx(Container, {
+const players = ({
+  dispatch,
+  store
+}) => {
+  return __jsx(_Dash_Styles__WEBPACK_IMPORTED_MODULE_4__["Dash_Container"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 10
+      lineNumber: 50,
+      columnNumber: 5
     }
-  }, "content");
+  }, __jsx(_Dash_Styles__WEBPACK_IMPORTED_MODULE_4__["Dash_View_Players_Styles"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    className: "Dash_Block Player_Card_Button_Group",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52,
+      columnNumber: 9
+    }
+  }, __jsx(_Player__WEBPACK_IMPORTED_MODULE_3__["Player_AddButton"], {
+    onClick: () => dispatch({
+      type: "SHOW_MODAL",
+      input: _forms_Forms__WEBPACK_IMPORTED_MODULE_6__["User_Registration_Form"]
+    }),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 11
+    }
+  }), __jsx(_Player__WEBPACK_IMPORTED_MODULE_3__["Player_Card"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 11
+    }
+  }), __jsx(_Player__WEBPACK_IMPORTED_MODULE_3__["Player_Card"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 62,
+      columnNumber: 11
+    }
+  })), __jsx(_Team__WEBPACK_IMPORTED_MODULE_5__["Team_Schedule"], {
+    className: "Dash_Block",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64,
+      columnNumber: 9
+    }
+  })));
 };
 
 const contact = () => {
-  return __jsx(Container, {
+  return __jsx(_Dash_Styles__WEBPACK_IMPORTED_MODULE_4__["Dash_Container"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 71,
       columnNumber: 10
     }
   }, "content");
 };
 
-const Admin = {
+const Admin_View = {
   billing,
   schedule,
   contact,
   players
 };
-const User = {
+const User_View = {
   billing,
   schedule,
   contact,
   players
 };
 const Dash_Views = {
-  Admin,
-  User
+  Admin_View,
+  User_View
 };
 /* harmony default export */ __webpack_exports__["default"] = (Dash_Views);
 
 /***/ }),
 
-/***/ "./lib/blocks/dash/User_Overview.js":
-/*!******************************************!*\
-  !*** ./lib/blocks/dash/User_Overview.js ***!
-  \******************************************/
-/*! exports provided: default */
+/***/ "./lib/blocks/dash/Player.js":
+/*!***********************************!*\
+  !*** ./lib/blocks/dash/Player.js ***!
+  \***********************************/
+/*! exports provided: Player_Card, Player_AddButton */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Player_Card", function() { return Player_Card; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Player_AddButton", function() { return Player_AddButton; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/ */ "./lib/components/index.js");
-var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/blocks/dash/User_Overview.js";
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components */ "./lib/components/index.js");
+/* harmony import */ var _Team__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Team */ "./lib/blocks/dash/Team.js");
+var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/blocks/dash/Player.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-const {
-  Container
-} = _components___WEBPACK_IMPORTED_MODULE_2__["Layout"];
+const Player_Card = ({
+  name = "Julia",
+  dob = "7-9yr",
+  teams = [],
+  size = "S"
+}) => {
+  return __jsx("div", {
+    className: "Player_Entry ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    type: "Sub",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 7
+    }
+  }, name), __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    type: "Small",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 7
+    }
+  }, dob), __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
+    size: size,
+    type: "shirt",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 7
+    }
+  }), __jsx(_Team__WEBPACK_IMPORTED_MODULE_2__["Team_Overview"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 7
+    }
+  }));
+};
+const Player_AddButton = ({
+  onClick
+}) => __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+  onClick: onClick,
+  type: "Small",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 21,
+    columnNumber: 3
+  }
+}, __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
+  type: "plus",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 22,
+    columnNumber: 5
+  }
+}), "Add Player");
+
+/***/ }),
+
+/***/ "./lib/blocks/dash/Team.js":
+/*!*********************************!*\
+  !*** ./lib/blocks/dash/Team.js ***!
+  \*********************************/
+/*! exports provided: Team_Overview, Team_Schedule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Team_Overview", function() { return Team_Overview; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Team_Schedule", function() { return Team_Schedule; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components */ "./lib/components/index.js");
+/* harmony import */ var _Dash_Styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Dash_Styles */ "./lib/blocks/dash/Dash_Styles.js");
+/* harmony import */ var _Calendar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Calendar */ "./lib/blocks/dash/Calendar.js");
+var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/blocks/dash/Team.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+const Team_Overview = ({
+  teams = [{
+    name: "Red Lions",
+    record: "3-0",
+    sport: "soccer"
+  }]
+}) => {
+  return __jsx(_Dash_Styles__WEBPACK_IMPORTED_MODULE_2__["Team_List_Styles"], {
+    className: "Team_List_Container",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 5
+    }
+  }, teams.map(({
+    name,
+    record,
+    sport
+  }) => __jsx("div", {
+    className: "Team_List_SubContainer",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 9
+    }
+  }, name && __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    className: "Team_List_Team_Heading",
+    type: "Small",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 13
+    }
+  }, name), record && __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    type: "Small",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17,
+      columnNumber: 22
+    }
+  }, record), sport && __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
+    type: sport,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 21
+    }
+  }))));
+};
+
+const Team_Schedule_Day = ({
+  date,
+  props
+}) => __jsx("div", _extends({}, props, {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 26,
+    columnNumber: 3
+  }
+}), __jsx(_Calendar__WEBPACK_IMPORTED_MODULE_3__["Day"], {
+  date: date,
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 27,
+    columnNumber: 5
+  }
+}), __jsx(Team_Overview, {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 28,
+    columnNumber: 5
+  }
+}));
+
+const Team_Schedule = (_ref) => {
+  let {
+    className
+  } = _ref,
+      props = _objectWithoutProperties(_ref, ["className"]);
+
+  return __jsx("div", _extends({}, props, {
+    className: "Team_Schedule_Entry " + className,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 5
+    }
+  }), __jsx(_Calendar__WEBPACK_IMPORTED_MODULE_3__["Calendar"], _extends({}, props, {
+    length: 4,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 7
+    }
+  })));
+};
+
+/***/ }),
+
+/***/ "./lib/blocks/dash/User.js":
+/*!*********************************!*\
+  !*** ./lib/blocks/dash/User.js ***!
+  \*********************************/
+/*! exports provided: User_Overview */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User_Overview", function() { return User_Overview; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components */ "./lib/components/index.js");
+/* harmony import */ var _Dash_Styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Dash_Styles */ "./lib/blocks/dash/Dash_Styles.js");
+/* harmony import */ var _Team__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Team */ "./lib/blocks/dash/Team.js");
+var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/blocks/dash/User.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
 
 const User_Overview = ({
   name = "",
@@ -684,100 +1196,97 @@ const User_Overview = ({
   homePhone = "",
   players = []
 }) => {
-  return __jsx(Container, {
-    className: "Dash_Overview",
+  return __jsx(_Dash_Styles__WEBPACK_IMPORTED_MODULE_2__["User_Overview_Styles"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 12,
       columnNumber: 5
     }
-  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Heading"], {
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
     type: "Small",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 13,
       columnNumber: 7
     }
   }, name), players.map(({
     sport,
     name: n
-  }) => __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Heading"], {
+  }) => __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
     type: "Small",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 11
+    }
+  }, n), __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
+    type: sport,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 17,
       columnNumber: 11
     }
-  }, n), __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Icon"], {
-    type: sport,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 11
-    }
   }))), __jsx("span", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 21,
       columnNumber: 7
     }
-  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Icon"], {
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
     type: "phone",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 9
+    }
+  }), __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    type: "Small",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 23,
       columnNumber: 9
     }
-  }), __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Heading"], {
-    type: "Small",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 9
-    }
   }, homePhone)), __jsx("span", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 25,
       columnNumber: 7
     }
-  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Icon"], {
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
     type: "mail",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26,
+      columnNumber: 9
+    }
+  }), __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    type: "Small",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 27,
       columnNumber: 9
     }
-  }), __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Heading"], {
-    type: "Small",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 9
-    }
-  }, email)), __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Icon"], {
+  }, email)), __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
     type: "message",
     messages: 1,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 29,
       columnNumber: 7
     }
   }));
 };
-
-/* harmony default export */ __webpack_exports__["default"] = (User_Overview);
 
 /***/ }),
 
@@ -785,7 +1294,7 @@ const User_Overview = ({
 /*!**********************************!*\
   !*** ./lib/blocks/dash/index.js ***!
   \**********************************/
-/*! exports provided: Calendar, Dash_Views, User_Overview */
+/*! exports provided: Calendar, Dash_Views */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -796,13 +1305,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Dash_Views_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dash_Views.js */ "./lib/blocks/dash/Dash_Views.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Dash_Views", function() { return _Dash_Views_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _User_Overview_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./User_Overview.js */ "./lib/blocks/dash/User_Overview.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "User_Overview", function() { return _User_Overview_js__WEBPACK_IMPORTED_MODULE_2__["default"]; });
-
 // @create-index
 
 
 
+/***/ }),
+
+/***/ "./lib/blocks/home/Index_Styles.js":
+/*!*****************************************!*\
+  !*** ./lib/blocks/home/Index_Styles.js ***!
+  \*****************************************/
+/*! exports provided: Index_Card_Styles, Container_1_Styles, Container_2_Styles */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index_Card_Styles", function() { return Index_Card_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Container_1_Styles", function() { return Container_1_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Container_2_Styles", function() { return Container_2_Styles; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_style_templates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/style_templates */ "./lib/components/style_templates.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme */ "./lib/theme.js");
+/* harmony import */ var _animations_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../animations/css */ "./lib/animations/css.js");
+
+
+
+
+const styles = _theme__WEBPACK_IMPORTED_MODULE_2__["default"].cards;
+const Index_Card_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "Index_Styles__Index_Card_Styles",
+  componentId: "sc-9oagiu-0"
+})(["position:relative;background:url(", ");background-position:center;background-repeat:no-repeat;height:80vh;margin-top:84px;background-size:cover;z-index:1;.Card_SubContainer{padding:2em;position:absolute;bottom:0;left:0;}p{font-family:\"Work Sans\",sans-serif;}svg{min-height:15rem;height:40vh;height:100%;}.Card_Img{height:100%;}.Caption{}.Heading{}", ""], ({
+  background
+}) => background, Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles.cards));
+const Container_1_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "Index_Styles__Container_1_Styles",
+  componentId: "sc-9oagiu-1"
+})(["height:100vh;overflow:hidden;position:relative;.Splash_Image{background-repeat:no-repeat;background-position:center top;background-size:cover;background-image:url(\"https://res.cloudinary.com/dxjse9tsv/image/upload/v1586905934/NationalYouthSports/woman-in-teal-jersey-1198166.jpg\");will-change:opacity;overflow:hidden;width:100%;height:100%;position:relative;top:0%;left:0%;z-index:-1;animation:", " 1s cubic-bezier(0.075,0.82,0.165,1);&::before{content:\"\";height:100%;left:0;position:fixed;top:0;width:100%;will-change:transform;}}.Splash_Logo{position:absolute;right:48px;top:48px;}.Splash_Nav_Container{position:absolute;bottom:48px;left:48px;max-width:500px;width:100%;color:black;button{color:black;border-color:black;}.Splash_Nav_Container_SubContainer{position:relative;padding:20px;}}"], _animations_css__WEBPACK_IMPORTED_MODULE_3__["fadeIn"]);
+const Container_2_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "Index_Styles__Container_2_Styles",
+  componentId: "sc-9oagiu-2"
+})(["display:flex;align-items:center;height:100%;.Heading_Container{position:absolute;top:0;left:0;height:100%;z-index:12;.Heading_Container_Headings{position:sticky;top:70vh;margin-top:100vh;white-space:pre-line;align-self:self-start;z-index:1;& > *{margin-bottom:-45px;}}}.Card_Background_Container{width:100%;}.Cards_Wrapper,.Double{display:flex;& > *{flex-basis:50%;}div:nth-child(1){margin-right:20px;}div:nth-child(2){margin-left:20px;}}.Background_Container{display:none;position:absolute;top:0;left:0;height:100%;width:100%;z-index:0;}.Background_Sub_Container{position:relative;height:100%;width:100%;overflow:hidden;}"]);
 
 /***/ }),
 
@@ -884,11 +1428,11 @@ const Button = (_ref) => {
 const Base = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.button.withConfig({
   displayName: "Button__Base",
   componentId: "cvrf7p-0"
-})(["", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles));
+})(["&:focus{outline:none;}", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles));
 const Small = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(Base).withConfig({
   displayName: "Button__Small",
   componentId: "cvrf7p-1"
-})(["", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.small));
+})(["transition:background-color 0.6s linear;&:hover{background-color:#3d4ae61a;}", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.small));
 const Tiny = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(Base).withConfig({
   displayName: "Button__Tiny",
   componentId: "cvrf7p-2"
@@ -900,48 +1444,8 @@ const Big = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(Base).withC
 const Nav = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(Base).withConfig({
   displayName: "Button__Nav",
   componentId: "cvrf7p-4"
-})(["position:relative;", " letter-spacing:6px;transition:all 0.6s cubic-bezier(0.075,0.82,0.165,1);&:after{content:\"\";position:absolute;bottom:-5px;left:0;height:1px;width:", ";border:1px solid;background-color:inherit;transition:width 0.6s cubic-bezier(0.075,0.82,0.165,1);}&:focus{outline:none;}&:hover{&:after{width:100px;}}"], Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.nav), ({
-  active
-}) => active ? "100px" : "15px");
+})(["position:relative;", " letter-spacing:6px;transition:all 0.6s cubic-bezier(0.075,0.82,0.165,1);&:after{content:\"\";position:absolute;bottom:-3px;left:0;height:1px;opacity:0;width:100%;background-color:white;transition:opacity 0.6s cubic-bezier(0.075,0.82,0.165,1);}&:focus{outline:none;}&:hover{&:after{opacity:1;}}"], Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.nav));
 /* harmony default export */ __webpack_exports__["default"] = (Button);
-
-/***/ }),
-
-/***/ "./lib/components/Form.js":
-/*!********************************!*\
-  !*** ./lib/components/Form.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-icons/fi */ "react-icons/fi");
-/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_icons_fi__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./lib/util.js");
-/* harmony import */ var _style_templates__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style_templates */ "./lib/components/style_templates.js");
-/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../theme */ "./lib/theme.js");
-
-
-
-
-
-const styles = _theme__WEBPACK_IMPORTED_MODULE_4__["default"].form;
-
-const Container = props => {
-  return Object(_util__WEBPACK_IMPORTED_MODULE_2__["withProps"])(BaseContainer, props);
-};
-
-const BaseContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.form.withConfig({
-  displayName: "Form__BaseContainer",
-  componentId: "sc-1glcamt-0"
-})(["", " display:flex;width:100%;height:100%;flex-direction:column;.Form_Icon{", "}.Form_SubContainer{background-color:#1b1b1b;border:2px solid;", " & > *{", "}}input{", " margin-bottom:1em;}.Input_Short{max-width:20px;}label{margin-right:0.5em;margin-left:0.5em;}"], Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles), Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.icons), Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.subcontainer), Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.subcontainer.items), Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.input));
-const Form = {
-  Container
-};
-/* harmony default export */ __webpack_exports__["default"] = (Form);
 
 /***/ }),
 
@@ -1030,11 +1534,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _static_Soccer_Ball_Background__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../static/Soccer_Ball_Background */ "./lib/static/Soccer_Ball_Background.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./lib/util.js");
-/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fi */ "react-icons/fi");
-/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _static_shirt__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../static/shirt */ "./lib/static/shirt.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util */ "./lib/util.js");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fi */ "react-icons/fi");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_5__);
 var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/components/Icon.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -1048,10 +1553,11 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
+
 const MessageNotification = ({
   messages
 }) => {
-  const Container = styled_components__WEBPACK_IMPORTED_MODULE_4___default.a.div.withConfig({
+  const Container = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.div.withConfig({
     displayName: "Icon__Container",
     componentId: "alsrz-0"
   })(["position:relative;.Message_Number{color:black;position:absolute;top:55%;right:-100%;transform:translate(-50%,-50%);font-size:0.9em;font-family:\"Poiret One\",cursive;font-weight:900;margin:0;}"]);
@@ -1059,7 +1565,7 @@ const MessageNotification = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 34,
       columnNumber: 5
     }
   }, __jsx("p", {
@@ -1067,19 +1573,52 @@ const MessageNotification = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 35,
       columnNumber: 7
     }
-  }, messages > 0 ? messages : ""), __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__["FiMessageCircle"], {
+  }, messages > 0 ? messages : ""), __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiMessageCircle"], {
     fill: messages > 0 ? "red" : "inherit",
     color: messages > 0 ? "red" : "inherit",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 36,
       columnNumber: 7
     }
   }));
+};
+
+const Shirt = ({
+  size
+}) => {
+  const Container = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.div.withConfig({
+    displayName: "Icon__Container",
+    componentId: "alsrz-1"
+  })(["position:relative;width:48px;height:40px;.Shirt_Size{position:absolute;top:0;left:0;transform:translate(20px,0px);}"]);
+  return __jsx(Container, {
+    className: "Shirt_Icon",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59,
+      columnNumber: 5
+    }
+  }, __jsx(_static_shirt__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60,
+      columnNumber: 7
+    }
+  }), __jsx("p", {
+    className: "Shirt_Size",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 7
+    }
+  }, size));
 };
 
 const Icon = (_ref) => {
@@ -1100,38 +1639,50 @@ const Icon = (_ref) => {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
+          lineNumber: 70,
           columnNumber: 9
         }
       });
       break;
 
     case "mail":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_2__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__["FiMail"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiMail"], props);
       break;
 
     case "message":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_2__["withProps"])(MessageNotification, props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(MessageNotification, props);
       break;
 
     case "card":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_2__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__["FiCreditCard"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiCreditCard"], props);
       break;
 
     case "calendar":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_2__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__["FiCalendar"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiCalendar"], props);
       break;
 
     case "arrow_right":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_2__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__["FiChevronRight"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiChevronRight"], props);
       break;
 
     case "arrow_down":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_2__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__["FiChevronDown"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiChevronDown"], props);
       break;
 
     case "phone":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_2__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__["FiPhone"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiPhone"], props);
+      break;
+
+    case "clock":
+      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiClock"], props);
+      break;
+
+    case "shirt":
+      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(Shirt, props);
+      break;
+
+    case "plus":
+      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiPlus"], props);
       break;
   }
 };
@@ -1247,7 +1798,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ */ "./lib/components/index.js");
 /* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../theme */ "./lib/theme.js");
 /* harmony import */ var _style_templates__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style_templates */ "./lib/components/style_templates.js");
-/* harmony import */ var _animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../animations */ "./lib/animations/index.js");
+/* harmony import */ var _animations_spring__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../animations/spring */ "./lib/animations/spring.js");
 var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/components/Modal.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -1277,7 +1828,7 @@ const styles = _theme__WEBPACK_IMPORTED_MODULE_4__["default"].modal;
 const Base = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "Modal__Base",
   componentId: "p8ri5u-0"
-})(["padding:1em;", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_5__["default"])(_theme__WEBPACK_IMPORTED_MODULE_4__["default"].modal));
+})(["", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_5__["default"])(_theme__WEBPACK_IMPORTED_MODULE_4__["default"].modal));
 const Model_Left = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(Wrapper).withConfig({
   displayName: "Modal__Model_Left",
   componentId: "p8ri5u-1"
@@ -1301,9 +1852,7 @@ const Model_Top = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(Base)
 const Backdrop = Object(react_spring__WEBPACK_IMPORTED_MODULE_2__["animated"])(styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "Modal__Backdrop",
   componentId: "p8ri5u-6"
-})(["", " z-index:", ";position:fixed;opacity:0.4;top:0;width:100%;height:100%;backdrop-filter:blur(3px)"], Object(_style_templates__WEBPACK_IMPORTED_MODULE_5__["default"])(styles.backdrop), ({
-  show
-}) => show ? 1 : -999));
+})(["", " z-index:20;position:fixed;opacity:0.4;top:0;width:100%;height:100%;backdrop-filter:blur(3px);"], Object(_style_templates__WEBPACK_IMPORTED_MODULE_5__["default"])(styles.backdrop)));
 const Types = {
   top: {
     Container: Object(react_spring__WEBPACK_IMPORTED_MODULE_2__["animated"])(Model_Top)
@@ -1316,20 +1865,20 @@ const Types = {
   },
   left: {
     Container: Object(react_spring__WEBPACK_IMPORTED_MODULE_2__["animated"])(Model_Left),
-    Animation: _animations__WEBPACK_IMPORTED_MODULE_6__["spring"].slideInRight
+    Animation: _animations_spring__WEBPACK_IMPORTED_MODULE_6__["slideInRight"]
   },
   center: {
     Container: Object(react_spring__WEBPACK_IMPORTED_MODULE_2__["animated"])(Model_Center),
-    Animation: _animations__WEBPACK_IMPORTED_MODULE_6__["spring"].fadeIn
+    Animation: _animations_spring__WEBPACK_IMPORTED_MODULE_6__["fadeIn"]
   }
 };
 
 const Modal = (_ref) => {
   let {
-    type,
+    type = "center",
     hideModal,
     show,
-    backdrop,
+    backdrop = false,
     bgStyles = {},
     children
   } = _ref,
@@ -1338,7 +1887,13 @@ const Modal = (_ref) => {
   const Container = Types[type].Container;
   const setAnim = Types[type].Animation;
   const Modal_Animation = Object(react_spring__WEBPACK_IMPORTED_MODULE_2__["useSpring"])(setAnim(show));
-  const Backdrop_Animation = Object(react_spring__WEBPACK_IMPORTED_MODULE_2__["useSpring"])(_animations__WEBPACK_IMPORTED_MODULE_6__["spring"].fadeIn(show));
+  const Backdrop_Animation = Object(react_spring__WEBPACK_IMPORTED_MODULE_2__["useSpring"])(Object(_animations_spring__WEBPACK_IMPORTED_MODULE_6__["fadeIn"])(show));
+  console.log(backdrop, hideModal);
+
+  if (!hideModal) {
+    console.error("No {props:hideModal} function given to Modal");
+  }
+
   return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx(Container, _extends({
     show: show,
     style: Modal_Animation
@@ -1346,7 +1901,7 @@ const Modal = (_ref) => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
+      lineNumber: 86,
       columnNumber: 7
     }
   }), children), backdrop && __jsx(Backdrop, {
@@ -1356,7 +1911,7 @@ const Modal = (_ref) => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85,
+      lineNumber: 90,
       columnNumber: 9
     }
   }));
@@ -1370,7 +1925,7 @@ const Modal = (_ref) => {
 /*!*********************************!*\
   !*** ./lib/components/index.js ***!
   \*********************************/
-/*! exports provided: Button, Form, Heading, Icon, Layout, Line, Modal, style_templates */
+/*! exports provided: Button, Heading, Icon, Layout, Line, Modal, style_templates */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1378,29 +1933,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Button_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Button.js */ "./lib/components/Button.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return _Button_js__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
-/* harmony import */ var _Form_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.js */ "./lib/components/Form.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Form", function() { return _Form_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+/* harmony import */ var _Heading_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Heading.js */ "./lib/components/Heading.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Heading", function() { return _Heading_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _Heading_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Heading.js */ "./lib/components/Heading.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Heading", function() { return _Heading_js__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+/* harmony import */ var _Icon_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Icon.js */ "./lib/components/Icon.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Icon", function() { return _Icon_js__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _Icon_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Icon.js */ "./lib/components/Icon.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Icon", function() { return _Icon_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+/* harmony import */ var _Layout_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Layout.js */ "./lib/components/Layout.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Layout", function() { return _Layout_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
-/* harmony import */ var _Layout_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Layout.js */ "./lib/components/Layout.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Layout", function() { return _Layout_js__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+/* harmony import */ var _Line_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Line.js */ "./lib/components/Line.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Line", function() { return _Line_js__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
-/* harmony import */ var _Line_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Line.js */ "./lib/components/Line.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Line", function() { return _Line_js__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+/* harmony import */ var _Modal_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modal.js */ "./lib/components/Modal.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Modal", function() { return _Modal_js__WEBPACK_IMPORTED_MODULE_5__["default"]; });
 
-/* harmony import */ var _Modal_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Modal.js */ "./lib/components/Modal.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Modal", function() { return _Modal_js__WEBPACK_IMPORTED_MODULE_6__["default"]; });
-
-/* harmony import */ var _style_templates_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./style_templates.js */ "./lib/components/style_templates.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "style_templates", function() { return _style_templates_js__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+/* harmony import */ var _style_templates_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style_templates.js */ "./lib/components/style_templates.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "style_templates", function() { return _style_templates_js__WEBPACK_IMPORTED_MODULE_6__["default"]; });
 
 // @create-index
-
 
 
 
@@ -1456,6 +2007,578 @@ const dumpStyles = theme => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (dumpStyles);
+
+/***/ }),
+
+/***/ "./lib/forms/Form_Styles.js":
+/*!**********************************!*\
+  !*** ./lib/forms/Form_Styles.js ***!
+  \**********************************/
+/*! exports provided: User_Registration_Styles, Login_Styles, User_Billing_Styles */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User_Registration_Styles", function() { return User_Registration_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login_Styles", function() { return Login_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User_Billing_Styles", function() { return User_Billing_Styles; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_style_templates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/style_templates */ "./lib/components/style_templates.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../theme */ "./lib/theme.js");
+
+
+
+const styles = _theme__WEBPACK_IMPORTED_MODULE_2__["default"].form;
+const Base_Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.form.withConfig({
+  displayName: "Form_Styles__Base_Container",
+  componentId: "sc-1xzpy0x-0"
+})(["", " display:flex;width:100%;height:100%;flex-direction:column;.Form_Icon{", "}.Form_SubContainer{margin:0;border:2px solid;", " & > *{", " & > *{margin:0;margin-left:1em;margin-right:1em;}}input{", " margin-bottom:1em;color:white;}.Input_Short{max-width:20px;}label{margin-right:0.5em;margin-left:0.5em;}}"], Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles), Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles.icons), Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles.subcontainer), Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles.subcontainer.items), Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles.input));
+const User_Registration_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(Base_Container).withConfig({
+  displayName: "Form_Styles__User_Registration_Styles",
+  componentId: "sc-1xzpy0x-1"
+})([".Form_SubContainer{margin:0;background-color:#1b1b1b;font-family:\"Work Sans\",sans-serif;@media (max-width:600px){.Form_Block{grid-template-columns:1fr 2fr;grid-template-rows:auto;}}}.Form_Block{font-size:0.8em;display:grid;grid-template-columns:1fr 2fr 1fr 2fr;}"]);
+const Login_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(Base_Container).withConfig({
+  displayName: "Form_Styles__Login_Styles",
+  componentId: "sc-1xzpy0x-2"
+})([".Form_SubContainer{background-color:#1b1b1b;}input{margin:0;}.Form_Icon,.Form_Submit{margin-left:0;}.Form_Block{font-size:0.8em;display:grid;grid-template-rows:1fr 1fr;}"]);
+const User_Billing_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "Form_Styles__User_Billing_Styles",
+  componentId: "sc-1xzpy0x-3"
+})(["max-height:40vh;max-width:50vh;.Form_SubContainer{background-color:none;}.Form_Block{font-size:0.8em;display:grid;grid-template-columns:1fr 2fr 1fr 2fr;grid-gap:10px;justify-content:center;align-items:center;}.Stripe_Card_Container{padding:4px;margin-top:7px;margin-bottom:7px;border-radius:3px;border:1px solid black;}button{margin-left:0;}"]);
+
+/***/ }),
+
+/***/ "./lib/forms/Forms.js":
+/*!****************************!*\
+  !*** ./lib/forms/Forms.js ***!
+  \****************************/
+/*! exports provided: Login_Form, User_Registration_Form, User_Billing_Form */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login_Form", function() { return Login_Form; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User_Registration_Form", function() { return User_Registration_Form; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User_Billing_Form", function() { return User_Billing_Form; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hook-form */ "react-hook-form");
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_hook_form__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components */ "./lib/components/index.js");
+/* harmony import */ var _Form_Styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Form_Styles */ "./lib/forms/Form_Styles.js");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fi */ "react-icons/fi");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/io */ "react-icons/io");
+/* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_icons_io__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_stripe_elements__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-stripe-elements */ "react-stripe-elements");
+/* harmony import */ var react_stripe_elements__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_stripe_elements__WEBPACK_IMPORTED_MODULE_6__);
+var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/forms/Forms.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+const handleLogin = data => {
+  console.log(data);
+};
+
+const Login_Form = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    errors
+  } = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])();
+  return __jsx(_Form_Styles__WEBPACK_IMPORTED_MODULE_3__["Login_Styles"], {
+    style: {
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    onSubmit: handleSubmit(handleLogin),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "Form_SubContainer",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    className: "Form_Block",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 9
+    }
+  }, __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiUser"], {
+    className: "Form_Icon",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 11
+    }
+  }), __jsx("input", {
+    type: "text",
+    name: "UserName",
+    className: "Login_Username",
+    ref: register({
+      required: true
+    }),
+    style: {
+      width: "100%"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26,
+      columnNumber: 11
+    }
+  })), __jsx("div", {
+    className: "Form_Block",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 9
+    }
+  }, __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiLock"], {
+    className: "Form_Icon",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 11
+    }
+  }), __jsx("input", {
+    type: "password",
+    name: "Password",
+    className: "Login_Password",
+    ref: register({
+      required: true
+    }),
+    style: {
+      width: "100%"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 11
+    }
+  })), __jsx("div", {
+    className: "Form_Block",
+    style: {
+      display: "flex",
+      alignItems: "center"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44,
+      columnNumber: 9
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    className: "Form_Submit",
+    type: "Small",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48,
+      columnNumber: 11
+    }
+  }, "Submit"), __jsx("a", {
+    href: "http://localhost:4000/auth/facebook",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51,
+      columnNumber: 11
+    }
+  }, __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiFacebook"], {
+    style: {
+      marginLeft: "auto"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52,
+      columnNumber: 13
+    }
+  })), __jsx(react_icons_io__WEBPACK_IMPORTED_MODULE_5__["IoLogoGoogle"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 11
+    }
+  }))));
+};
+
+const FirstLastName = () => __jsx("div", {
+  className: "Form_Block",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 62,
+    columnNumber: 3
+  }
+}, __jsx("label", {
+  htmlFor: "firstName",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 63,
+    columnNumber: 5
+  }
+}, "FirstName"), __jsx("input", {
+  name: "firstName",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 64,
+    columnNumber: 5
+  }
+}), __jsx("label", {
+  htmlFor: "LastName",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 65,
+    columnNumber: 5
+  }
+}, "LastName"), __jsx("input", {
+  name: "lastName",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 66,
+    columnNumber: 5
+  }
+}));
+
+const DOB = () => __jsx("div", {
+  className: "Form_Block",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 71,
+    columnNumber: 3
+  }
+}, __jsx("label", {
+  htmlFor: "dob",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 72,
+    columnNumber: 5
+  }
+}, "DOB"), __jsx("input", {
+  type: "date",
+  name: "dob",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 73,
+    columnNumber: 5
+  }
+}));
+
+const Contact = () => __jsx("div", {
+  className: "Form_Block",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 78,
+    columnNumber: 3
+  }
+}, __jsx("label", {
+  htmlFor: "email",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 79,
+    columnNumber: 5
+  }
+}, "Email"), __jsx("input", {
+  type: "text",
+  name: "email",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 80,
+    columnNumber: 5
+  }
+}), __jsx("label", {
+  htmlFor: "homePhone",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 81,
+    columnNumber: 5
+  }
+}, "Cell Phone"), __jsx("input", {
+  type: "text",
+  name: "homePhone",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 82,
+    columnNumber: 5
+  }
+}));
+
+const Address = () => __jsx("div", {
+  className: "Form_Block",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 87,
+    columnNumber: 3
+  }
+}, __jsx("label", {
+  htmlFor: "address",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 88,
+    columnNumber: 5
+  }
+}, " Street"), __jsx("input", {
+  type: "text",
+  name: "address",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 89,
+    columnNumber: 5
+  }
+}), __jsx("label", {
+  htmlFor: "unit",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 90,
+    columnNumber: 5
+  }
+}, " Unit"), __jsx("input", {
+  className: "Input_Short",
+  type: "text",
+  name: "unit",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 91,
+    columnNumber: 5
+  }
+}));
+
+const ZipState = () => __jsx("div", {
+  className: "Form_Block",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 96,
+    columnNumber: 3
+  }
+}, __jsx("label", {
+  htmlFor: "zip",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 97,
+    columnNumber: 5
+  }
+}, " Zip"), __jsx("input", {
+  type: "text",
+  name: "zip",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 98,
+    columnNumber: 5
+  }
+}), __jsx("label", {
+  htmlFor: "state",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 99,
+    columnNumber: 5
+  }
+}, " State"), __jsx("input", {
+  className: "Input_Short",
+  type: "text",
+  name: "state",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 100,
+    columnNumber: 5
+  }
+}));
+
+const User_Registration_Form = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    errors
+  } = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])();
+  return __jsx(_Form_Styles__WEBPACK_IMPORTED_MODULE_3__["User_Registration_Styles"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 107,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "Form_SubContainer",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 108,
+      columnNumber: 7
+    }
+  }, __jsx(FirstLastName, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 109,
+      columnNumber: 9
+    }
+  }), __jsx(DOB, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 110,
+      columnNumber: 9
+    }
+  }), __jsx(Contact, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 111,
+      columnNumber: 9
+    }
+  }), __jsx(Address, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 112,
+      columnNumber: 9
+    }
+  }), __jsx(ZipState, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 113,
+      columnNumber: 9
+    }
+  }), __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    type: "Small",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 114,
+      columnNumber: 9
+    }
+  }, "Submit ")));
+};
+const User_Billing_Form = () => {
+  const CardElementStyles = {
+    base: {
+      color: "#00ffff",
+      fontSize: "15px",
+      padding: "15px",
+      background: "#0000007a",
+      iconColor: "black",
+      empty: {
+        color: "#00ffff"
+      }
+    }
+  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    errors
+  } = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])();
+  return __jsx(_Form_Styles__WEBPACK_IMPORTED_MODULE_3__["User_Billing_Styles"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 136,
+      columnNumber: 5
+    }
+  }, __jsx(DOB, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 137,
+      columnNumber: 7
+    }
+  }), __jsx(Contact, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 138,
+      columnNumber: 7
+    }
+  }), __jsx(Address, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 139,
+      columnNumber: 7
+    }
+  }), __jsx(ZipState, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 140,
+      columnNumber: 7
+    }
+  }), __jsx("div", {
+    className: "Stripe_Card_Container",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 141,
+      columnNumber: 7
+    }
+  }, __jsx(react_stripe_elements__WEBPACK_IMPORTED_MODULE_6__["CardElement"], {
+    color: "aqua",
+    style: CardElementStyles,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 142,
+      columnNumber: 9
+    }
+  })), __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    type: "Small",
+    onClick: handleSubmit,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 144,
+      columnNumber: 7
+    }
+  }, "Subscribe"));
+};
 
 /***/ }),
 
@@ -1708,6 +2831,39 @@ function DashPage(state, action) {
       return {
         loggedIn: false
       };
+
+    case "SHOW_MODAL":
+      return {
+        modal: true,
+        input: action.input
+      };
+
+    case "HIDE_MODAL":
+      return _objectSpread({
+        modal: false
+      }, prevState);
+      break;
+
+    default:
+      return state;
+  }
+}
+
+function Form(state, action) {
+  switch (action.type) {
+    case "SHOW_MODAL":
+      return {
+        modal: true
+      };
+
+    case "HIDE_MODAL":
+      return _objectSpread({
+        modal: false
+      }, prevState);
+      break;
+
+    default:
+      return state;
   }
 }
 
@@ -1797,6 +2953,90 @@ const Soccer_Ball_Background = ({
 
 /***/ }),
 
+/***/ "./lib/static/shirt.js":
+/*!*****************************!*\
+  !*** ./lib/static/shirt.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/static/shirt.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+const Shirt_Svg = ({
+  className
+}) => __jsx("svg", {
+  className: className,
+  width: "48px",
+  height: "40px",
+  viewBox: "0 0 48 40",
+  version: "1.1",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 2,
+    columnNumber: 3
+  }
+}, __jsx("g", {
+  id: "Home",
+  stroke: "none",
+  strokeWidth: "1",
+  fill: "none",
+  fillRule: "evenodd",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 9,
+    columnNumber: 5
+  }
+}, __jsx("g", {
+  id: "Parent_Dash",
+  transform: "translate(-611.000000, -570.000000)",
+  fill: "#000000",
+  "fill-rule": "nonzero",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 10,
+    columnNumber: 7
+  }
+}, __jsx("g", {
+  id: "Group-4",
+  transform: "translate(611.000000, 570.000000)",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 16,
+    columnNumber: 9
+  }
+}, __jsx("g", {
+  id: "286964",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 17,
+    columnNumber: 11
+  }
+}, __jsx("path", {
+  d: "M34.0005,0 L29.001,0 C29.001,2.75747633 26.7568125,5.00009375 24,5.00009375 C21.2431875,5.00009375 19.0005,2.75747633 19.0005,0 L14.00025,0 L0,8 L4.0005,18.9999063 L10.0005,16.9997188 L10.0005,40 L38.001,40 L38.001,16.9997188 L44.001,18.9999063 L48,8 L34.0005,0 Z M42.7851563,16.487016 L38.6323125,15.1027468 L36,14.2247117 L36,16.9998125 L36,37.9991563 L12,37.9991563 L12,16.9998125 L12,14.2247117 L9.3676875,15.1028405 L5.21484375,16.4871098 L2.45578125,8.90015937 L14.53125,2.00018749 L17.2903125,2.00018749 C18.1509375,4.89172213 20.829375,7.00028124 24,7.00028124 C27.171375,7.00028124 29.8491563,4.89172213 30.7089375,2.00018749 L33.46875,2.00018749 L45.544875,8.90015937 L42.7851563,16.487016 Z",
+  id: "Shape",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 18,
+    columnNumber: 13
+  }
+}))))));
+
+/* harmony default export */ __webpack_exports__["default"] = (Shirt_Svg);
+
+/***/ }),
+
 /***/ "./lib/theme.js":
 /*!**********************!*\
   !*** ./lib/theme.js ***!
@@ -1841,18 +3081,6 @@ const colors = {
   c1: "black",
   c2: "#7C7A7A",
   c3: "#FB3640"
-};
-const dash = {
-  body: {
-    bc: "#e5dee8"
-  },
-  overview: {
-    c: "black"
-  },
-  nav: {
-    bc: "",
-    c: "black"
-  }
 }; // Component style handles
 
 const buttons = {
@@ -1901,15 +3129,7 @@ const headings = {
   }
 };
 const cards = {};
-const modal = {
-  px: "1em",
-  py: "1em",
-  bc: "",
-  bdr: "5px",
-  backdrop: {
-    bc: "#ffffff17"
-  }
-};
+const modal = {};
 const form = {
   input: {
     bc: "transparent"
@@ -1932,8 +3152,7 @@ const theme = {
   cards,
   headings,
   modal,
-  form,
-  dash
+  form
 };
 /* harmony default export */ __webpack_exports__["default"] = (theme);
 
@@ -1943,7 +3162,7 @@ const theme = {
 /*!*********************!*\
   !*** ./lib/util.js ***!
   \*********************/
-/*! exports provided: changeTo, withProps, buildThresholdList, locateTo */
+/*! exports provided: changeTo, withProps, buildThresholdList, locateTo, wrapComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1952,6 +3171,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "withProps", function() { return withProps; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "buildThresholdList", function() { return buildThresholdList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "locateTo", function() { return locateTo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wrapComponent", function() { return wrapComponent; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/util.js";
@@ -1997,6 +3217,30 @@ const buildThresholdList = numSteps => {
 const locateTo = location => {
   window.location.href = location;
 };
+const wrapComponent = (C1, C2) => {
+  return (_ref2) => {
+    let {
+      children
+    } = _ref2,
+        props = _objectWithoutProperties(_ref2, ["children"]);
+
+    return __jsx(C2, {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28,
+        columnNumber: 5
+      }
+    }, __jsx(C1, _extends({}, props, {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29,
+        columnNumber: 7
+      }
+    }), children));
+  };
+};
 
 /***/ }),
 
@@ -2012,18 +3256,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _lib_reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/reducers */ "./lib/reducers.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _lib_interface__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/interface */ "./lib/interface/index.js");
-/* harmony import */ var _lib_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib/components */ "./lib/components/index.js");
-/* harmony import */ var _lib_blocks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../lib/blocks */ "./lib/blocks/index.js");
+/* harmony import */ var _lib_interface__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/interface */ "./lib/interface/index.js");
+/* harmony import */ var _lib_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/components */ "./lib/components/index.js");
+/* harmony import */ var _lib_blocks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib/blocks */ "./lib/blocks/index.js");
+/* harmony import */ var _lib_blocks_dash_User__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../lib/blocks/dash/User */ "./lib/blocks/dash/User.js");
 /* harmony import */ var _lib_blocks_dash___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../lib/blocks/dash/ */ "./lib/blocks/dash/index.js");
 /* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-spring */ "react-spring");
 /* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_spring__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _lib_theme__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../lib/theme */ "./lib/theme.js");
-/* harmony import */ var _lib_components_style_templates__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../lib/components/style_templates */ "./lib/components/style_templates.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-icons/fa */ "react-icons/fa");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _lib_blocks_dash_Dash_Styles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../lib/blocks/dash/Dash_Styles */ "./lib/blocks/dash/Dash_Styles.js");
 var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/pages/Dash.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -2040,18 +3280,10 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
-
-
 const {
-  Body,
   Container,
   Wrapper
-} = _lib_components__WEBPACK_IMPORTED_MODULE_4__["Layout"];
-const styles = _lib_theme__WEBPACK_IMPORTED_MODULE_8__["default"].dash;
-const Dash_Body = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(Body).withConfig({
-  displayName: "Dash__Dash_Body",
-  componentId: "sc-1ep5h3i-0"
-})(["", " .Dash_Overview{", " padding-top:1em;padding-bottom:1em;display:flex;justify-content:space-between;height:initial;border-bottom:1px solid;opacity:0.5;h3{border-left:1px solid;padding-left:10px;}& > *{display:flex;align-items:center;}}.Dash_View{display:flex;.Dash_View_Nav{", " position:relative;border-right:1px solid;.Dash_View_Nav_Caption{margin-left:2em;padding-top:3em;opacity:0.7;padding-bottom:3em;font-size:0.5em;& > *{padding:0;margin:0;}}.Dash_View_Nav_Controlls{padding-top:1em;height:100%;width:100%;display:flex;flex-direction:column;border-top:1px solid black;& > *{color:black;text-align:left;}}}.Dash_View_SubContainer{color:black;height:100%;width:100%;}}"], Object(_lib_components_style_templates__WEBPACK_IMPORTED_MODULE_9__["default"])(styles.body), Object(_lib_components_style_templates__WEBPACK_IMPORTED_MODULE_9__["default"])(styles.overview), Object(_lib_components_style_templates__WEBPACK_IMPORTED_MODULE_9__["default"])(styles.nav));
+} = _lib_components__WEBPACK_IMPORTED_MODULE_3__["Layout"];
 const initalState = {
   loggedIn: false
 };
@@ -2067,8 +3299,8 @@ const Dash = ({
     firstName,
     lastName
   } = user;
-  const Views = user.role.includes("Admin") ? _lib_blocks_dash___WEBPACK_IMPORTED_MODULE_6__["Dash_Views"].Admin : _lib_blocks_dash___WEBPACK_IMPORTED_MODULE_6__["Dash_Views"].User;
-  const [NavButtons, ActiveView, view_name] = Object(_lib_interface__WEBPACK_IMPORTED_MODULE_3__["useNav"])(Views, "DASH_NAV");
+  const Views = user.role.includes("Admin") ? _lib_blocks_dash___WEBPACK_IMPORTED_MODULE_6__["Dash_Views"].Admin_View : _lib_blocks_dash___WEBPACK_IMPORTED_MODULE_6__["Dash_Views"].User_View;
+  const [NavButtons, _, view_name] = Object(_lib_interface__WEBPACK_IMPORTED_MODULE_2__["useNav"])(Views, "DASH_NAV");
   const transitions = Object(react_spring__WEBPACK_IMPORTED_MODULE_7__["useTransition"])(view_name, view => view, {
     unique: true,
     from: {
@@ -2094,14 +3326,15 @@ const Dash = ({
     tag.style.height = "100vh";
     tag.style.overflow = "hidden";
   }, []);
-  return __jsx(Dash_Body, {
+  console.log(store.modal);
+  return __jsx(_lib_blocks_dash_Dash_Styles__WEBPACK_IMPORTED_MODULE_8__["Dash_Body_Styles"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110,
+      lineNumber: 43,
       columnNumber: 5
     }
-  }, __jsx(_lib_blocks__WEBPACK_IMPORTED_MODULE_5__["Nav"], {
+  }, __jsx(_lib_blocks__WEBPACK_IMPORTED_MODULE_4__["Nav"], {
     isLoggedIn: user,
     show: true,
     store: store,
@@ -2109,16 +3342,16 @@ const Dash = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111,
+      lineNumber: 44,
       columnNumber: 7
     }
-  }), __jsx(_lib_blocks_dash___WEBPACK_IMPORTED_MODULE_6__["User_Overview"], _extends({
+  }), __jsx(_lib_blocks_dash_User__WEBPACK_IMPORTED_MODULE_5__["User_Overview"], _extends({
     name: firstName + " " + lastName
   }, user, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112,
+      lineNumber: 45,
       columnNumber: 7
     }
   })), __jsx(Wrapper, {
@@ -2126,17 +3359,17 @@ const Dash = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113,
+      lineNumber: 46,
       columnNumber: 7
     }
-  }, __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_4__["Modal"], {
+  }, __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_3__["Modal"], {
     className: "Dash_View_Nav",
     type: "left",
     show: true,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 114,
+      lineNumber: 47,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -2144,14 +3377,14 @@ const Dash = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 115,
+      lineNumber: 48,
       columnNumber: 11
     }
-  }, __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_4__["Heading"], {
+  }, __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_3__["Heading"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 116,
+      lineNumber: 49,
       columnNumber: 13
     }
   }, "Parent Dash")), __jsx("div", {
@@ -2159,7 +3392,7 @@ const Dash = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118,
+      lineNumber: 51,
       columnNumber: 11
     }
   }, NavButtons)), __jsx(Container, {
@@ -2167,7 +3400,7 @@ const Dash = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 120,
+      lineNumber: 53,
       columnNumber: 9
     }
   }, transitions.map(({
@@ -2181,25 +3414,46 @@ const Dash = ({
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 123,
+        lineNumber: 56,
         columnNumber: 15
       }
-    }, Views[item]());
-  }))));
+    }, Views[item]({
+      dispatch,
+      store
+    }));
+  }))), store.modal && __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_3__["Modal"], {
+    backdrop: true,
+    hideModal: () => dispatch({
+      type: "HIDE_MODAL"
+    }),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64,
+      columnNumber: 9
+    }
+  }, __jsx(store.input, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68,
+      columnNumber: 11
+    }
+  })));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_lib_interface__WEBPACK_IMPORTED_MODULE_3__["withAuth"])(Dash, __jsx("div", {
+/* harmony default export */ __webpack_exports__["default"] = (Object(_lib_interface__WEBPACK_IMPORTED_MODULE_2__["withAuth"])(Dash, __jsx("div", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 134,
+    lineNumber: 75,
     columnNumber: 31
   }
 }, "content")));
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*****************************!*\
   !*** multi ./pages/Dash.js ***!
   \*****************************/
@@ -2266,6 +3520,17 @@ module.exports = require("react");
 
 /***/ }),
 
+/***/ "react-hook-form":
+/*!**********************************!*\
+  !*** external "react-hook-form" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-hook-form");
+
+/***/ }),
+
 /***/ "react-icons/fa":
 /*!*********************************!*\
   !*** external "react-icons/fa" ***!
@@ -2288,6 +3553,17 @@ module.exports = require("react-icons/fi");
 
 /***/ }),
 
+/***/ "react-icons/io":
+/*!*********************************!*\
+  !*** external "react-icons/io" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-icons/io");
+
+/***/ }),
+
 /***/ "react-spring":
 /*!*******************************!*\
   !*** external "react-spring" ***!
@@ -2296,6 +3572,17 @@ module.exports = require("react-icons/fi");
 /***/ (function(module, exports) {
 
 module.exports = require("react-spring");
+
+/***/ }),
+
+/***/ "react-stripe-elements":
+/*!****************************************!*\
+  !*** external "react-stripe-elements" ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-stripe-elements");
 
 /***/ }),
 

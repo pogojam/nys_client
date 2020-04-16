@@ -4,7 +4,7 @@
 /*!*******************************!*\
   !*** ./lib/animations/css.js ***!
   \*******************************/
-/*! exports provided: rotate, fadeIn, default */
+/*! exports provided: rotate, fadeIn */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19,32 +19,6 @@ var rotate = function rotate(pos1, pos2) {
 var fadeIn = function fadeIn() {
   return Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["keyframes"])(["from{opacity:0;}to{opacity:1}"]);
 };
-var css = {
-  fadeIn: fadeIn,
-  rotate: rotate
-};
-/* harmony default export */ __webpack_exports__["default"] = (css);
-
-/***/ }),
-
-/***/ "./lib/animations/index.js":
-/*!*********************************!*\
-  !*** ./lib/animations/index.js ***!
-  \*********************************/
-/*! exports provided: css, spring */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _css_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css.js */ "./lib/animations/css.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "css", function() { return _css_js__WEBPACK_IMPORTED_MODULE_0__["default"]; });
-
-/* harmony import */ var _spring_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./spring.js */ "./lib/animations/spring.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "spring", function() { return _spring_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
-
-// @create-index
-
-
 
 /***/ }),
 
@@ -52,36 +26,65 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************!*\
   !*** ./lib/animations/spring.js ***!
   \**********************************/
-/*! exports provided: default */
+/*! exports provided: slideInRight, slideInDown, slideInLeft, slideInBottom, fadeIn, FadeIn_Wrapper */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// React Spring Animations
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideInRight", function() { return slideInRight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideInDown", function() { return slideInDown; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideInLeft", function() { return slideInLeft; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideInBottom", function() { return slideInBottom; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fadeIn", function() { return fadeIn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FadeIn_Wrapper", function() { return FadeIn_Wrapper; });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _interface___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../interface/ */ "./lib/interface/index.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util */ "./lib/util.js");
+/* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-spring */ "./node_modules/react-spring/web.js");
+
+
+
+
+
+var _this = undefined,
+    _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/animations/spring.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+
+ // React Spring Animations
+
 var slideInRight = function slideInRight(state) {
   return {
     transform: "translateX(".concat(state ? 0 : -100, "%)")
   };
 };
-
 var slideInDown = function slideInDown(state) {
   return {
     transform: "translateY(".concat(state ? 0 : -100, "%)")
   };
 };
-
 var slideInLeft = function slideInLeft(state) {
   return {
     transform: "translateX(".concat(state ? 0 : 100, "%)")
   };
 };
-
 var slideInBottom = function slideInBottom(state) {
   return {
     transform: "translateY(".concat(state ? 0 : 100, "%)")
   };
 };
-
 var fadeIn = function fadeIn(state) {
   return {
     from: {
@@ -91,16 +94,50 @@ var fadeIn = function fadeIn(state) {
       opacity: 1
     }
   };
-};
+}; // Wrappers
 
-var spring = {
-  fadeIn: fadeIn,
-  slideInBottom: slideInBottom,
-  slideInDown: slideInDown,
-  slideInLeft: slideInLeft,
-  slideInRight: slideInRight
+var FadeIn_Wrapper = function FadeIn_Wrapper(_ref) {
+  var children = _ref.children,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__["default"])(_ref, ["children"]);
+
+  var _useObserver = Object(_interface___WEBPACK_IMPORTED_MODULE_5__["useObserver"])({
+    threshold: Object(_util__WEBPACK_IMPORTED_MODULE_6__["buildThresholdList"])(40)
+  }),
+      _useObserver2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_useObserver, 2),
+      ref = _useObserver2[0],
+      entries = _useObserver2[1];
+
+  var _useSpring = Object(react_spring__WEBPACK_IMPORTED_MODULE_7__["useSpring"])(function () {
+    return {
+      opacity: [0]
+    };
+  }),
+      _useSpring2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_useSpring, 2),
+      animation = _useSpring2[0],
+      setAnimation = _useSpring2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_4__["useEffect"])(function () {
+    if (entries.isIntersecting) {
+      var ir = entries.intersectionRatio;
+      var opacity = ir;
+      setAnimation({
+        opacity: [opacity]
+      });
+    }
+  });
+  return __jsx(react_spring__WEBPACK_IMPORTED_MODULE_7__["animated"].div, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+    style: _objectSpread({}, animation, {
+      willChange: "opacity"
+    }),
+    ref: ref,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 5
+    }
+  }), children);
 };
-/* harmony default export */ __webpack_exports__["default"] = (spring);
 
 /***/ }),
 
@@ -117,11 +154,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../theme */ "./lib/theme.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util */ "./lib/util.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components */ "./lib/components/index.js");
-/* harmony import */ var _components_style_templates__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/style_templates */ "./lib/components/style_templates.js");
+/* harmony import */ var _home_Index_Styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/Index_Styles */ "./lib/blocks/home/Index_Styles.js");
+/* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-spring */ "./node_modules/react-spring/web.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components */ "./lib/components/index.js");
 
 
 
@@ -134,70 +169,68 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
 
-
-var styles = _theme__WEBPACK_IMPORTED_MODULE_4__["default"].cards;
-
 var Card = function Card(_ref) {
   var background = _ref.background,
+      button = _ref.button,
       title = _ref.title,
       caption = _ref.caption,
       Img = _ref.img,
-      props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["background", "title", "caption", "img"]);
+      props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["background", "button", "title", "caption", "img"]);
 
-  return __jsx(Styled_Card, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  return __jsx(_home_Index_Styles__WEBPACK_IMPORTED_MODULE_3__["Index_Card_Styles"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     background: background,
     className: "Card"
   }, props, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 6,
       columnNumber: 3
     }
-  }), Img && __jsx(Img, {
+  }), Img ? __jsx(Img, {
     className: "Card_Img",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 13
+      lineNumber: 7,
+      columnNumber: 12
     }
-  }), __jsx("div", {
-    className: "Heading_Caption_Container",
+  }) : __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 7,
+      columnNumber: 43
+    }
+  }), __jsx("div", {
+    className: "Card_SubContainer",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
       columnNumber: 5
     }
-  }, title && __jsx(_components__WEBPACK_IMPORTED_MODULE_6__["Heading"], {
+  }, title && __jsx(_components__WEBPACK_IMPORTED_MODULE_5__["Heading"], {
     className: "Heading",
     type: "Big",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 10,
       columnNumber: 9
     }
-  }, title), caption && __jsx("p", {
-    className: "Card_Caption",
+  }, title), button && button, caption && __jsx("p", {
+    className: "Caption",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 15,
       columnNumber: 19
     }
   }, caption)));
 };
 
-var Styled_Card = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
-  displayName: "Card__Styled_Card",
-  componentId: "at05zo-0"
-})(["align-items:center;grid-template-columns:1fr 2fr;background:url(", ");.Card{}svg{min-height:15rem;height:40vh;height:100%;}.Card_Img{height:100%;justify-self:center;}text-align:center;display:grid;.Heading_Caption_Container{}", ""], function (_ref2) {
-  var background = _ref2.background;
-  return background;
-}, Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_7__["default"])(styles.cards));
-/* harmony default export */ __webpack_exports__["default"] = (Card);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_spring__WEBPACK_IMPORTED_MODULE_4__["animated"])(Card));
 
 /***/ }),
 
@@ -248,10 +281,10 @@ var Nav_Button_Tiny = Object(react_spring__WEBPACK_IMPORTED_MODULE_2__["animated
 var Container = Object(react_spring__WEBPACK_IMPORTED_MODULE_2__["animated"])(styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "Nav__Container",
   componentId: "sc-58li5f-0"
-})(["position:", ";left:0;top:0;width:100%;z-index:99;backdrop-filter:blur(6px);background-color:", ";border-bottom:1px solid ", ";.Nav_SubContainer{position:relative;margin-right:2em;display:flex;padding-bottom:5px;}.Nav_SubContainer_Alt_Buttons{transform:translateY(5px);& > *{margin-left:0.5em;margin-right:0.5em;}margin-left:auto;display:flex;align-items:center;}"], function (_ref) {
+})(["position:", ";will-change:transform;left:0;top:0;width:100%;z-index:99;backdrop-filter:blur(6px);background-color:#00000052;.Nav_SubContainer{position:relative;margin-right:2em;display:flex;padding-bottom:5px;}.Nav_SubContainer_Alt_Buttons{transform:translateY(5px);& > *{margin-left:0.5em;margin-right:0.5em;}margin-left:auto;display:flex;align-items:center;}"], function (_ref) {
   var fixed = _ref.fixed;
   return fixed ? "fixed" : "relative";
-}, _theme__WEBPACK_IMPORTED_MODULE_6__["default"].colors.c1, _theme__WEBPACK_IMPORTED_MODULE_6__["default"].colors.p2));
+}));
 
 function Nav(_ref2) {
   var fixed = _ref2.fixed,
@@ -297,7 +330,8 @@ function Nav(_ref2) {
     }
   }, __jsx(Nav_Button, {
     style: _objectSpread({}, o[0], {
-      marginLeft: 0
+      marginLeft: 0,
+      willChange: "opacity"
     }),
     __self: this,
     __source: {
@@ -306,19 +340,23 @@ function Nav(_ref2) {
       columnNumber: 9
     }
   }, "Sports"), __jsx(Nav_Button, {
-    style: o[1],
+    style: _objectSpread({}, o[1], {
+      willChange: "opacity"
+    }),
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 60,
       columnNumber: 9
     }
-  }, " Roster"), __jsx(Nav_Button, {
-    style: o[2],
+  }, " ", "Roster"), __jsx(Nav_Button, {
+    style: _objectSpread({}, o[2], {
+      willChange: "opacity"
+    }),
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 64,
       columnNumber: 9
     }
   }, "Contact"), __jsx("div", {
@@ -326,31 +364,31 @@ function Nav(_ref2) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 67,
       columnNumber: 9
     }
   }, __jsx(Nav_Button_Tiny, {
     onClick: function onClick() {
-      return handleCLick("SHOW_MODAL", "Registration");
+      return handleCLick("SHOW_MODAL", "User_Registration_Form");
     },
     style: o[3],
     type: "Tiny",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 68,
       columnNumber: 11
     }
   }, "Register"), __jsx(Nav_Button_Tiny, {
     onClick: function onClick() {
-      return isLoggedIn ? Object(_util__WEBPACK_IMPORTED_MODULE_5__["locateTo"])("/Dash") : handleCLick("SHOW_MODAL", "Login");
+      return isLoggedIn ? Object(_util__WEBPACK_IMPORTED_MODULE_5__["locateTo"])("/Dash") : handleCLick("SHOW_MODAL", "Login_Form");
     },
     style: o[4],
     type: "Tiny",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 75,
       columnNumber: 11
     }
   }, isLoggedIn ? "Dash" : "Login"), isLoggedIn && __jsx(Nav_Button_Tiny, {
@@ -360,20 +398,59 @@ function Nav(_ref2) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80,
+      lineNumber: 87,
       columnNumber: 13
     }
   }, "Logout"), __jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_7__["FaFacebook"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88,
+      lineNumber: 95,
       columnNumber: 11
     }
   }, "content"))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Nav);
+
+/***/ }),
+
+/***/ "./lib/blocks/home/Index_Styles.js":
+/*!*****************************************!*\
+  !*** ./lib/blocks/home/Index_Styles.js ***!
+  \*****************************************/
+/*! exports provided: Index_Card_Styles, Container_1_Styles, Container_2_Styles */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index_Card_Styles", function() { return Index_Card_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Container_1_Styles", function() { return Container_1_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Container_2_Styles", function() { return Container_2_Styles; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_style_templates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/style_templates */ "./lib/components/style_templates.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme */ "./lib/theme.js");
+/* harmony import */ var _animations_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../animations/css */ "./lib/animations/css.js");
+
+
+
+
+var styles = _theme__WEBPACK_IMPORTED_MODULE_2__["default"].cards;
+var Index_Card_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+  displayName: "Index_Styles__Index_Card_Styles",
+  componentId: "sc-9oagiu-0"
+})(["position:relative;background:url(", ");background-position:center;background-repeat:no-repeat;height:80vh;margin-top:84px;background-size:cover;z-index:1;.Card_SubContainer{padding:2em;position:absolute;bottom:0;left:0;}p{font-family:\"Work Sans\",sans-serif;}svg{min-height:15rem;height:40vh;height:100%;}.Card_Img{height:100%;}.Caption{}.Heading{}", ""], function (_ref) {
+  var background = _ref.background;
+  return background;
+}, Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles.cards));
+var Container_1_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+  displayName: "Index_Styles__Container_1_Styles",
+  componentId: "sc-9oagiu-1"
+})(["height:100vh;overflow:hidden;position:relative;.Splash_Image{background-repeat:no-repeat;background-position:center top;background-size:cover;background-image:url(\"https://res.cloudinary.com/dxjse9tsv/image/upload/v1586905934/NationalYouthSports/woman-in-teal-jersey-1198166.jpg\");will-change:opacity;overflow:hidden;width:100%;height:100%;position:relative;top:0%;left:0%;z-index:-1;animation:", " 1s cubic-bezier(0.075,0.82,0.165,1);&::before{content:\"\";height:100%;left:0;position:fixed;top:0;width:100%;will-change:transform;}}.Splash_Logo{position:absolute;right:48px;top:48px;}.Splash_Nav_Container{position:absolute;bottom:48px;left:48px;max-width:500px;width:100%;color:black;button{color:black;border-color:black;}.Splash_Nav_Container_SubContainer{position:relative;padding:20px;}}"], _animations_css__WEBPACK_IMPORTED_MODULE_3__["fadeIn"]);
+var Container_2_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+  displayName: "Index_Styles__Container_2_Styles",
+  componentId: "sc-9oagiu-2"
+})(["display:flex;align-items:center;height:100%;.Heading_Container{position:absolute;top:0;left:0;height:100%;z-index:12;.Heading_Container_Headings{position:sticky;top:70vh;margin-top:100vh;white-space:pre-line;align-self:self-start;z-index:1;& > *{margin-bottom:-45px;}}}.Card_Background_Container{width:100%;}.Cards_Wrapper,.Double{display:flex;& > *{flex-basis:50%;}div:nth-child(1){margin-right:20px;}div:nth-child(2){margin-left:20px;}}.Background_Container{display:none;position:absolute;top:0;left:0;height:100%;width:100%;z-index:0;}.Background_Sub_Container{position:relative;height:100%;width:100%;overflow:hidden;}"]);
 
 /***/ }),
 
@@ -448,11 +525,11 @@ var Button = function Button(_ref) {
 var Base = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button.withConfig({
   displayName: "Button__Base",
   componentId: "cvrf7p-0"
-})(["", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_4__["default"])(styles));
+})(["&:focus{outline:none;}", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_4__["default"])(styles));
 var Small = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(Base).withConfig({
   displayName: "Button__Small",
   componentId: "cvrf7p-1"
-})(["", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_4__["default"])(styles.small));
+})(["transition:background-color 0.6s linear;&:hover{background-color:#3d4ae61a;}", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_4__["default"])(styles.small));
 var Tiny = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(Base).withConfig({
   displayName: "Button__Tiny",
   componentId: "cvrf7p-2"
@@ -464,47 +541,8 @@ var Big = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(Base
 var Nav = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(Base).withConfig({
   displayName: "Button__Nav",
   componentId: "cvrf7p-4"
-})(["position:relative;", " letter-spacing:6px;transition:all 0.6s cubic-bezier(0.075,0.82,0.165,1);&:after{content:\"\";position:absolute;bottom:-5px;left:0;height:1px;width:", ";border:1px solid;background-color:inherit;transition:width 0.6s cubic-bezier(0.075,0.82,0.165,1);}&:focus{outline:none;}&:hover{&:after{width:100px;}}"], Object(_style_templates__WEBPACK_IMPORTED_MODULE_4__["default"])(styles.nav), function (_ref2) {
-  var active = _ref2.active;
-  return active ? "100px" : "15px";
-});
+})(["position:relative;", " letter-spacing:6px;transition:all 0.6s cubic-bezier(0.075,0.82,0.165,1);&:after{content:\"\";position:absolute;bottom:-3px;left:0;height:1px;opacity:0;width:100%;background-color:white;transition:opacity 0.6s cubic-bezier(0.075,0.82,0.165,1);}&:focus{outline:none;}&:hover{&:after{opacity:1;}}"], Object(_style_templates__WEBPACK_IMPORTED_MODULE_4__["default"])(styles.nav));
 /* harmony default export */ __webpack_exports__["default"] = (Button);
-
-/***/ }),
-
-/***/ "./lib/components/Form.js":
-/*!********************************!*\
-  !*** ./lib/components/Form.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.esm.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./lib/util.js");
-/* harmony import */ var _style_templates__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style_templates */ "./lib/components/style_templates.js");
-/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../theme */ "./lib/theme.js");
-
-
-
-
-
-var styles = _theme__WEBPACK_IMPORTED_MODULE_4__["default"].form;
-
-var Container = function Container(props) {
-  return Object(_util__WEBPACK_IMPORTED_MODULE_2__["withProps"])(BaseContainer, props);
-};
-
-var BaseContainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].form.withConfig({
-  displayName: "Form__BaseContainer",
-  componentId: "sc-1glcamt-0"
-})(["", " display:flex;width:100%;height:100%;flex-direction:column;.Form_Icon{", "}.Form_SubContainer{background-color:#1b1b1b;border:2px solid;", " & > *{", "}}input{", " margin-bottom:1em;}.Input_Short{max-width:20px;}label{margin-right:0.5em;margin-left:0.5em;}"], Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles), Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.icons), Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.subcontainer), Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.subcontainer.items), Object(_style_templates__WEBPACK_IMPORTED_MODULE_3__["default"])(styles.input));
-var Form = {
-  Container: Container
-};
-/* harmony default export */ __webpack_exports__["default"] = (Form);
 
 /***/ }),
 
@@ -587,9 +625,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _static_Soccer_Ball_Background__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../static/Soccer_Ball_Background */ "./lib/static/Soccer_Ball_Background.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util */ "./lib/util.js");
-/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.esm.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _static_shirt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../static/shirt */ "./lib/static/shirt.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util */ "./lib/util.js");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
 
 var _this = undefined,
@@ -602,9 +641,10 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+
 var MessageNotification = function MessageNotification(_ref) {
   var messages = _ref.messages;
-  var Container = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div.withConfig({
+  var Container = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div.withConfig({
     displayName: "Icon__Container",
     componentId: "alsrz-0"
   })(["position:relative;.Message_Number{color:black;position:absolute;top:55%;right:-100%;transform:translate(-50%,-50%);font-size:0.9em;font-family:\"Poiret One\",cursive;font-weight:900;margin:0;}"]);
@@ -612,7 +652,7 @@ var MessageNotification = function MessageNotification(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 34,
       columnNumber: 5
     }
   }, __jsx("p", {
@@ -620,24 +660,56 @@ var MessageNotification = function MessageNotification(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 35,
       columnNumber: 7
     }
-  }, messages > 0 ? messages : ""), __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiMessageCircle"], {
+  }, messages > 0 ? messages : ""), __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_5__["FiMessageCircle"], {
     fill: messages > 0 ? "red" : "inherit",
     color: messages > 0 ? "red" : "inherit",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 36,
       columnNumber: 7
     }
   }));
 };
 
-var Icon = function Icon(_ref2) {
-  var type = _ref2.type,
-      props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref2, ["type"]);
+var Shirt = function Shirt(_ref2) {
+  var size = _ref2.size;
+  var Container = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div.withConfig({
+    displayName: "Icon__Container",
+    componentId: "alsrz-1"
+  })(["position:relative;width:48px;height:40px;.Shirt_Size{position:absolute;top:0;left:0;transform:translate(20px,0px);}"]);
+  return __jsx(Container, {
+    className: "Shirt_Icon",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59,
+      columnNumber: 5
+    }
+  }, __jsx(_static_shirt__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60,
+      columnNumber: 7
+    }
+  }), __jsx("p", {
+    className: "Shirt_Size",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 7
+    }
+  }, size));
+};
+
+var Icon = function Icon(_ref3) {
+  var type = _ref3.type,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref3, ["type"]);
 
   switch (type) {
     case "soccer":
@@ -651,38 +723,50 @@ var Icon = function Icon(_ref2) {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
+          lineNumber: 70,
           columnNumber: 9
         }
       });
       break;
 
     case "mail":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiMail"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_4__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_5__["FiMail"], props);
       break;
 
     case "message":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(MessageNotification, props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_4__["withProps"])(MessageNotification, props);
       break;
 
     case "card":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiCreditCard"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_4__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_5__["FiCreditCard"], props);
       break;
 
     case "calendar":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiCalendar"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_4__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_5__["FiCalendar"], props);
       break;
 
     case "arrow_right":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiChevronRight"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_4__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_5__["FiChevronRight"], props);
       break;
 
     case "arrow_down":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiChevronDown"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_4__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_5__["FiChevronDown"], props);
       break;
 
     case "phone":
-      return Object(_util__WEBPACK_IMPORTED_MODULE_3__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiPhone"], props);
+      return Object(_util__WEBPACK_IMPORTED_MODULE_4__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_5__["FiPhone"], props);
+      break;
+
+    case "clock":
+      return Object(_util__WEBPACK_IMPORTED_MODULE_4__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_5__["FiClock"], props);
+      break;
+
+    case "shirt":
+      return Object(_util__WEBPACK_IMPORTED_MODULE_4__["withProps"])(Shirt, props);
+      break;
+
+    case "plus":
+      return Object(_util__WEBPACK_IMPORTED_MODULE_4__["withProps"])(react_icons_fi__WEBPACK_IMPORTED_MODULE_5__["FiPlus"], props);
       break;
   }
 };
@@ -793,7 +877,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ */ "./lib/components/index.js");
 /* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../theme */ "./lib/theme.js");
 /* harmony import */ var _style_templates__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./style_templates */ "./lib/components/style_templates.js");
-/* harmony import */ var _animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../animations */ "./lib/animations/index.js");
+/* harmony import */ var _animations_spring__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../animations/spring */ "./lib/animations/spring.js");
 
 
 
@@ -819,7 +903,7 @@ var styles = _theme__WEBPACK_IMPORTED_MODULE_7__["default"].modal;
 var Base = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "Modal__Base",
   componentId: "p8ri5u-0"
-})(["padding:1em;", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_8__["default"])(_theme__WEBPACK_IMPORTED_MODULE_7__["default"].modal));
+})(["", ""], Object(_style_templates__WEBPACK_IMPORTED_MODULE_8__["default"])(_theme__WEBPACK_IMPORTED_MODULE_7__["default"].modal));
 var Model_Left = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(Wrapper).withConfig({
   displayName: "Modal__Model_Left",
   componentId: "p8ri5u-1"
@@ -843,10 +927,7 @@ var Model_Top = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["default"]
 var Backdrop = Object(react_spring__WEBPACK_IMPORTED_MODULE_5__["animated"])(styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "Modal__Backdrop",
   componentId: "p8ri5u-6"
-})(["", " z-index:", ";position:fixed;opacity:0.4;top:0;width:100%;height:100%;backdrop-filter:blur(3px)"], Object(_style_templates__WEBPACK_IMPORTED_MODULE_8__["default"])(styles.backdrop), function (_ref) {
-  var show = _ref.show;
-  return show ? 1 : -999;
-}));
+})(["", " z-index:20;position:fixed;opacity:0.4;top:0;width:100%;height:100%;backdrop-filter:blur(3px);"], Object(_style_templates__WEBPACK_IMPORTED_MODULE_8__["default"])(styles.backdrop)));
 var Types = {
   top: {
     Container: Object(react_spring__WEBPACK_IMPORTED_MODULE_5__["animated"])(Model_Top)
@@ -859,28 +940,36 @@ var Types = {
   },
   left: {
     Container: Object(react_spring__WEBPACK_IMPORTED_MODULE_5__["animated"])(Model_Left),
-    Animation: _animations__WEBPACK_IMPORTED_MODULE_9__["spring"].slideInRight
+    Animation: _animations_spring__WEBPACK_IMPORTED_MODULE_9__["slideInRight"]
   },
   center: {
     Container: Object(react_spring__WEBPACK_IMPORTED_MODULE_5__["animated"])(Model_Center),
-    Animation: _animations__WEBPACK_IMPORTED_MODULE_9__["spring"].fadeIn
+    Animation: _animations_spring__WEBPACK_IMPORTED_MODULE_9__["fadeIn"]
   }
 };
 
-var Modal = function Modal(_ref2) {
-  var type = _ref2.type,
-      hideModal = _ref2.hideModal,
-      show = _ref2.show,
-      backdrop = _ref2.backdrop,
-      _ref2$bgStyles = _ref2.bgStyles,
-      bgStyles = _ref2$bgStyles === void 0 ? {} : _ref2$bgStyles,
-      children = _ref2.children,
-      props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref2, ["type", "hideModal", "show", "backdrop", "bgStyles", "children"]);
+var Modal = function Modal(_ref) {
+  var _ref$type = _ref.type,
+      type = _ref$type === void 0 ? "center" : _ref$type,
+      hideModal = _ref.hideModal,
+      show = _ref.show,
+      _ref$backdrop = _ref.backdrop,
+      backdrop = _ref$backdrop === void 0 ? false : _ref$backdrop,
+      _ref$bgStyles = _ref.bgStyles,
+      bgStyles = _ref$bgStyles === void 0 ? {} : _ref$bgStyles,
+      children = _ref.children,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref, ["type", "hideModal", "show", "backdrop", "bgStyles", "children"]);
 
   var Container = Types[type].Container;
   var setAnim = Types[type].Animation;
   var Modal_Animation = Object(react_spring__WEBPACK_IMPORTED_MODULE_5__["useSpring"])(setAnim(show));
-  var Backdrop_Animation = Object(react_spring__WEBPACK_IMPORTED_MODULE_5__["useSpring"])(_animations__WEBPACK_IMPORTED_MODULE_9__["spring"].fadeIn(show));
+  var Backdrop_Animation = Object(react_spring__WEBPACK_IMPORTED_MODULE_5__["useSpring"])(Object(_animations_spring__WEBPACK_IMPORTED_MODULE_9__["fadeIn"])(show));
+  console.log(backdrop, hideModal);
+
+  if (!hideModal) {
+    console.error("No {props:hideModal} function given to Modal");
+  }
+
   return __jsx(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, __jsx(Container, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
     show: show,
     style: Modal_Animation
@@ -888,7 +977,7 @@ var Modal = function Modal(_ref2) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
+      lineNumber: 86,
       columnNumber: 7
     }
   }), children), backdrop && __jsx(Backdrop, {
@@ -898,7 +987,7 @@ var Modal = function Modal(_ref2) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85,
+      lineNumber: 90,
       columnNumber: 9
     }
   }));
@@ -912,7 +1001,7 @@ var Modal = function Modal(_ref2) {
 /*!*********************************!*\
   !*** ./lib/components/index.js ***!
   \*********************************/
-/*! exports provided: Button, Form, Heading, Icon, Layout, Line, Modal, style_templates */
+/*! exports provided: Button, Heading, Icon, Layout, Line, Modal, style_templates */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -920,29 +1009,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Button_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Button.js */ "./lib/components/Button.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return _Button_js__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
-/* harmony import */ var _Form_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.js */ "./lib/components/Form.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Form", function() { return _Form_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+/* harmony import */ var _Heading_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Heading.js */ "./lib/components/Heading.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Heading", function() { return _Heading_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _Heading_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Heading.js */ "./lib/components/Heading.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Heading", function() { return _Heading_js__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+/* harmony import */ var _Icon_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Icon.js */ "./lib/components/Icon.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Icon", function() { return _Icon_js__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _Icon_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Icon.js */ "./lib/components/Icon.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Icon", function() { return _Icon_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+/* harmony import */ var _Layout_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Layout.js */ "./lib/components/Layout.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Layout", function() { return _Layout_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
-/* harmony import */ var _Layout_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Layout.js */ "./lib/components/Layout.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Layout", function() { return _Layout_js__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+/* harmony import */ var _Line_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Line.js */ "./lib/components/Line.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Line", function() { return _Line_js__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
-/* harmony import */ var _Line_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Line.js */ "./lib/components/Line.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Line", function() { return _Line_js__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+/* harmony import */ var _Modal_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modal.js */ "./lib/components/Modal.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Modal", function() { return _Modal_js__WEBPACK_IMPORTED_MODULE_5__["default"]; });
 
-/* harmony import */ var _Modal_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Modal.js */ "./lib/components/Modal.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Modal", function() { return _Modal_js__WEBPACK_IMPORTED_MODULE_6__["default"]; });
-
-/* harmony import */ var _style_templates_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./style_templates.js */ "./lib/components/style_templates.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "style_templates", function() { return _style_templates_js__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+/* harmony import */ var _style_templates_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style_templates.js */ "./lib/components/style_templates.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "style_templates", function() { return _style_templates_js__WEBPACK_IMPORTED_MODULE_6__["default"]; });
 
 // @create-index
-
 
 
 
@@ -1001,28 +1086,72 @@ var dumpStyles = function dumpStyles(theme) {
 
 /***/ }),
 
-/***/ "./lib/forms/forms.js":
-/*!****************************!*\
-  !*** ./lib/forms/forms.js ***!
-  \****************************/
-/*! exports provided: Login, Registration */
+/***/ "./lib/forms/Form_Styles.js":
+/*!**********************************!*\
+  !*** ./lib/forms/Form_Styles.js ***!
+  \**********************************/
+/*! exports provided: User_Registration_Styles, Login_Styles, User_Billing_Styles */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Registration", function() { return Registration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User_Registration_Styles", function() { return User_Registration_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login_Styles", function() { return Login_Styles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User_Billing_Styles", function() { return User_Billing_Styles; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_style_templates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/style_templates */ "./lib/components/style_templates.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../theme */ "./lib/theme.js");
+
+
+
+var styles = _theme__WEBPACK_IMPORTED_MODULE_2__["default"].form;
+var Base_Container = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].form.withConfig({
+  displayName: "Form_Styles__Base_Container",
+  componentId: "sc-1xzpy0x-0"
+})(["", " display:flex;width:100%;height:100%;flex-direction:column;.Form_Icon{", "}.Form_SubContainer{margin:0;border:2px solid;", " & > *{", " & > *{margin:0;margin-left:1em;margin-right:1em;}}input{", " margin-bottom:1em;color:white;}.Input_Short{max-width:20px;}label{margin-right:0.5em;margin-left:0.5em;}}"], Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles), Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles.icons), Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles.subcontainer), Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles.subcontainer.items), Object(_components_style_templates__WEBPACK_IMPORTED_MODULE_1__["default"])(styles.input));
+var User_Registration_Styles = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(Base_Container).withConfig({
+  displayName: "Form_Styles__User_Registration_Styles",
+  componentId: "sc-1xzpy0x-1"
+})([".Form_SubContainer{margin:0;background-color:#1b1b1b;font-family:\"Work Sans\",sans-serif;@media (max-width:600px){.Form_Block{grid-template-columns:1fr 2fr;grid-template-rows:auto;}}}.Form_Block{font-size:0.8em;display:grid;grid-template-columns:1fr 2fr 1fr 2fr;}"]);
+var Login_Styles = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(Base_Container).withConfig({
+  displayName: "Form_Styles__Login_Styles",
+  componentId: "sc-1xzpy0x-2"
+})([".Form_SubContainer{background-color:#1b1b1b;}input{margin:0;}.Form_Icon,.Form_Submit{margin-left:0;}.Form_Block{font-size:0.8em;display:grid;grid-template-rows:1fr 1fr;}"]);
+var User_Billing_Styles = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+  displayName: "Form_Styles__User_Billing_Styles",
+  componentId: "sc-1xzpy0x-3"
+})(["max-height:40vh;max-width:50vh;.Form_SubContainer{background-color:none;}.Form_Block{font-size:0.8em;display:grid;grid-template-columns:1fr 2fr 1fr 2fr;grid-gap:10px;justify-content:center;align-items:center;}.Stripe_Card_Container{padding:4px;margin-top:7px;margin-bottom:7px;border-radius:3px;border:1px solid black;}button{margin-left:0;}"]);
+
+/***/ }),
+
+/***/ "./lib/forms/Forms.js":
+/*!****************************!*\
+  !*** ./lib/forms/Forms.js ***!
+  \****************************/
+/*! exports provided: Login_Form, User_Registration_Form, User_Billing_Form */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login_Form", function() { return Login_Form; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User_Registration_Form", function() { return User_Registration_Form; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User_Billing_Form", function() { return User_Billing_Form; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/react-hook-form.es.js");
-/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/ */ "./lib/components/index.js");
-/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.esm.js");
-/* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/io */ "./node_modules/react-icons/io/index.esm.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components */ "./lib/components/index.js");
+/* harmony import */ var _Form_Styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Form_Styles */ "./lib/forms/Form_Styles.js");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.esm.js");
+/* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/io */ "./node_modules/react-icons/io/index.esm.js");
+/* harmony import */ var react_stripe_elements__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-stripe-elements */ "./node_modules/react-stripe-elements/es/index.js");
+/* harmony import */ var react_stripe_elements__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_stripe_elements__WEBPACK_IMPORTED_MODULE_6__);
 var _this = undefined,
-    _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/forms/forms.js";
+    _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/forms/Forms.js";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
 
 
 
@@ -1032,14 +1161,14 @@ var handleLogin = function handleLogin(data) {
   console.log(data);
 };
 
-var Login = function Login() {
+var Login_Form = function Login_Form() {
   var _useForm = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])(),
       register = _useForm.register,
       handleSubmit = _useForm.handleSubmit,
       watch = _useForm.watch,
       errors = _useForm.errors;
 
-  return __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Form"].Container, {
+  return __jsx(_Form_Styles__WEBPACK_IMPORTED_MODULE_3__["Login_Styles"], {
     style: {
       alignItems: "center",
       justifyContent: "center"
@@ -1048,7 +1177,7 @@ var Login = function Login() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 19,
       columnNumber: 5
     }
   }, __jsx("div", {
@@ -1056,22 +1185,23 @@ var Login = function Login() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 23,
       columnNumber: 7
     }
-  }, __jsx("span", {
+  }, __jsx("div", {
+    className: "Form_Block",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 24,
       columnNumber: 9
     }
-  }, __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__["FiUser"], {
+  }, __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiUser"], {
     className: "Form_Icon",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 25,
       columnNumber: 11
     }
   }), __jsx("input", {
@@ -1087,22 +1217,23 @@ var Login = function Login() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 26,
       columnNumber: 11
     }
-  })), __jsx("span", {
+  })), __jsx("div", {
+    className: "Form_Block",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 34,
       columnNumber: 9
     }
-  }, __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__["FiLock"], {
+  }, __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiLock"], {
     className: "Form_Icon",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 35,
       columnNumber: 11
     }
   }), __jsx("input", {
@@ -1118,10 +1249,11 @@ var Login = function Login() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 36,
       columnNumber: 11
     }
   })), __jsx("div", {
+    className: "Form_Block",
     style: {
       display: "flex",
       alignItems: "center"
@@ -1129,15 +1261,16 @@ var Login = function Login() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 44,
       columnNumber: 9
     }
-  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Button"], {
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    className: "Form_Submit",
     type: "Small",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 48,
       columnNumber: 11
     }
   }, "Submit"), __jsx("a", {
@@ -1145,105 +1278,89 @@ var Login = function Login() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 51,
       columnNumber: 11
     }
-  }, __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__["FiFacebook"], {
-    className: "Form_Icon",
+  }, __jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__["FiFacebook"], {
     style: {
       marginLeft: "auto"
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 52,
       columnNumber: 13
     }
-  })), __jsx(react_icons_io__WEBPACK_IMPORTED_MODULE_4__["IoLogoGoogle"], {
-    className: "Form_Icon",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 43,
-      columnNumber: 11
-    }
-  }))));
-};
-var Registration = function Registration() {
-  var _useForm2 = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])(),
-      register = _useForm2.register,
-      handleSubmit = _useForm2.handleSubmit,
-      watch = _useForm2.watch,
-      errors = _useForm2.errors;
-
-  return __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Form"].Container, {
+  })), __jsx(react_icons_io__WEBPACK_IMPORTED_MODULE_5__["IoLogoGoogle"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 54,
-      columnNumber: 5
+      columnNumber: 11
     }
-  }, __jsx("div", {
-    className: "Form_SubContainer",
+  }))));
+};
+
+var FirstLastName = function FirstLastName() {
+  return __jsx("div", {
+    className: "Form_Block",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
-      columnNumber: 7
-    }
-  }, __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56,
-      columnNumber: 9
+      lineNumber: 62,
+      columnNumber: 3
     }
   }, __jsx("label", {
     htmlFor: "firstName",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
-      columnNumber: 11
+      lineNumber: 63,
+      columnNumber: 5
     }
   }, "FirstName"), __jsx("input", {
     name: "firstName",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
-      columnNumber: 11
+      lineNumber: 64,
+      columnNumber: 5
     }
   }), __jsx("label", {
     htmlFor: "LastName",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
-      columnNumber: 11
+      lineNumber: 65,
+      columnNumber: 5
     }
   }, "LastName"), __jsx("input", {
     name: "lastName",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
-      columnNumber: 11
+      lineNumber: 66,
+      columnNumber: 5
     }
-  })), __jsx("div", {
+  }));
+};
+
+var DOB = function DOB() {
+  return __jsx("div", {
+    className: "Form_Block",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62,
-      columnNumber: 9
+      lineNumber: 71,
+      columnNumber: 3
     }
   }, __jsx("label", {
     htmlFor: "dob",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63,
-      columnNumber: 11
+      lineNumber: 72,
+      columnNumber: 5
     }
   }, "DOB"), __jsx("input", {
     type: "date",
@@ -1251,23 +1368,28 @@ var Registration = function Registration() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
-      columnNumber: 11
+      lineNumber: 73,
+      columnNumber: 5
     }
-  })), __jsx("div", {
+  }));
+};
+
+var Contact = function Contact() {
+  return __jsx("div", {
+    className: "Form_Block",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
-      columnNumber: 9
+      lineNumber: 78,
+      columnNumber: 3
     }
   }, __jsx("label", {
     htmlFor: "email",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
-      columnNumber: 11
+      lineNumber: 79,
+      columnNumber: 5
     }
   }, "Email"), __jsx("input", {
     type: "text",
@@ -1275,16 +1397,16 @@ var Registration = function Registration() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
-      columnNumber: 11
+      lineNumber: 80,
+      columnNumber: 5
     }
   }), __jsx("label", {
     htmlFor: "homePhone",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 11
+      lineNumber: 81,
+      columnNumber: 5
     }
   }, "Cell Phone"), __jsx("input", {
     type: "text",
@@ -1292,23 +1414,28 @@ var Registration = function Registration() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 11
+      lineNumber: 82,
+      columnNumber: 5
     }
-  })), __jsx("div", {
+  }));
+};
+
+var Address = function Address() {
+  return __jsx("div", {
+    className: "Form_Block",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74,
-      columnNumber: 9
+      lineNumber: 87,
+      columnNumber: 3
     }
   }, __jsx("label", {
     htmlFor: "address",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75,
-      columnNumber: 11
+      lineNumber: 88,
+      columnNumber: 5
     }
   }, " Street"), __jsx("input", {
     type: "text",
@@ -1316,16 +1443,16 @@ var Registration = function Registration() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
-      columnNumber: 11
+      lineNumber: 89,
+      columnNumber: 5
     }
   }), __jsx("label", {
     htmlFor: "unit",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
-      columnNumber: 11
+      lineNumber: 90,
+      columnNumber: 5
     }
   }, " Unit"), __jsx("input", {
     className: "Input_Short",
@@ -1334,23 +1461,28 @@ var Registration = function Registration() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
-      columnNumber: 11
+      lineNumber: 91,
+      columnNumber: 5
     }
-  })), __jsx("div", {
+  }));
+};
+
+var ZipState = function ZipState() {
+  return __jsx("div", {
+    className: "Form_Block",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80,
-      columnNumber: 9
+      lineNumber: 96,
+      columnNumber: 3
     }
   }, __jsx("label", {
     htmlFor: "zip",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
-      columnNumber: 11
+      lineNumber: 97,
+      columnNumber: 5
     }
   }, " Zip"), __jsx("input", {
     type: "text",
@@ -1358,16 +1490,16 @@ var Registration = function Registration() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82,
-      columnNumber: 11
+      lineNumber: 98,
+      columnNumber: 5
     }
   }), __jsx("label", {
     htmlFor: "state",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83,
-      columnNumber: 11
+      lineNumber: 99,
+      columnNumber: 5
     }
   }, " State"), __jsx("input", {
     className: "Input_Short",
@@ -1376,19 +1508,248 @@ var Registration = function Registration() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84,
-      columnNumber: 11
+      lineNumber: 100,
+      columnNumber: 5
     }
-  })), __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Button"], {
+  }));
+};
+
+var User_Registration_Form = function User_Registration_Form() {
+  var _useForm2 = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])(),
+      register = _useForm2.register,
+      handleSubmit = _useForm2.handleSubmit,
+      watch = _useForm2.watch,
+      errors = _useForm2.errors;
+
+  return __jsx(_Form_Styles__WEBPACK_IMPORTED_MODULE_3__["User_Registration_Styles"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 107,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "Form_SubContainer",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 108,
+      columnNumber: 7
+    }
+  }, __jsx(FirstLastName, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 109,
+      columnNumber: 9
+    }
+  }), __jsx(DOB, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 110,
+      columnNumber: 9
+    }
+  }), __jsx(Contact, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 111,
+      columnNumber: 9
+    }
+  }), __jsx(Address, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 112,
+      columnNumber: 9
+    }
+  }), __jsx(ZipState, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 113,
+      columnNumber: 9
+    }
+  }), __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
     type: "Small",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86,
+      lineNumber: 114,
       columnNumber: 9
     }
   }, "Submit ")));
 };
+var User_Billing_Form = function User_Billing_Form() {
+  var CardElementStyles = {
+    base: {
+      color: "#00ffff",
+      fontSize: "15px",
+      padding: "15px",
+      background: "#0000007a",
+      iconColor: "black",
+      empty: {
+        color: "#00ffff"
+      }
+    }
+  };
+
+  var _useForm3 = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])(),
+      register = _useForm3.register,
+      handleSubmit = _useForm3.handleSubmit,
+      watch = _useForm3.watch,
+      errors = _useForm3.errors;
+
+  return __jsx(_Form_Styles__WEBPACK_IMPORTED_MODULE_3__["User_Billing_Styles"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 136,
+      columnNumber: 5
+    }
+  }, __jsx(DOB, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 137,
+      columnNumber: 7
+    }
+  }), __jsx(Contact, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 138,
+      columnNumber: 7
+    }
+  }), __jsx(Address, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 139,
+      columnNumber: 7
+    }
+  }), __jsx(ZipState, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 140,
+      columnNumber: 7
+    }
+  }), __jsx("div", {
+    className: "Stripe_Card_Container",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 141,
+      columnNumber: 7
+    }
+  }, __jsx(react_stripe_elements__WEBPACK_IMPORTED_MODULE_6__["CardElement"], {
+    color: "aqua",
+    style: CardElementStyles,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 142,
+      columnNumber: 9
+    }
+  })), __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    type: "Small",
+    onClick: handleSubmit,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 144,
+      columnNumber: 7
+    }
+  }, "Subscribe"));
+};
+
+/***/ }),
+
+/***/ "./lib/interface/index.js":
+/*!********************************!*\
+  !*** ./lib/interface/index.js ***!
+  \********************************/
+/*! exports provided: useObserver, withAuth, useNav */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _useObserver_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./useObserver.js */ "./lib/interface/useObserver.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useObserver", function() { return _useObserver_js__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _withAuth_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./withAuth.js */ "./lib/interface/withAuth.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withAuth", function() { return _withAuth_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _useNav_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useNav.js */ "./lib/interface/useNav.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useNav", function() { return _useNav_js__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+// @create-index
+
+
+
+
+/***/ }),
+
+/***/ "./lib/interface/useNav.js":
+/*!*********************************!*\
+  !*** ./lib/interface/useNav.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components */ "./lib/components/index.js");
+var _this = undefined,
+    _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/interface/useNav.js";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+var useNav = function useNav() {
+  var views = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var NavName = arguments.length > 1 ? arguments[1] : undefined;
+  var initalState = window.localStorage.getItem(NavName);
+  var viewKeys = Object.keys(views);
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(initalState ? initalState : viewKeys[0]),
+      view_name = _useState[0],
+      changeView = _useState[1];
+
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+      Buttons = _useState2[0],
+      setButtons = _useState2[1];
+
+  var ActiveView = views[view_name];
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var buttons = viewKeys.map(function (name) {
+      return __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        type: "Nav",
+        active: name === view_name ? true : false,
+        onClick: function onClick() {
+          return changeView(name);
+        },
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15,
+          columnNumber: 7
+        }
+      }, name);
+    });
+    setButtons(buttons);
+    window.localStorage.setItem(NavName, view_name);
+  }, [view_name]);
+  return [Buttons, ActiveView, view_name];
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (useNav);
 
 /***/ }),
 
@@ -1576,6 +1937,39 @@ function DashPage(state, action) {
       return {
         loggedIn: false
       };
+
+    case "SHOW_MODAL":
+      return {
+        modal: true,
+        input: action.input
+      };
+
+    case "HIDE_MODAL":
+      return _objectSpread({
+        modal: false
+      }, prevState);
+      break;
+
+    default:
+      return state;
+  }
+}
+
+function Form(state, action) {
+  switch (action.type) {
+    case "SHOW_MODAL":
+      return {
+        modal: true
+      };
+
+    case "HIDE_MODAL":
+      return _objectSpread({
+        modal: false
+      }, prevState);
+      break;
+
+    default:
+      return state;
   }
 }
 
@@ -1584,1056 +1978,6 @@ var reducer = {
   DashPage: DashPage
 };
 /* harmony default export */ __webpack_exports__["default"] = (reducer);
-
-/***/ }),
-
-/***/ "./lib/static/Base_Ball.js":
-/*!*********************************!*\
-  !*** ./lib/static/Base_Ball.js ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "./lib/static/Cash_Sack.js":
-/*!*********************************!*\
-  !*** ./lib/static/Cash_Sack.js ***!
-  \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined,
-    _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/static/Cash_Sack.js";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-var Cash_Sack = function Cash_Sack(_ref) {
-  var className = _ref.className;
-  return __jsx("svg", {
-    className: className,
-    width: "116px",
-    height: "193px",
-    viewBox: "0 0 116 193",
-    version: "1.1",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 2,
-      columnNumber: 3
-    }
-  }, __jsx("g", {
-    id: "Home",
-    stroke: "none",
-    strokeWidth: "1",
-    fill: "none",
-    fillRule: "evenodd",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 5
-    }
-  }, __jsx("g", {
-    transform: "translate(-123.000000, -319.000000)",
-    id: "Group",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 7
-    }
-  }, __jsx("g", {
-    transform: "translate(123.000000, 319.000000)",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 9
-    }
-  }, __jsx("path", {
-    d: "M57.9983089,76 C90.0313147,76 116,102.195201 116,134.503411 C116,166.80821 90.0313147,193 57.9983089,193 C25.9653031,193 0,166.80821 0,134.503411 C0,102.195201 25.9653031,76 57.9983089,76",
-    id: "Fill-210",
-    fill: "#BB4489",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 11
-    }
-  }), __jsx("polygon", {
-    id: "Fill-211",
-    fill: "#BB4489",
-    points: "10 128 107 128 107 66 10 66",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M9.06165571,61 L107.938344,61 C111.822086,61 115,64.1501674 115,67.9966523 C115,71.8498326 111.822086,75 107.938344,75 L9.06165571,75 C5.17791393,75 2,71.8498326 2,67.9966523 C2,64.1501674 5.17791393,61 9.06165571,61",
-    id: "Fill-212",
-    fill: "#6AC5DB",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M57.9983247,96 C78.4341861,96 95,113.014309 95,134 C95,154.989132 78.4341861,172 57.9983247,172 C37.5658139,172 21,154.989132 21,134 C21,113.014309 37.5658139,96 57.9983247,96",
-    id: "Fill-213",
-    fill: "#0A0B09",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M29.0016554,26 C36.7325293,26 43,32.2674707 43,40.0016554 C43,47.7325293 36.7325293,54 29.0016554,54 C21.2707816,54 15,47.7325293 15,40.0016554 C15,32.2674707 21.2707816,26 29.0016554,26",
-    id: "Fill-214",
-    fill: "#EC912D",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M86.9983446,26 C94.7325293,26 101,32.2674707 101,40.0016554 C101,47.7325293 94.7325293,54 86.9983446,54 C79.2674707,54 73,47.7325293 73,40.0016554 C73,32.2674707 79.2674707,26 86.9983446,26",
-    id: "Fill-215",
-    fill: "#EC912D",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M58.9982734,0 C72.8044754,0 84,10.9723719 84,24.5033844 C84,38.034397 72.8044754,49 58.9982734,49 C45.1920713,49 34,38.034397 34,24.5033844 C34,10.9723719 45.1920713,0 58.9982734,0",
-    id: "Fill-216",
-    fill: "#BB4489",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M61.5203841,27.959065 C61.5203841,28.718663 60.705019,29.4782609 58.2697953,29.4782609 C55.5011777,29.4782609 55.1786556,27.3486739 52.5731111,27.3486739 C50.1342635,27.3486739 49,28.4100763 49,30.085261 C49,32.2182391 51.2757746,34.3478261 55.5011777,34.9582173 C55.5011777,36.7826087 56.8021381,38 59.0815365,38 C61.3573111,38 62.6582714,36.7826087 62.6582714,34.9582173 L62.6582714,34.8056195 C66.3980794,34.0426305 69,31.6112389 69,27.959065 C69,20.9565217 56.9652111,21.8721085 56.9652111,19.7391304 C56.9652111,19.1321303 57.6138793,18.5217391 59.2409857,18.5217391 C61.6834571,18.5217391 62.0059793,20.6513261 64.6079,20.6513261 C67.0467476,20.6513261 68.1846349,19.5899237 68.1846349,17.914739 C68.1846349,16.0869565 65.5863381,13.655565 62.6582714,13.0417827 C62.6582714,11.2173913 61.3573111,10 59.0815365,10 C56.8021381,10 55.5011777,11.2173913 55.5011777,13.0417827 L55.5011777,13.1977716 C52.0875159,13.9573695 49.4855952,16.3887611 49.4855952,19.7391304 C49.4855952,27.0468693 61.5203841,26.1312825 61.5203841,27.959065",
-    id: "Fill-217",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M63.8431715,118.024914 L59.2318513,128.098207 C58.9811031,128.643857 58.5958072,129 57.9995158,129 C57.4001664,129 57.0179284,128.643857 56.7671802,128.098207 L52.15586,118.024914 C45.425412,103.325029 70.5766775,103.325029 63.8431715,118.024914",
-    id: "Fill-218",
-    fill: "#EC912D",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M63.8431715,149.96895 L59.2318513,139.898826 C58.9811031,139.352994 58.5958072,139 57.9995158,139 C57.4001664,139 57.0179284,139.352994 56.7671802,139.898826 L52.15586,149.96895 C45.425412,164.677017 70.5766775,164.677017 63.8431715,149.96895",
-    id: "Fill-219",
-    fill: "#C7C6C1",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 57,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M41.8630126,135.782132 L53.3308538,135.006029 C53.9504655,134.963096 54.4762982,135.144737 54.8011757,135.702871 C55.1294025,136.257702 55.0255756,136.799323 54.6772534,137.311221 L48.2634345,146.713629 C38.8989239,160.439097 25.1267969,136.91161 41.8630126,135.782132",
-    id: "Fill-220",
-    fill: "#EC912D",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 62,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M68.7360882,120.28711 L62.3227238,129.689519 C61.9744262,130.198115 61.8706067,130.736433 62.1988102,131.29787 C62.5270137,131.856004 63.0494601,132.034342 63.672377,131.994712 L75.1360566,131.221911 C91.8744355,130.082525 78.0999352,106.561639 68.7360882,120.28711",
-    id: "Fill-221",
-    fill: "#C7C6C1",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 67,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M68.7360882,146.71343 L62.3227238,137.307284 C61.9744262,136.798666 61.8706067,136.257019 62.1988102,135.702163 C62.5270137,135.144003 63.0494601,134.965656 63.672377,135.005289 L75.1360566,135.781428 C91.8744355,136.910958 78.0999352,160.439534 68.7360882,146.71343",
-    id: "Fill-222",
-    fill: "#EC912D",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M41.8630126,131.221939 L53.3308538,131.994781 C53.9504655,132.034413 54.4762982,131.852763 54.8011757,131.297902 C55.1294025,130.736436 55.0255756,130.201392 54.6772534,129.689467 L48.2634345,120.286561 C38.8989239,106.560365 25.1267969,130.089098 41.8630126,131.221939",
-    id: "Fill-223",
-    fill: "#C7C6C1",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 77,
-      columnNumber: 11
-    }
-  })))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Cash_Sack);
-
-/***/ }),
-
-/***/ "./lib/static/Charm_Background.js":
-/*!****************************************!*\
-  !*** ./lib/static/Charm_Background.js ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined,
-    _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/static/Charm_Background.js";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-var Charm_Background = function Charm_Background(_ref) {
-  var className = _ref.className;
-  return __jsx("svg", {
-    className: className,
-    width: "382px",
-    height: "382px",
-    viewBox: "0 0 382 382",
-    version: "1.1",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 2,
-      columnNumber: 3
-    }
-  }, __jsx("g", {
-    id: "Home",
-    stroke: "none",
-    strokeWidth: "1",
-    fill: "none",
-    fillRule: "evenodd",
-    opacity: "0.198497954",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 5
-    }
-  }, __jsx("g", {
-    transform: "translate(-520.000000, -64.000000)",
-    fill: "#DB1700",
-    id: "Fill-271",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 7
-    }
-  }, __jsx("path", {
-    d: "M879.485841,284.109457 C857.530931,262.156068 857.530931,247.840812 879.485841,225.899904 C894.838053,210.536276 894.838053,185.387852 879.485841,170.036705 C864.121148,154.685558 838.983462,154.685558 823.618769,170.036705 L762.18496,231.466255 L762.122552,231.341449 L750.365005,243.0857 C742.826195,250.636468 730.469537,250.636468 722.893283,243.0857 C715.354474,235.534933 715.354474,223.166651 722.893283,215.615883 L734.663312,203.871632 L734.550979,203.821709 L795.972307,142.39216 C811.324518,127.041013 811.324518,101.892589 795.972307,86.5414417 C780.595132,71.1528528 755.457446,71.1528528 740.092753,86.5414417 C718.137842,108.469869 703.859037,108.469869 681.904127,86.5414417 C666.539434,71.1528528 641.414229,71.1528528 626.024573,86.5414417 C610.672361,101.892589 610.672361,127.041013 626.024573,142.39216 L687.445901,203.821709 L687.321086,203.871632 L699.078633,215.615883 C706.642406,223.166651 706.642406,235.534933 699.078633,243.0857 C691.527342,250.636468 679.170684,250.636468 671.631875,243.0857 L659.849364,231.341449 L659.786957,231.466255 L598.378111,170.036705 C583.025899,154.685558 557.875731,154.685558 542.52352,170.036705 C527.158827,185.387852 527.158827,210.536276 542.52352,225.899904 C564.47843,247.840812 564.47843,262.156068 542.52352,284.109457 C527.158827,299.460604 527.158827,324.609028 542.52352,339.960175 C557.875731,355.323802 583.025899,355.323802 598.378111,339.960175 L659.786957,278.530625 L659.849364,278.655431 L671.631875,266.91118 C679.170684,259.360412 691.527342,259.360412 699.078633,266.91118 C706.642406,274.461947 706.642406,286.830229 699.078633,294.380997 L687.321086,306.125248 L687.445901,306.175171 L626.024573,367.60472 C610.672361,382.968348 610.672361,408.104291 626.024573,423.467919 C641.414229,438.844027 666.539434,438.844027 681.904127,423.467919 C703.859037,401.527011 718.137842,401.527011 740.092753,423.467919 C755.457446,438.844027 780.595132,438.819066 795.972307,423.467919 C811.324518,408.104291 811.324518,382.968348 795.972307,367.60472 L734.550979,306.175171 L734.663312,306.125248 L722.893283,294.380997 C715.354474,286.830229 715.354474,274.461947 722.893283,266.92366 C730.469537,259.360412 742.826195,259.360412 750.365005,266.92366 L762.122552,278.655431 L762.18496,278.530625 L823.618769,339.960175 C838.983462,355.323802 864.121148,355.323802 879.485841,339.960175 C894.838053,324.609028 894.838053,299.460604 879.485841,284.109457 Z",
-    transform: "translate(711.000000, 255.000000) rotate(29.000000) translate(-711.000000, -255.000000) ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 9
-    }
-  }))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Charm_Background);
-
-/***/ }),
-
-/***/ "./lib/static/Computer.js":
-/*!********************************!*\
-  !*** ./lib/static/Computer.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined,
-    _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/static/Computer.js";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-var Computer = function Computer(_ref) {
-  var className = _ref.className;
-  return __jsx("svg", {
-    className: className,
-    width: "142px",
-    height: "151px",
-    viewBox: "0 0 142 151",
-    version: "1.1",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 2,
-      columnNumber: 3
-    }
-  }, __jsx("g", {
-    id: "Home",
-    stroke: "none",
-    strokeWidth: "1",
-    fill: "none",
-    fillRule: "evenodd",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 5
-    }
-  }, __jsx("g", {
-    transform: "translate(-1153.000000, -354.000000)",
-    id: "Group-4",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 7
-    }
-  }, __jsx("g", {
-    transform: "translate(1153.000000, 354.000000)",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 9
-    }
-  }, __jsx("path", {
-    d: "M35.3207151,110 L106.676912,110 C117.853899,110 127,119.22147 127,130.501197 C127,141.776137 117.853899,151 106.676912,151 L35.3207151,151 C24.1437287,151 15,141.776137 15,130.501197 C15,119.22147 24.1437287,110 35.3207151,110",
-    id: "Fill-284",
-    fill: "#BB4489",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M116.449838,129 C113.14829,129 109.854195,129 106.550162,129 C105.69807,129 105,129.630009 105,130.398041 L105,132.604185 C105,133.369991 105.69807,134 106.550162,134 C109.854195,134 113.14829,134 116.449838,134 C117.304414,134 118,133.369991 118,132.604185 L118,130.398041 C118,129.630009 117.304414,129 116.449838,129",
-    id: "Fill-285",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M101.496656,129 L101.496656,129 C102.872046,129 104,130.124221 104,131.493321 L104,131.504452 C104,132.875779 102.872046,134 101.496656,134 C100.127954,134 99,132.875779 99,131.504452 L99,131.493321 C99,130.124221 100.127954,129 101.496656,129",
-    id: "Fill-286",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M94.5,129 L94.5,129 C95.875,129 97,130.124221 97,131.493321 L97,131.504452 C97,132.875779 95.875,134 94.5,134 C93.125,134 92,132.875779 92,131.504452 L92,131.493321 C92,130.124221 93.125,129 94.5,129",
-    id: "Fill-287",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M86.5033437,129 L86.5033437,129 C87.8787338,129 89,130.124221 89,131.493321 L89,131.504452 C89,132.875779 87.8720464,134 86.5033437,134 C85.1234953,134 84,132.875779 84,131.504452 L84,131.493321 C84,130.124221 85.1234953,129 86.5033437,129",
-    id: "Fill-288",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M79.5,129 L79.5,129 C80.875,129 82,130.124221 82,131.493321 L82,131.504452 C82,132.875779 80.875,134 79.5,134 C78.1227679,134 77,132.875779 77,131.504452 L77,131.493321 C77,130.124221 78.1227679,129 79.5,129",
-    id: "Fill-289",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M72.5,129 L72.5066964,129 C73.8816964,129 75,130.124221 75,131.493321 L75,131.504452 C75,132.875779 73.8816964,134 72.5066964,134 L72.5,134 C71.1294643,134 70,132.875779 70,131.504452 L70,131.493321 C70,130.124221 71.1294643,129 72.5,129",
-    id: "Fill-290",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M65.5011156,129 L65.5011156,129 C66.8777332,129 68,130.124221 68,131.493321 L68,131.504452 C68,132.875779 66.8777332,134 65.5011156,134 C64.124498,134 63,132.875779 63,131.504452 L63,131.493321 C63,130.124221 64.124498,129 65.5011156,129",
-    id: "Fill-291",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M57.4944221,129 L57.4944221,129 C58.8777332,129 60,130.124221 60,131.493321 L60,131.504452 C60,132.875779 58.8777332,134 57.4944221,134 C56.124498,134 55,132.875779 55,131.504452 L55,131.493321 C55,130.124221 56.124498,129 57.4944221,129",
-    id: "Fill-292",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M51.5,129 L51.5,129 C52.875,129 54,130.124221 54,131.493321 L54,131.504452 C54,132.875779 52.875,134 51.5,134 C50.125,134 49,132.875779 49,131.504452 L49,131.493321 C49,130.124221 50.125,129 51.5,129",
-    id: "Fill-293",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 57,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M44.5022302,129 L44.5022302,129 C45.8782337,129 47,130.124221 47,131.493321 L47,131.504452 C47,132.875779 45.8782337,134 44.5022302,134 C43.1284567,134 42,132.875779 42,131.504452 L42,131.493321 C42,130.124221 43.1284567,129 44.5022302,129",
-    id: "Fill-294",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 62,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M37.5044643,129 L37.5044643,129 C38.875,129 40,130.124221 40,131.493321 L40,131.504452 C40,132.875779 38.875,134 37.5,134 C36.1227679,134 35,132.875779 35,131.504452 L35,131.493321 C35,130.124221 36.1227679,129 37.5044643,129",
-    id: "Fill-295",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 67,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M29.5,129 L29.5,129 C30.875,129 32,130.124221 32,131.493321 L32,131.504452 C32,132.875779 30.875,134 29.5,134 C28.1227679,134 27,132.875779 27,131.504452 L27,131.493321 C27,130.124221 28.1227679,129 29.5,129",
-    id: "Fill-296",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M106.5,120 L106.5,120 C107.877232,120 109,121.122494 109,122.496659 L109,122.501114 C109,123.875278 107.877232,125 106.5,125 C105.122768,125 104,123.875278 104,122.501114 L104,122.496659 C104,121.122494 105.122768,120 106.5,120",
-    id: "Fill-297",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 77,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M99.4933036,120 L99.5,120 C100.875,120 102,121.122494 102,122.496659 L102,122.501114 C102,123.875278 100.875,125 99.5,125 L99.4933036,125 C98.1227679,125 97,123.875278 97,122.501114 L97,122.496659 C97,121.122494 98.1227679,120 99.4933036,120",
-    id: "Fill-298",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 82,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M92.5,120 L92.5,120 C93.8772321,120 95,121.122494 95,122.496659 L95,122.501114 C95,123.875278 93.8772321,125 92.5,125 C91.125,125 90,123.875278 90,122.501114 L90,122.496659 C90,121.122494 91.125,120 92.5,120",
-    id: "Fill-299",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 87,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M85.5,120 L85.5,120 C86.8772321,120 88,121.122494 88,122.496659 L88,122.501114 C88,123.875278 86.8772321,125 85.5,125 C84.125,125 83,123.875278 83,122.501114 L83,122.496659 C83,121.122494 84.125,120 85.5,120",
-    id: "Fill-300",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 92,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M77.4966563,120 L77.4966563,120 C78.8765047,120 80,121.122494 80,122.496659 L80,122.501114 C80,123.875278 78.8698172,125 77.4966563,125 C76.1234953,125 75,123.875278 75,122.501114 L75,122.496659 C75,121.122494 76.1234953,120 77.4966563,120",
-    id: "Fill-301",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 97,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M70.5033437,120 L70.5033437,120 C71.8765047,120 73,121.122494 73,122.496659 L73,122.501114 C73,123.875278 71.8765047,125 70.5033437,125 C69.1279536,125 68,123.875278 68,122.501114 L68,122.496659 C68,121.122494 69.1279536,120 70.5033437,120",
-    id: "Fill-302",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 102,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M64.4977698,120 L64.4977698,120 C65.8737734,120 67,121.122494 67,122.496659 L67,122.501114 C67,123.875278 65.8737734,125 64.4977698,125 C63.1217663,125 62,123.875278 62,122.501114 L62,122.496659 C62,121.122494 63.1217663,120 64.4977698,120",
-    id: "Fill-303",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 107,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M56.5,120 L56.5,120 C57.875,120 59,121.122494 59,122.496659 L59,122.501114 C59,123.875278 57.875,125 56.5,125 C55.1227679,125 54,123.875278 54,122.501114 L54,122.496659 C54,121.122494 55.1227679,120 56.5,120",
-    id: "Fill-304",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 112,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M49.5033437,120 L49.5033437,120 C50.8720464,120 52,121.122494 52,122.496659 L52,122.501114 C52,123.875278 50.8720464,125 49.5033437,125 C48.1301828,125 47,123.875278 47,122.501114 L47,122.496659 C47,121.122494 48.1301828,120 49.5033437,120",
-    id: "Fill-305",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 117,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M42.4988844,120 L42.4988844,120 C43.875502,120 45,121.122494 45,122.496659 L45,122.501114 C45,123.875278 43.875502,125 42.4988844,125 C41.124498,125 40,123.875278 40,122.501114 L40,122.496659 C40,121.122494 41.124498,120 42.4988844,120",
-    id: "Fill-306",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 122,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M35.5033437,120 L35.5033437,120 C36.8765047,120 38,121.122494 38,122.496659 L38,122.501114 C38,123.875278 36.8698172,125 35.5033437,125 C34.1234953,125 33,123.875278 33,122.501114 L33.0066875,122.496659 C33.0066875,121.122494 34.1234953,120 35.5033437,120",
-    id: "Fill-307",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 127,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M109.5,138 L109.504464,138 C110.875,138 112,139.120267 112,140.494432 L112,140.503341 C112,141.875278 110.875,143 109.504464,143 L109.5,143 C108.120536,143 107,141.875278 107,140.503341 L107,140.494432 C107,139.120267 108.120536,138 109.5,138",
-    id: "Fill-308",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 132,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M102.498884,138 L102.498884,138 C103.875502,138 105,139.120267 105,140.494432 L105,140.503341 C105,141.875278 103.875502,143 102.498884,143 C101.122267,143 100,141.875278 100,140.503341 L100,140.494432 C100,139.120267 101.122267,138 102.498884,138",
-    id: "Fill-309",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 137,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M38.5,138 L38.5,138 C39.875,138 41,139.120267 41,140.494432 L41,140.503341 C41,141.875278 39.875,143 38.5,143 C37.1227679,143 36,141.875278 36,140.503341 L36,140.494432 C36,139.120267 37.1227679,138 38.5,138",
-    id: "Fill-310",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 142,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M31.5033437,138 L31.5033437,138 C32.8720464,138 34,139.120267 34,140.494432 L34,140.503341 C34,141.875278 32.8720464,143 31.5033437,143 C30.1234953,143 29,141.875278 29,140.503341 L29,140.494432 C29,139.120267 30.1234953,138 31.5033437,138",
-    id: "Fill-311",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 147,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M45.9966371,138 C44.9010951,138 44,138.628062 44,139.394209 L44,141.601336 C44,142.36971 44.9010951,143 45.9966371,143 C63.0012503,143 79.9987497,143 96.9986203,143 C98.0989049,143 99,142.36971 99,141.601336 L99,139.394209 C99,138.628062 98.0989049,138 96.9986203,138 C79.9987497,138 63.0012503,138 45.9966371,138",
-    id: "Fill-312",
-    fill: "#FFFFFE",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 152,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M36.9248738,7.49529567 C20.7396324,7.49529567 7.46446958,20.8134026 7.46446958,37.0702357 L7.46446958,63.9297643 C7.46446958,80.1842217 20.7396324,93.5023286 36.9248738,93.5023286 L105.082224,93.5023286 C121.267465,93.5023286 134.537896,80.1794703 134.537896,63.9297643 L134.537896,37.0702357 C134.537896,20.818154 121.267465,7.49529567 105.082224,7.49529567 L36.9248738,7.49529567 Z M36.9248738,0 L105.082224,0 C125.384162,0 142,16.6797055 142,37.0702357 L142,63.9297643 C142,84.3202945 125.384162,101 105.082224,101 L36.9248738,101 C16.6182042,101 0,84.3202945 0,63.9297643 L0,37.0702357 C0,16.6797055 16.6182042,0 36.9248738,0 L36.9248738,0 Z",
-    id: "Fill-313",
-    fill: "#BB4489",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 157,
-      columnNumber: 11
-    }
-  })))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Computer);
-
-/***/ }),
-
-/***/ "./lib/static/Hand_Slap.js":
-/*!*********************************!*\
-  !*** ./lib/static/Hand_Slap.js ***!
-  \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined,
-    _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/static/Hand_Slap.js";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-var Hand_Slap = function Hand_Slap(_ref) {
-  var className = _ref.className;
-  return __jsx("svg", {
-    className: className,
-    width: "171px",
-    height: "186px",
-    viewBox: "0 0 171 186",
-    version: "1.1",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 2,
-      columnNumber: 3
-    }
-  }, __jsx("g", {
-    id: "Home",
-    stroke: "none",
-    strokeWidth: "1",
-    fill: "none",
-    fillRule: "evenodd",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 5
-    }
-  }, __jsx("g", {
-    transform: "translate(-402.000000, -319.000000)",
-    id: "Group-2",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 7
-    }
-  }, __jsx("g", {
-    transform: "translate(402.000000, 319.000000)",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 9
-    }
-  }, __jsx("path", {
-    d: "M128.75077,99.8780319 L128.75077,92.2769682 C128.758575,88.1706104 132.055457,84.8010506 136.13129,84.6946763 C136.799408,84.6790331 137.465966,84.7509921 138.115351,84.9074248 C141.427844,85.7193104 143.905188,88.7259464 143.905188,92.2863541 C143.905188,96.4615423 140.495913,99.8780319 136.326418,99.8780319 L128.75077,99.8780319 Z M80,49.2751898 C80,62.5641456 87.3539827,74.1292134 98.1921702,80.2113158 L98.1921702,81.8960958 L118.51826,91.2257406 L128.75077,112 L136.326418,112 C147.148996,112 156,103.128703 156,92.2863541 C156,81.442441 147.148996,72.5711439 136.326418,72.5711439 C129.425132,72.5711439 122.519164,72.5711439 115.616317,72.5711439 C102.734749,72.561758 92.1666187,62.1558563 92.1666187,49.2751898 L92.1619357,28.5259596 C92.1619357,22.1857432 86.9855811,17 80.6618741,17 C80.4402087,17 80.2169823,17.004693 80,17.0187719 L80,49.2751898 L80,49.2751898 Z",
-    id: "Fill-81",
-    fill: "#BB4489",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M25,150.671392 L25,145 L8.98367724,145 C4.04373268,145 0,149.149953 0,154.225105 C0,156.939023 0,161.182287 0,165.955366 C0,169.29399 2.63627964,172 5.88543271,172 C9.13920542,172 11.7708654,169.29399 11.7708654,165.955366 C11.7708654,164.446579 11.7708654,159.244904 11.7708654,157.737699 C11.7708654,153.850281 14.8660302,150.671392 18.6526024,150.671392 L25,150.671392",
-    id: "Fill-82",
-    fill: "#EC912D",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M147,117.181243 L147,112 L170.992134,112 L170.992134,117.181243 L169.771288,117.181243 C168.685742,117.181243 167.801573,118.049908 167.801573,119.109219 C167.801573,120.168529 168.685742,121.035657 169.771288,121.035657 L171,121.035657 L171,132.475903 C171,135.526226 168.47178,138 165.350442,138 C162.227532,138 159.696165,135.526226 159.696165,132.475903 C159.696165,131.098338 159.699312,125.016143 159.699312,123.638578 C159.699312,120.088581 156.724287,117.181243 153.090069,117.181243 L147,117.181243",
-    id: "Fill-83",
-    fill: "#8B4188",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M103.94197,163 L109,163 L109,185.990546 L103.94197,185.990546 L103.94197,184.821402 C103.94197,183.781462 103.095044,182.930602 102.061481,182.930602 C101.02478,182.930602 100.180991,183.781462 100.180991,184.821402 L100.180991,186 L89.390527,186 C86.4153074,186 84,183.57505 84,180.586011 C84,177.592245 86.4153074,175.16887 89.390527,175.16887 C90.7346299,175.16887 96.2976788,175.170446 97.6417817,175.170446 C101.106336,175.170446 103.94197,172.320066 103.94197,168.839419 L103.94197,163",
-    id: "Fill-84",
-    fill: "#8B4188",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M31.2485521,100.422147 L31.2485521,92.8336311 C31.2438694,88.7348957 27.9425755,85.3715905 23.8670774,85.2669752 C23.2036969,85.2497995 22.5325118,85.321625 21.887862,85.4793287 C18.5756418,86.2881458 16.0985007,89.2892009 16.0985007,92.8429996 C16.0985007,97.0104376 19.5074964,100.422147 23.6719655,100.422147 L31.2485521,100.422147 Z M80,49.9116741 C80,63.1759625 72.6450606,74.7195628 61.8077634,80.788814 L61.8077634,128 L31.2485521,128 L31.2485521,112.520052 L23.6719655,112.520052 C12.85496,112.520052 4,103.665222 4,92.8429996 C4,82.0192153 12.85496,73.1643855 23.6719655,73.1643855 C30.5758061,73.1643855 37.4780858,73.1643855 44.3803656,73.1643855 C57.2608749,73.1565784 67.8328199,62.7684311 67.8328199,49.9116741 L67.8328199,28.5045647 C67.8328199,22.1761173 73.0087492,17 79.3366194,17 C79.5582666,17 79.7814746,17.0046843 80,17.0187371 L80,49.9116741 L80,49.9116741 Z",
-    id: "Fill-85",
-    fill: "#6AC5DB",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M60.6427269,160 L55,160 L55,176.017309 C55,180.957558 59.1286712,185 64.1723791,185 C67.0181121,185 68.5070121,185 73.990944,185 C77.3083454,185 80,182.365098 80,179.114205 C80,175.861772 77.3083454,173.22841 73.990944,173.22841 C72.4926105,173.22841 69.1626313,173.22841 67.6642978,173.22841 C63.8029055,173.22841 60.6427269,170.133054 60.6427269,166.347789 L60.6427269,160",
-    id: "Fill-87",
-    fill: "#EC912D",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M67,172 L49.4650585,172 L49.4650585,139.339289 C49.4650585,137.667431 48.110614,136.299263 46.457076,136.299263 C44.8019883,136.299263 43.4459942,137.668997 43.4459942,139.339289 L43.4459942,150.071739 C43.4459942,154.943294 39.5019883,158.927262 34.6792982,158.927262 L14,158.927262 L14,141.21465 L25.9110526,141.21465 L25.9110526,134.752638 C25.9110526,123.339235 35.1550585,114 46.457076,114 C57.7559942,114 67,123.339235 67,134.752638 L67,172",
-    id: "Fill-88",
-    fill: "#DCDBD6",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M116.500775,25 L116.500775,25 C129.424651,25 140,35.5746512 140,48.500775 L140,72 L116.500775,72 C102.581681,72 93,61.4253488 93,48.500775 C93,35.5746512 103.575349,25 116.500775,25",
-    id: "Fill-89",
-    fill: "#EC912D",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M129,106 L120.471084,106 C108.108111,106 98,95.9654631 98,83.7032967 L98,77 L129,77 L129,106",
-    id: "Fill-91",
-    fill: "#BB4489",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M159,112 L129.086736,112 C110.887779,112 96,126.888974 96,145.085914 L96,175 C130.793964,175 159,146.7931 159,112",
-    id: "Fill-93",
-    fill: "#EC912D",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 57,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M35.4984222,29 C46.8205187,29 56,38.1775503 56,49.4992111 C56,60.8224497 46.8205187,70 35.4984222,70 C24.1779035,70 15,60.8224497 15,49.4992111 C15,38.1775503 24.1779035,29 35.4984222,29",
-    id: "Fill-94",
-    fill: "#BB4489",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 62,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M15.2276725,48 L55.673246,48 L57.2882548,42.4146085 C57.2882548,27.6258539 59.6490131,13.3683657 64,0 L8,0 C12.3478601,13.3683657 14.7133086,27.6258539 14.7133086,42.4146085 L14.7133086,45.8702049 L15.2276725,48",
-    id: "Fill-96",
-    fill: "#EC912D",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 67,
-      columnNumber: 11
-    }
-  })))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Hand_Slap);
-
-/***/ }),
-
-/***/ "./lib/static/Horn.js":
-/*!****************************!*\
-  !*** ./lib/static/Horn.js ***!
-  \****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined,
-    _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/static/Horn.js";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-var Horn = function Horn(_ref) {
-  var className = _ref.className;
-  return __jsx("svg", {
-    className: className,
-    width: "160px",
-    height: "64px",
-    viewBox: "0 0 160 64",
-    version: "1.1",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 2,
-      columnNumber: 3
-    }
-  }, __jsx("g", {
-    id: "Home",
-    stroke: "none",
-    strokeWidth: "1",
-    fill: "none",
-    fillRule: "evenodd",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 5
-    }
-  }, __jsx("g", {
-    transform: "translate(-783.000000, -380.000000)",
-    id: "Group-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 7
-    }
-  }, __jsx("g", {
-    transform: "translate(783.000000, 380.000000)",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 9
-    }
-  }, __jsx("path", {
-    d: "M107.287853,29.745 L77.982147,29.745 C69.2653303,29.745 62.135,36.7207089 62.135,45.2465754 C62.135,53.7708664 69.2653303,60.745 77.982147,60.745 L107.287853,60.745 C116.00467,60.745 123.135,53.7708664 123.135,45.2465754 C123.135,36.7207089 116.00467,29.745 107.287853,29.745",
-    id: "Fill-192",
-    fill: "#BB4489",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M107.287853,29.745 L77.982147,29.745 C69.2653303,29.745 62.135,36.7207089 62.135,45.2465754 C62.135,53.7708664 69.2653303,60.745 77.982147,60.745 L107.287853,60.745 C116.00467,60.745 123.135,53.7708664 123.135,45.2465754 C123.135,36.7207089 116.00467,29.745 107.287853,29.745 Z",
-    id: "Stroke-193",
-    stroke: "#1B1A19",
-    strokeWidth: "0.567",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 11
-    }
-  }), __jsx("polygon", {
-    id: "Fill-194",
-    fill: "#EC912D",
-    points: "48.135 32.745 143.135 32.745 143.135 25.745 48.135 25.745",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M76.9677071,32.1951128 L109.308708,32.1951128 C116.145447,32.1951128 121.7441,37.8426025 121.7441,44.7441909 C121.7441,51.6457793 116.145447,57.2948872 109.308708,57.2948872 L76.9677071,57.2948872 C70.1277603,57.2948872 64.5291074,51.6457793 64.5291074,44.7441909 C64.5291074,37.8426025 70.1277603,32.1951128 76.9677071,32.1951128 Z M109.308708,25.745 L76.9677071,25.745 C66.6091569,25.745 58.135,34.2955259 58.135,44.7441909 C58.135,55.1928559 66.6091569,63.745 76.9677071,63.745 L109.308708,63.745 C119.665654,63.745 128.135,55.1928559 128.135,44.7441909 C128.135,34.2939077 119.665654,25.745 109.308708,25.745 L109.308708,25.745 Z",
-    id: "Fill-195",
-    fill: "#EC912D",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M0.135,0.745 L2.10795788,0.745 C10.8584943,15.4487952 26.8913564,25.3027223 45.2241508,25.3027223 C48.2653313,25.3027223 51.2414343,25.0324904 54.135,24.5126914 L54.135,32.9788982 C51.2414343,32.4590992 48.2653313,32.1872777 45.2241508,32.1872777 C26.8913564,32.1872777 10.8584943,42.0396152 2.10795788,56.745 L0.135,56.745 L0.135,0.745",
-    id: "Fill-196",
-    fill: "#BB4489",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M149.135,18.745 C154.657079,18.745 159.135,23.2216839 159.135,28.7457971 C159.135,34.2667218 154.657079,38.745 149.135,38.745 C143.61611,38.745 139.135,34.2667218 139.135,28.7457971 C139.135,23.2216839 143.61611,18.745 149.135,18.745",
-    id: "Fill-197",
-    fill: "#BB4489",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38,
-      columnNumber: 11
-    }
-  }), __jsx("polygon", {
-    id: "Fill-198",
-    fill: "#EC912D",
-    points: "70.135 30.745 75.135 30.745 75.135 13.745 70.135 13.745",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 43,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M72.635,17.745 C76.2264397,17.745 79.135,14.8336322 79.135,11.2442097 C79.135,7.65478723 76.2264397,4.745 72.635,4.745 C69.0467218,4.745 66.135,7.65478723 66.135,11.2442097 C66.135,14.8336322 69.0467218,17.745 72.635,17.745",
-    id: "Fill-199",
-    fill: "#6AC5DB",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 48,
-      columnNumber: 11
-    }
-  }), __jsx("polygon", {
-    id: "Fill-200",
-    fill: "#EC912D",
-    points: "90.135 30.745 95.135 30.745 95.135 13.745 90.135 13.745",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M92.6357903,17.745 C96.2267933,17.745 99.135,14.8336322 99.135,11.2442097 C99.135,7.65478723 96.2267933,4.745 92.6357903,4.745 C89.0479483,4.745 86.135,7.65478723 86.135,11.2442097 C86.135,14.8336322 89.0479483,17.745 92.6357903,17.745",
-    id: "Fill-201",
-    fill: "#6AC5DB",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 58,
-      columnNumber: 11
-    }
-  }), __jsx("polygon", {
-    id: "Fill-202",
-    fill: "#EC912D",
-    points: "111.135 30.745 116.135 30.745 116.135 13.745 111.135 13.745",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 63,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M113.633419,17.745 C117.22644,17.745 120.135,14.8336322 120.135,11.2442097 C120.135,7.65478723 117.22644,4.745 113.633419,4.745 C110.046722,4.745 107.135,7.65478723 107.135,11.2442097 C107.135,14.8336322 110.046722,17.745 113.633419,17.745",
-    id: "Fill-203",
-    fill: "#6AC5DB",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 68,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M76.6357926,37.745 C72.4907012,37.745 69.135,41.1022863 69.135,45.2442074 C69.135,49.3861286 72.4907012,52.745 76.6357926,52.745 C80.7777137,52.745 84.135,49.3861286 84.135,45.2442074 C84.135,41.1022863 80.7777137,37.745 76.6357926,37.745",
-    id: "Fill-204",
-    fill: "#0A0B09",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 73,
-      columnNumber: 11
-    }
-  }), __jsx("path", {
-    d: "M108.636585,37.745 C104.491056,37.745 101.135,41.1038714 101.135,45.2442074 C101.135,49.3861286 104.491056,52.745 108.636585,52.745 C112.778944,52.745 116.135,49.3861286 116.135,45.2442074 C116.135,41.1038714 112.778944,37.745 108.636585,37.745",
-    id: "Fill-205",
-    fill: "#0A0B09",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 78,
-      columnNumber: 11
-    }
-  })))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Horn);
 
 /***/ }),
 
@@ -2719,44 +2063,90 @@ var Soccer_Ball_Background = function Soccer_Ball_Background(_ref) {
 
 /***/ }),
 
-/***/ "./lib/static/index.js":
+/***/ "./lib/static/shirt.js":
 /*!*****************************!*\
-  !*** ./lib/static/index.js ***!
+  !*** ./lib/static/shirt.js ***!
   \*****************************/
-/*! exports provided: Base_Ball, Cash_Sack, Charm_Background, Computer, Hand_Slap, Horn, Soccer_Ball_Background */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Base_Ball_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Base_Ball.js */ "./lib/static/Base_Ball.js");
-/* harmony import */ var _Base_Ball_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Base_Ball_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "Base_Ball", function() { return _Base_Ball_js__WEBPACK_IMPORTED_MODULE_0___default.a; });
-/* harmony import */ var _Cash_Sack_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cash_Sack.js */ "./lib/static/Cash_Sack.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Cash_Sack", function() { return _Cash_Sack_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
-
-/* harmony import */ var _Charm_Background_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Charm_Background.js */ "./lib/static/Charm_Background.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Charm_Background", function() { return _Charm_Background_js__WEBPACK_IMPORTED_MODULE_2__["default"]; });
-
-/* harmony import */ var _Computer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Computer.js */ "./lib/static/Computer.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Computer", function() { return _Computer_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
-
-/* harmony import */ var _Hand_Slap_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Hand_Slap.js */ "./lib/static/Hand_Slap.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Hand_Slap", function() { return _Hand_Slap_js__WEBPACK_IMPORTED_MODULE_4__["default"]; });
-
-/* harmony import */ var _Horn_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Horn.js */ "./lib/static/Horn.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Horn", function() { return _Horn_js__WEBPACK_IMPORTED_MODULE_5__["default"]; });
-
-/* harmony import */ var _Soccer_Ball_Background_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Soccer_Ball_Background.js */ "./lib/static/Soccer_Ball_Background.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Soccer_Ball_Background", function() { return _Soccer_Ball_Background_js__WEBPACK_IMPORTED_MODULE_6__["default"]; });
-
-// @create-index
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _this = undefined,
+    _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/lib/static/shirt.js";
 
 
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+var Shirt_Svg = function Shirt_Svg(_ref) {
+  var className = _ref.className;
+  return __jsx("svg", {
+    className: className,
+    width: "48px",
+    height: "40px",
+    viewBox: "0 0 48 40",
+    version: "1.1",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 2,
+      columnNumber: 3
+    }
+  }, __jsx("g", {
+    id: "Home",
+    stroke: "none",
+    strokeWidth: "1",
+    fill: "none",
+    fillRule: "evenodd",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 5
+    }
+  }, __jsx("g", {
+    id: "Parent_Dash",
+    transform: "translate(-611.000000, -570.000000)",
+    fill: "#000000",
+    "fill-rule": "nonzero",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 7
+    }
+  }, __jsx("g", {
+    id: "Group-4",
+    transform: "translate(611.000000, 570.000000)",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 9
+    }
+  }, __jsx("g", {
+    id: "286964",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17,
+      columnNumber: 11
+    }
+  }, __jsx("path", {
+    d: "M34.0005,0 L29.001,0 C29.001,2.75747633 26.7568125,5.00009375 24,5.00009375 C21.2431875,5.00009375 19.0005,2.75747633 19.0005,0 L14.00025,0 L0,8 L4.0005,18.9999063 L10.0005,16.9997188 L10.0005,40 L38.001,40 L38.001,16.9997188 L44.001,18.9999063 L48,8 L34.0005,0 Z M42.7851563,16.487016 L38.6323125,15.1027468 L36,14.2247117 L36,16.9998125 L36,37.9991563 L12,37.9991563 L12,16.9998125 L12,14.2247117 L9.3676875,15.1028405 L5.21484375,16.4871098 L2.45578125,8.90015937 L14.53125,2.00018749 L17.2903125,2.00018749 C18.1509375,4.89172213 20.829375,7.00028124 24,7.00028124 C27.171375,7.00028124 29.8491563,4.89172213 30.7089375,2.00018749 L33.46875,2.00018749 L45.544875,8.90015937 L42.7851563,16.487016 Z",
+    id: "Shape",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 13
+    }
+  }))))));
+};
 
-
-
-
+/* harmony default export */ __webpack_exports__["default"] = (Shirt_Svg);
 
 /***/ }),
 
@@ -2805,18 +2195,6 @@ var colors = {
   c1: "black",
   c2: "#7C7A7A",
   c3: "#FB3640"
-};
-var dash = {
-  body: {
-    bc: "#e5dee8"
-  },
-  overview: {
-    c: "black"
-  },
-  nav: {
-    bc: "",
-    c: "black"
-  }
 }; // Component style handles
 
 var buttons = {
@@ -2865,15 +2243,7 @@ var headings = {
   }
 };
 var cards = {};
-var modal = {
-  px: "1em",
-  py: "1em",
-  bc: "",
-  bdr: "5px",
-  backdrop: {
-    bc: "#ffffff17"
-  }
-};
+var modal = {};
 var form = {
   input: {
     bc: "transparent"
@@ -2896,8 +2266,7 @@ var theme = {
   cards: cards,
   headings: headings,
   modal: modal,
-  form: form,
-  dash: dash
+  form: form
 };
 /* harmony default export */ __webpack_exports__["default"] = (theme);
 
@@ -2907,7 +2276,7 @@ var theme = {
 /*!*********************!*\
   !*** ./lib/util.js ***!
   \*********************/
-/*! exports provided: changeTo, withProps, buildThresholdList, locateTo */
+/*! exports provided: changeTo, withProps, buildThresholdList, locateTo, wrapComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2916,6 +2285,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "withProps", function() { return withProps; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "buildThresholdList", function() { return buildThresholdList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "locateTo", function() { return locateTo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wrapComponent", function() { return wrapComponent; });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -2958,6 +2328,28 @@ var buildThresholdList = function buildThresholdList(numSteps) {
 };
 var locateTo = function locateTo(location) {
   window.location.href = location;
+};
+var wrapComponent = function wrapComponent(C1, C2) {
+  return function (_ref2) {
+    var children = _ref2.children,
+        props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref2, ["children"]);
+
+    return __jsx(C2, {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28,
+        columnNumber: 5
+      }
+    }, __jsx(C1, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29,
+        columnNumber: 7
+      }
+    }), children));
+  };
 };
 
 /***/ }),
@@ -14309,6 +13701,17 @@ module.exports = hoistNonReactStatics;
 
 /***/ }),
 
+/***/ "./node_modules/next/dist/build/polyfills/object-assign.js":
+/*!***********************************************************************************************************************!*\
+  !*** delegated ./node_modules/next/dist/build/polyfills/object-assign.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  \***********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/next/dist/build/polyfills/object-assign.js");
+
+/***/ }),
+
 /***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fryanbreaux%2FProjects%2FWeb%2FClients%2Fnps_v2%2Fpages%2Findex.js!./":
 /*!*****************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fryanbreaux%2FProjects%2FWeb%2FClients%2Fnps_v2%2Fpages%2Findex.js ***!
@@ -14524,6 +13927,657 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/checkPropTypes.js":
+/*!*********************************************************************************************************!*\
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/prop-types/checkPropTypes.js");
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/factoryWithTypeCheckers.js":
+/*!************************************************************!*\
+  !*** ./node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+var assign = __webpack_require__(/*! object-assign */ "./node_modules/next/dist/build/polyfills/object-assign.js");
+
+var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");
+
+var has = Function.call.bind(Object.prototype.hasOwnProperty);
+var printWarning = function() {};
+
+if (true) {
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (true) {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error(
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if ( true && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            printWarning(
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!ReactIs.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if (true) {
+        if (arguments.length > 1) {
+          printWarning(
+            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
+            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
+          );
+        } else {
+          printWarning('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+        if (type === 'symbol') {
+          return String(value);
+        }
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (has(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+       true ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : undefined;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning(
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+        );
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from
+      // props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // falsy value can't be a Symbol
+    if (!propValue) {
+      return false;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/prop-types/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (true) {
+  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ "./node_modules/prop-types/factoryWithTypeCheckers.js")(ReactIs.isElement, throwOnDirectAccess);
+} else {}
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
+/*!*******************************************************************************************************************!*\
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -31362,6 +31416,1188 @@ const extendedAnimated = apply(domElements);
 
 /***/ }),
 
+/***/ "./node_modules/react-stripe-elements/es/components/Element.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/react-stripe-elements/es/components/Element.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _isEqual = __webpack_require__(/*! ../utils/isEqual */ "./node_modules/react-stripe-elements/es/utils/isEqual.js");
+
+var _isEqual2 = _interopRequireDefault(_isEqual);
+
+var _Elements = __webpack_require__(/*! ./Elements */ "./node_modules/react-stripe-elements/es/components/Elements.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var noop = function noop() {};
+
+var _extractOptions = function _extractOptions(props) {
+  var id = props.id,
+      className = props.className,
+      onChange = props.onChange,
+      onFocus = props.onFocus,
+      onBlur = props.onBlur,
+      onReady = props.onReady,
+      options = _objectWithoutProperties(props, ['id', 'className', 'onChange', 'onFocus', 'onBlur', 'onReady']);
+
+  return options;
+};
+
+var capitalized = function capitalized(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+var Element = function Element(type) {
+  var _class, _temp;
+
+  var hocOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return _temp = _class = function (_React$Component) {
+    _inherits(_class, _React$Component);
+
+    function _class(props, context) {
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+
+      _this.handleRef = function (ref) {
+        _this._ref = ref;
+      };
+
+      _this._element = null;
+
+      var options = _extractOptions(_this.props);
+      // We keep track of the extracted options on this._options to avoid re-rendering.
+      // (We would unnecessarily re-render if we were tracking them with state.)
+      _this._options = options;
+      return _this;
+    }
+
+    _class.prototype.componentDidMount = function componentDidMount() {
+      var _this2 = this;
+
+      this.context.addElementsLoadListener(function (elements) {
+        if (!_this2._ref) {
+          return;
+        }
+
+        var element = elements.create(type, _this2._options);
+        _this2._element = element;
+
+        _this2._setupEventListeners(element);
+
+        element.mount(_this2._ref);
+
+        // Register Element for automatic token / source / paymentMethod creation
+        if (hocOptions.impliedTokenType || hocOptions.impliedSourceType || hocOptions.impliedPaymentMethodType) {
+          _this2.context.registerElement(element, hocOptions.impliedTokenType, hocOptions.impliedSourceType, hocOptions.impliedPaymentMethodType);
+        }
+      });
+    };
+
+    _class.prototype.componentDidUpdate = function componentDidUpdate() {
+      var options = _extractOptions(this.props);
+      if (Object.keys(options).length !== 0 && !(0, _isEqual2.default)(options, this._options)) {
+        this._options = options;
+        if (this._element) {
+          this._element.update(options);
+        }
+      }
+    };
+
+    _class.prototype.componentWillUnmount = function componentWillUnmount() {
+      if (this._element) {
+        var element = this._element;
+        element.destroy();
+        this.context.unregisterElement(element);
+      }
+    };
+
+    _class.prototype._setupEventListeners = function _setupEventListeners(element) {
+      var _this3 = this;
+
+      element.on('ready', function () {
+        _this3.props.onReady(_this3._element);
+      });
+
+      element.on('change', function (change) {
+        _this3.props.onChange(change);
+      });
+
+      element.on('blur', function () {
+        var _props;
+
+        return (_props = _this3.props).onBlur.apply(_props, arguments);
+      });
+      element.on('focus', function () {
+        var _props2;
+
+        return (_props2 = _this3.props).onFocus.apply(_props2, arguments);
+      });
+    };
+
+    _class.prototype.render = function render() {
+      return _react2.default.createElement('div', {
+        id: this.props.id,
+        className: this.props.className,
+        ref: this.handleRef
+      });
+    };
+
+    return _class;
+  }(_react2.default.Component), _class.propTypes = {
+    id: _propTypes2.default.string,
+    className: _propTypes2.default.string,
+    onChange: _propTypes2.default.func,
+    onBlur: _propTypes2.default.func,
+    onFocus: _propTypes2.default.func,
+    onReady: _propTypes2.default.func
+  }, _class.defaultProps = {
+    id: undefined,
+    className: undefined,
+    onChange: noop,
+    onBlur: noop,
+    onFocus: noop,
+    onReady: noop
+  }, _class.contextTypes = _Elements.elementContextTypes, _class.displayName = capitalized(type) + 'Element', _temp;
+};
+
+exports.default = Element;
+
+/***/ }),
+
+/***/ "./node_modules/react-stripe-elements/es/components/Elements.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/react-stripe-elements/es/components/Elements.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.elementContextTypes = exports.injectContextTypes = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Provider = __webpack_require__(/*! ./Provider */ "./node_modules/react-stripe-elements/es/components/Provider.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var injectContextTypes = exports.injectContextTypes = {
+  getRegisteredElements: _propTypes2.default.func.isRequired,
+  elements: _propTypes2.default.object
+};
+
+var elementContextTypes = exports.elementContextTypes = {
+  addElementsLoadListener: _propTypes2.default.func.isRequired,
+  registerElement: _propTypes2.default.func.isRequired,
+  unregisterElement: _propTypes2.default.func.isRequired
+};
+
+var Elements = function (_React$Component) {
+  _inherits(Elements, _React$Component);
+
+  function Elements(props, context) {
+    _classCallCheck(this, Elements);
+
+    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+
+    _this._elements = null;
+
+    _this.handleRegisterElement = function (element, impliedTokenType, impliedSourceType, impliedPaymentMethodType) {
+      _this.setState(function (prevState) {
+        return {
+          registeredElements: [].concat(_toConsumableArray(prevState.registeredElements), [_extends({
+            element: element
+          }, impliedTokenType ? { impliedTokenType: impliedTokenType } : {}, impliedSourceType ? { impliedSourceType: impliedSourceType } : {}, impliedPaymentMethodType ? { impliedPaymentMethodType: impliedPaymentMethodType } : {})])
+        };
+      });
+    };
+
+    _this.handleUnregisterElement = function (el) {
+      _this.setState(function (prevState) {
+        return {
+          registeredElements: prevState.registeredElements.filter(function (_ref) {
+            var element = _ref.element;
+            return element !== el;
+          })
+        };
+      });
+    };
+
+    var _this$props = _this.props,
+        children = _this$props.children,
+        options = _objectWithoutProperties(_this$props, ['children']);
+
+    if (_this.context.tag === 'sync') {
+      _this._elements = _this.context.stripe.elements(options);
+    }
+
+    _this.state = {
+      registeredElements: []
+    };
+    return _this;
+  }
+
+  Elements.prototype.getChildContext = function getChildContext() {
+    var _this2 = this;
+
+    return {
+      addElementsLoadListener: function addElementsLoadListener(fn) {
+        // Return the existing elements instance if we already have one.
+        if (_this2.context.tag === 'sync') {
+          // This is impossible, but we need to make flow happy.
+          if (!_this2._elements) {
+            throw new Error('Expected elements to be instantiated but it was not.');
+          }
+
+          fn(_this2._elements);
+        } else {
+          _this2.context.addStripeLoadListener(function (stripe) {
+            if (_this2._elements) {
+              fn(_this2._elements);
+            } else {
+              var _props = _this2.props,
+                  _children = _props.children,
+                  options = _objectWithoutProperties(_props, ['children']);
+
+              _this2._elements = stripe.elements(options);
+              fn(_this2._elements);
+            }
+          });
+        }
+      },
+      registerElement: this.handleRegisterElement,
+      unregisterElement: this.handleUnregisterElement,
+      getRegisteredElements: function getRegisteredElements() {
+        return _this2.state.registeredElements;
+      },
+      elements: this._elements
+    };
+  };
+
+  Elements.prototype.render = function render() {
+    return _react2.default.Children.only(this.props.children);
+  };
+
+  return Elements;
+}(_react2.default.Component);
+
+Elements.childContextTypes = _extends({}, injectContextTypes, elementContextTypes);
+Elements.contextTypes = _Provider.providerContextTypes;
+Elements.defaultProps = {
+  children: null
+};
+exports.default = Elements;
+
+/***/ }),
+
+/***/ "./node_modules/react-stripe-elements/es/components/PaymentRequestButtonElement.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/react-stripe-elements/es/components/PaymentRequestButtonElement.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ "./node_modules/react-stripe-elements/es/utils/shallowEqual.js");
+
+var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
+
+var _Elements = __webpack_require__(/*! ./Elements */ "./node_modules/react-stripe-elements/es/components/Elements.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var noop = function noop() {};
+
+var _extractOptions = function _extractOptions(props) {
+  var id = props.id,
+      className = props.className,
+      onBlur = props.onBlur,
+      onClick = props.onClick,
+      onFocus = props.onFocus,
+      onReady = props.onReady,
+      paymentRequest = props.paymentRequest,
+      options = _objectWithoutProperties(props, ['id', 'className', 'onBlur', 'onClick', 'onFocus', 'onReady', 'paymentRequest']);
+
+  return options;
+};
+
+var PaymentRequestButtonElement = function (_React$Component) {
+  _inherits(PaymentRequestButtonElement, _React$Component);
+
+  function PaymentRequestButtonElement(props, context) {
+    _classCallCheck(this, PaymentRequestButtonElement);
+
+    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+
+    _this.handleRef = function (ref) {
+      _this._ref = ref;
+    };
+
+    var options = _extractOptions(props);
+    // We keep track of the extracted options on this._options to avoid re-rendering.
+    // (We would unnecessarily re-render if we were tracking them with state.)
+    _this._options = options;
+    return _this;
+  }
+
+  PaymentRequestButtonElement.prototype.componentDidMount = function componentDidMount() {
+    var _this2 = this;
+
+    this.context.addElementsLoadListener(function (elements) {
+      _this2._element = elements.create('paymentRequestButton', _extends({
+        paymentRequest: _this2.props.paymentRequest
+      }, _this2._options));
+      _this2._element.on('ready', function () {
+        _this2.props.onReady(_this2._element);
+      });
+      _this2._element.on('focus', function () {
+        var _props;
+
+        return (_props = _this2.props).onFocus.apply(_props, arguments);
+      });
+      _this2._element.on('click', function () {
+        var _props2;
+
+        return (_props2 = _this2.props).onClick.apply(_props2, arguments);
+      });
+      _this2._element.on('blur', function () {
+        var _props3;
+
+        return (_props3 = _this2.props).onBlur.apply(_props3, arguments);
+      });
+      _this2._element.mount(_this2._ref);
+    });
+  };
+
+  PaymentRequestButtonElement.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.props.paymentRequest !== prevProps.paymentRequest) {
+      console.warn('Unsupported prop change: paymentRequest is not a customizable property.');
+    }
+    var options = _extractOptions(this.props);
+    if (Object.keys(options).length !== 0 && !(0, _shallowEqual2.default)(options, this._options)) {
+      this._options = options;
+      this._element.update(options);
+    }
+  };
+
+  PaymentRequestButtonElement.prototype.componentWillUnmount = function componentWillUnmount() {
+    this._element.destroy();
+  };
+
+  PaymentRequestButtonElement.prototype.render = function render() {
+    return _react2.default.createElement('div', {
+      id: this.props.id,
+      className: this.props.className,
+      ref: this.handleRef
+    });
+  };
+
+  return PaymentRequestButtonElement;
+}(_react2.default.Component);
+
+PaymentRequestButtonElement.propTypes = {
+  id: _propTypes2.default.string,
+  className: _propTypes2.default.string,
+  onBlur: _propTypes2.default.func,
+  onClick: _propTypes2.default.func,
+  onFocus: _propTypes2.default.func,
+  onReady: _propTypes2.default.func,
+  paymentRequest: _propTypes2.default.shape({
+    canMakePayment: _propTypes2.default.func.isRequired,
+    on: _propTypes2.default.func.isRequired,
+    show: _propTypes2.default.func.isRequired
+  }).isRequired
+};
+PaymentRequestButtonElement.defaultProps = {
+  id: undefined,
+  className: undefined,
+  onBlur: noop,
+  onClick: noop,
+  onFocus: noop,
+  onReady: noop
+};
+PaymentRequestButtonElement.contextTypes = _Elements.elementContextTypes;
+exports.default = PaymentRequestButtonElement;
+
+/***/ }),
+
+/***/ "./node_modules/react-stripe-elements/es/components/Provider.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/react-stripe-elements/es/components/Provider.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.providerContextTypes = undefined;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// TODO(jez) 'sync' and 'async' are bad tag names.
+// TODO(jez) What if redux also uses this.context.tag?
+var providerContextTypes = exports.providerContextTypes = {
+  tag: _propTypes2.default.string.isRequired,
+  stripe: _propTypes2.default.object,
+  addStripeLoadListener: _propTypes2.default.func
+};
+
+var getOrCreateStripe = function getOrCreateStripe(apiKey, options) {
+  /**
+   * Note that this is not meant to be a generic memoization solution.
+   * This is specifically a solution for `StripeProvider`s being initialized
+   * and destroyed regularly (with the same set of props) when users only
+   * use `StripeProvider` for the subtree that contains their checkout form.
+   */
+  window.Stripe.__cachedInstances = window.Stripe.__cachedInstances || {};
+  var cacheKey = 'key=' + apiKey + ' options=' + JSON.stringify(options);
+
+  var stripe = window.Stripe.__cachedInstances[cacheKey] || window.Stripe(apiKey, options);
+  window.Stripe.__cachedInstances[cacheKey] = stripe;
+
+  return stripe;
+};
+
+var ensureStripeShape = function ensureStripeShape(stripe) {
+  if (stripe && stripe.elements && stripe.createSource && stripe.createToken && stripe.createPaymentMethod && stripe.handleCardPayment) {
+    return stripe;
+  } else {
+    throw new Error("Please pass a valid Stripe object to StripeProvider. You can obtain a Stripe object by calling 'Stripe(...)' with your publishable key.");
+  }
+};
+
+var Provider = function (_React$Component) {
+  _inherits(Provider, _React$Component);
+
+  // on the other hand: childContextTypes is *required* to use context.
+  function Provider(props) {
+    _classCallCheck(this, Provider);
+
+    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+
+    if (_this.props.apiKey && _this.props.stripe) {
+      throw new Error("Please pass either 'apiKey' or 'stripe' to StripeProvider, not both.");
+    } else if (_this.props.apiKey) {
+      if (!window.Stripe) {
+        throw new Error("Please load Stripe.js (https://js.stripe.com/v3/) on this page to use react-stripe-elements. If Stripe.js isn't available yet (it's loading asynchronously, or you're using server-side rendering), see https://github.com/stripe/react-stripe-elements#advanced-integrations");
+      } else {
+        var _this$props = _this.props,
+            _apiKey = _this$props.apiKey,
+            _children = _this$props.children,
+            options = _objectWithoutProperties(_this$props, ['apiKey', 'children']);
+
+        var _stripe = getOrCreateStripe(_apiKey, options);
+        _this._meta = { tag: 'sync', stripe: _stripe };
+        _this._register();
+      }
+    } else if (_this.props.stripe) {
+      // If we already have a stripe instance (in the constructor), we can behave synchronously.
+      var _stripe2 = ensureStripeShape(_this.props.stripe);
+      _this._meta = { tag: 'sync', stripe: _stripe2 };
+      _this._register();
+    } else if (_this.props.stripe === null) {
+      _this._meta = {
+        tag: 'async',
+        stripe: null
+      };
+    } else {
+      throw new Error("Please pass either 'apiKey' or 'stripe' to StripeProvider. If you're using 'stripe' but don't have a Stripe instance yet, pass 'null' explicitly.");
+    }
+
+    _this._didWarn = false;
+    _this._didWakeUpListeners = false;
+    _this._listeners = [];
+    return _this;
+  }
+  // Even though we're using flow, also use PropTypes so we can take advantage of developer warnings.
+
+
+  Provider.prototype.getChildContext = function getChildContext() {
+    var _this2 = this;
+
+    // getChildContext is run after the constructor, so we WILL have access to
+    // the initial state.
+    //
+    // However, context doesn't update in respnse to state changes like you
+    // might expect: context is pulled by the child, not pushed by the parent.
+    if (this._meta.tag === 'sync') {
+      return {
+        tag: 'sync',
+        stripe: this._meta.stripe
+      };
+    } else {
+      return {
+        tag: 'async',
+        addStripeLoadListener: function addStripeLoadListener(fn) {
+          if (_this2._meta.stripe) {
+            fn(_this2._meta.stripe);
+          } else {
+            _this2._listeners.push(fn);
+          }
+        }
+      };
+    }
+  };
+
+  Provider.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var apiKeyChanged = this.props.apiKey && prevProps.apiKey && this.props.apiKey !== prevProps.apiKey;
+
+    var stripeInstanceChanged = this.props.stripe && prevProps.stripe && this.props.stripe !== prevProps.stripe;
+    if (!this._didWarn && (apiKeyChanged || stripeInstanceChanged) && window.console && window.console.error) {
+      this._didWarn = true;
+      // eslint-disable-next-line no-console
+      console.error('StripeProvider does not support changing the apiKey parameter.');
+      return;
+    }
+
+    if (!this._didWakeUpListeners && this.props.stripe) {
+      // Wake up the listeners if we've finally been given a StripeShape
+      this._didWakeUpListeners = true;
+      var _stripe3 = ensureStripeShape(this.props.stripe);
+      this._meta.stripe = _stripe3;
+      this._register();
+      this._listeners.forEach(function (fn) {
+        fn(_stripe3);
+      });
+    }
+  };
+
+  Provider.prototype._register = function _register() {
+    var stripe = this._meta.stripe;
+
+
+    if (!stripe || !stripe._registerWrapper) {
+      return;
+    }
+
+    stripe._registerWrapper({
+      name: 'react-stripe-elements',
+      version: '6.1.1' || false
+    });
+  };
+
+  Provider.prototype.render = function render() {
+    return _react2.default.Children.only(this.props.children);
+  };
+
+  return Provider;
+}(_react2.default.Component);
+
+Provider.propTypes = {
+  apiKey: _propTypes2.default.string,
+  // PropTypes.object is the only way we can accept a Stripe instance
+  // eslint-disable-next-line react/forbid-prop-types
+  stripe: _propTypes2.default.object,
+  children: _propTypes2.default.node
+};
+Provider.childContextTypes = providerContextTypes;
+Provider.defaultProps = {
+  apiKey: undefined,
+  stripe: undefined,
+  children: null
+};
+exports.default = Provider;
+
+/***/ }),
+
+/***/ "./node_modules/react-stripe-elements/es/components/inject.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-stripe-elements/es/components/inject.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Elements = __webpack_require__(/*! ./Elements */ "./node_modules/react-stripe-elements/es/components/Elements.js");
+
+var _Provider = __webpack_require__(/*! ./Provider */ "./node_modules/react-stripe-elements/es/components/Provider.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// react-redux does a bunch of stuff with pure components / checking if it needs to re-render.
+// not sure if we need to do the same.
+var inject = function inject(WrappedComponent) {
+  var _class, _temp;
+
+  var componentOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _componentOptions$wit = componentOptions.withRef,
+      withRef = _componentOptions$wit === undefined ? false : _componentOptions$wit;
+
+
+  return _temp = _class = function (_React$Component) {
+    _inherits(_class, _React$Component);
+
+    function _class(props, context) {
+      _classCallCheck(this, _class);
+
+      if (!context || !context.getRegisteredElements) {
+        throw new Error('It looks like you are trying to inject Stripe context outside of an Elements context.\nPlease be sure the component that calls createSource or createToken is within an <Elements> component.');
+      }
+
+      var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+
+      _this.parseElementOrData = function (elementOrOptions) {
+        return elementOrOptions && (typeof elementOrOptions === 'undefined' ? 'undefined' : _typeof(elementOrOptions)) === 'object' && elementOrOptions._frame && _typeof(elementOrOptions._frame) === 'object' && elementOrOptions._frame.id && typeof elementOrOptions._frame.id === 'string' && typeof elementOrOptions._componentName === 'string' ? { type: 'element', element: elementOrOptions } : { type: 'data', data: elementOrOptions };
+      };
+
+      _this.findElement = function (filterBy, specifiedType) {
+        var allElements = _this.context.getRegisteredElements();
+        var filteredElements = allElements.filter(function (e) {
+          return e[filterBy];
+        });
+        var matchingElements = specifiedType === 'auto' ? filteredElements : filteredElements.filter(function (e) {
+          return e[filterBy] === specifiedType;
+        });
+
+        if (matchingElements.length === 1) {
+          return matchingElements[0].element;
+        } else if (matchingElements.length > 1) {
+          throw new Error('You did not specify the type of Source, Token, or PaymentMethod to create.\n        We could not infer which Element you want to use for this operation.');
+        } else {
+          return null;
+        }
+      };
+
+      _this.requireElement = function (filterBy, specifiedType) {
+        var element = _this.findElement(filterBy, specifiedType);
+        if (element) {
+          return element;
+        } else {
+          throw new Error('You did not specify the type of Source, Token, or PaymentMethod to create.\n        We could not infer which Element you want to use for this operation.');
+        }
+      };
+
+      _this.wrappedCreateToken = function (stripe) {
+        return function () {
+          var tokenTypeOrOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+          var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+          if (tokenTypeOrOptions && (typeof tokenTypeOrOptions === 'undefined' ? 'undefined' : _typeof(tokenTypeOrOptions)) === 'object') {
+            // First argument is options; infer the Element and tokenize
+            var opts = tokenTypeOrOptions;
+
+            var tokenType = opts.type,
+                rest = _objectWithoutProperties(opts, ['type']);
+
+            var specifiedType = typeof tokenType === 'string' ? tokenType : 'auto';
+            // Since only options were passed in, a corresponding Element must exist
+            // for the tokenization to succeed -- thus we call requireElement.
+            var element = _this.requireElement('impliedTokenType', specifiedType);
+            return stripe.createToken(element, rest);
+          } else if (typeof tokenTypeOrOptions === 'string') {
+            // First argument is token type; tokenize with token type and options
+            var _tokenType = tokenTypeOrOptions;
+            return stripe.createToken(_tokenType, options);
+          } else {
+            // If a bad value was passed in for options, throw an error.
+            throw new Error('Invalid options passed to createToken. Expected an object, got ' + (typeof tokenTypeOrOptions === 'undefined' ? 'undefined' : _typeof(tokenTypeOrOptions)) + '.');
+          }
+        };
+      };
+
+      _this.wrappedCreateSource = function (stripe) {
+        return function () {
+          var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+          if (options && (typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object') {
+            if (typeof options.type !== 'string') {
+              throw new Error('Invalid Source type passed to createSource. Expected string, got ' + _typeof(options.type) + '.');
+            }
+
+            var element = _this.findElement('impliedSourceType', options.type);
+            if (element) {
+              // If an Element exists for the source type, use that to create the
+              // corresponding source.
+              //
+              // NOTE: this prevents users from independently creating sources of
+              // type `foo` if an Element that can create `foo` sources exists in
+              // the current <Elements /> context.
+              return stripe.createSource(element, options);
+            } else {
+              // If no Element exists for the source type, directly create a source.
+              return stripe.createSource(options);
+            }
+          } else {
+            // If a bad value was passed in for options, throw an error.
+            throw new Error('Invalid options passed to createSource. Expected an object, got ' + (typeof options === 'undefined' ? 'undefined' : _typeof(options)) + '.');
+          }
+        };
+      };
+
+      _this.wrappedCreatePaymentMethod = function (stripe) {
+        return function (paymentMethodType, elementOrData, maybeData) {
+          if (paymentMethodType && (typeof paymentMethodType === 'undefined' ? 'undefined' : _typeof(paymentMethodType)) === 'object') {
+            return stripe.createPaymentMethod(paymentMethodType);
+          }
+
+          if (!paymentMethodType || typeof paymentMethodType !== 'string') {
+            throw new Error('Invalid PaymentMethod type passed to createPaymentMethod. Expected a string, got ' + (typeof paymentMethodType === 'undefined' ? 'undefined' : _typeof(paymentMethodType)) + '.');
+          }
+
+          var elementOrDataResult = _this.parseElementOrData(elementOrData);
+
+          // Second argument is Element; use passed in Element
+          if (elementOrDataResult.type === 'element') {
+            var _element = elementOrDataResult.element;
+
+            if (maybeData) {
+              return stripe.createPaymentMethod(paymentMethodType, _element, maybeData);
+            } else {
+              return stripe.createPaymentMethod(paymentMethodType, _element);
+            }
+          }
+
+          // Second argument is data or undefined; infer the Element
+          var data = elementOrDataResult.data;
+
+          var element = _this.findElement('impliedPaymentMethodType', paymentMethodType);
+
+          if (element) {
+            return data ? stripe.createPaymentMethod(paymentMethodType, element, data) : stripe.createPaymentMethod(paymentMethodType, element);
+          }
+
+          if (data && (typeof data === 'undefined' ? 'undefined' : _typeof(data)) === 'object') {
+            return stripe.createPaymentMethod(paymentMethodType, data);
+          } else if (!data) {
+            throw new Error('Could not find an Element that can be used to create a PaymentMethod of type: ' + paymentMethodType + '.');
+          } else {
+            // If a bad value was passed in for data, throw an error.
+            throw new Error('Invalid data passed to createPaymentMethod. Expected an object, got ' + (typeof data === 'undefined' ? 'undefined' : _typeof(data)) + '.');
+          }
+        };
+      };
+
+      _this.wrappedHandleCardX = function (stripe, method) {
+        return function (clientSecret, elementOrData, maybeData) {
+          if (!clientSecret || typeof clientSecret !== 'string') {
+            // If a bad value was passed in for clientSecret, throw an error.
+            throw new Error('Invalid PaymentIntent client secret passed to handleCardPayment. Expected string, got ' + (typeof clientSecret === 'undefined' ? 'undefined' : _typeof(clientSecret)) + '.');
+          }
+
+          var elementOrDataResult = _this.parseElementOrData(elementOrData);
+
+          // Second argument is Element; handle with element
+          if (elementOrDataResult.type === 'element') {
+            var _element2 = elementOrDataResult.element;
+
+            if (maybeData) {
+              return stripe[method](clientSecret, _element2, maybeData);
+            } else {
+              return stripe[method](clientSecret, _element2);
+            }
+          }
+
+          // Second argument is data or undefined; see if we can find a mounted Element
+          // that can create card PaymentMethods
+          var data = elementOrDataResult.data;
+
+          var element = _this.findElement('impliedPaymentMethodType', 'card');
+
+          if (element) {
+            // If an Element exists that can create card PaymentMethods use it. Otherwise
+            // assume that we must be calling with data only.
+            //
+            // NOTE: this prevents users from using handleCard* with an existing
+            // Source or PaymentMethod if an Element that can create card PaymentMethods
+            // exists in the current <Elements /> context.
+            if (data) {
+              return stripe[method](clientSecret, element, data);
+            } else {
+              return stripe[method](clientSecret, element);
+            }
+          } else if (data) {
+            // if no element exists call handleCard* directly (with data)
+            return stripe[method](clientSecret, data);
+          } else {
+            // if no element exists call handleCard* directly (with only the clientSecret)
+            return stripe[method](clientSecret);
+          }
+        };
+      };
+
+      if (_this.context.tag === 'sync') {
+        _this.state = {
+          stripe: _this.stripeProps(_this.context.stripe)
+        };
+      } else {
+        _this.state = {
+          stripe: null
+        };
+      }
+      return _this;
+    }
+
+    _class.prototype.componentDidMount = function componentDidMount() {
+      var _this2 = this;
+
+      if (this.context.tag === 'async') {
+        this.context.addStripeLoadListener(function (stripe) {
+          _this2.setState({
+            stripe: _this2.stripeProps(stripe)
+          });
+        });
+      } else {
+        // when 'sync', it's already set in the constructor.
+      }
+    };
+
+    _class.prototype.getWrappedInstance = function getWrappedInstance() {
+      if (!withRef) {
+        throw new Error('To access the wrapped instance, the `{withRef: true}` option must be set when calling `injectStripe()`');
+      }
+      return this.wrappedInstance;
+    };
+
+    _class.prototype.stripeProps = function stripeProps(stripe) {
+      return _extends({}, stripe, {
+        // These are the only functions that take elements.
+        createToken: this.wrappedCreateToken(stripe),
+        createSource: this.wrappedCreateSource(stripe),
+        createPaymentMethod: this.wrappedCreatePaymentMethod(stripe),
+        handleCardPayment: this.wrappedHandleCardX(stripe, 'handleCardPayment'),
+        handleCardSetup: this.wrappedHandleCardX(stripe, 'handleCardSetup')
+      });
+    };
+
+    // Finds an Element by the specified type, if one exists.
+    // Throws if multiple Elements match.
+
+
+    // Require that exactly one Element is found for the specified type.
+    // Throws if no Element is found.
+
+
+    // Wraps createToken in order to infer the Element that is being tokenized.
+
+
+    // Wraps createSource in order to infer the Element that is being used for
+    // source creation.
+
+
+    // Wraps createPaymentMethod in order to infer the Element that is being
+    // used for PaymentMethod creation.
+
+
+    _class.prototype.render = function render() {
+      var _this3 = this;
+
+      return _react2.default.createElement(WrappedComponent, _extends({}, this.props, {
+        stripe: this.state.stripe,
+        elements: this.context.elements,
+        ref: withRef ? function (c) {
+          _this3.wrappedInstance = c;
+        } : null
+      }));
+    };
+
+    return _class;
+  }(_react2.default.Component), _class.contextTypes = _extends({}, _Provider.providerContextTypes, _Elements.injectContextTypes), _class.displayName = 'InjectStripe(' + (WrappedComponent.displayName || WrappedComponent.name || 'Component') + ')', _temp;
+};
+
+exports.default = inject;
+
+/***/ }),
+
+/***/ "./node_modules/react-stripe-elements/es/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-stripe-elements/es/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AuBankAccountElement = exports.FpxBankElement = exports.IdealBankElement = exports.IbanElement = exports.PaymentRequestButtonElement = exports.CardCVCElement = exports.CardCvcElement = exports.CardExpiryElement = exports.CardNumberElement = exports.CardElement = exports.Elements = exports.injectStripe = exports.StripeProvider = undefined;
+
+var _Provider = __webpack_require__(/*! ./components/Provider */ "./node_modules/react-stripe-elements/es/components/Provider.js");
+
+var _Provider2 = _interopRequireDefault(_Provider);
+
+var _inject = __webpack_require__(/*! ./components/inject */ "./node_modules/react-stripe-elements/es/components/inject.js");
+
+var _inject2 = _interopRequireDefault(_inject);
+
+var _Elements = __webpack_require__(/*! ./components/Elements */ "./node_modules/react-stripe-elements/es/components/Elements.js");
+
+var _Elements2 = _interopRequireDefault(_Elements);
+
+var _Element = __webpack_require__(/*! ./components/Element */ "./node_modules/react-stripe-elements/es/components/Element.js");
+
+var _Element2 = _interopRequireDefault(_Element);
+
+var _PaymentRequestButtonElement = __webpack_require__(/*! ./components/PaymentRequestButtonElement */ "./node_modules/react-stripe-elements/es/components/PaymentRequestButtonElement.js");
+
+var _PaymentRequestButtonElement2 = _interopRequireDefault(_PaymentRequestButtonElement);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Define Elements, and register their implied token / source types for
+// automatic token / source creation.
+
+// Card
+var CardElement = (0, _Element2.default)('card', {
+  impliedTokenType: 'card',
+  impliedSourceType: 'card',
+  impliedPaymentMethodType: 'card'
+});
+
+// Split Fields
+// Note: we only register the CardNumberElement for split fields so that we have
+// a unique Element to infer when calling `wrappedCreateToken` or `wrappedCreateSource`.
+
+var CardNumberElement = (0, _Element2.default)('cardNumber', {
+  impliedTokenType: 'card',
+  impliedSourceType: 'card',
+  impliedPaymentMethodType: 'card'
+});
+var CardExpiryElement = (0, _Element2.default)('cardExpiry');
+var CardCvcElement = (0, _Element2.default)('cardCvc');
+var CardCVCElement = CardCvcElement; // deprecated in favor of CardCvcElement which better matches Elements API
+
+// IBAN
+var IbanElement = (0, _Element2.default)('iban', {
+  impliedTokenType: 'bank_account',
+  impliedSourceType: 'sepa_debit'
+});
+
+// iDEAL Bank
+var IdealBankElement = (0, _Element2.default)('idealBank', { impliedSourceType: 'ideal' });
+
+// fpx Bank
+var FpxBankElement = (0, _Element2.default)('fpxBank');
+
+// auBankAccount
+// Requires beta access. Contact Stripe support for more information:
+// https://support.stripe.com
+var AuBankAccountElement = (0, _Element2.default)('auBankAccount');
+
+exports.StripeProvider = _Provider2.default;
+exports.injectStripe = _inject2.default;
+exports.Elements = _Elements2.default;
+exports.CardElement = CardElement;
+exports.CardNumberElement = CardNumberElement;
+exports.CardExpiryElement = CardExpiryElement;
+exports.CardCvcElement = CardCvcElement;
+exports.CardCVCElement = CardCVCElement;
+exports.PaymentRequestButtonElement = _PaymentRequestButtonElement2.default;
+exports.IbanElement = IbanElement;
+exports.IdealBankElement = IdealBankElement;
+exports.FpxBankElement = FpxBankElement;
+exports.AuBankAccountElement = AuBankAccountElement;
+
+/***/ }),
+
+/***/ "./node_modules/react-stripe-elements/es/utils/isEqual.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/react-stripe-elements/es/utils/isEqual.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var PLAIN_OBJECT_STR = '[object Object]';
+
+var isEqual = function isEqual(left, right) {
+  if ((typeof left === 'undefined' ? 'undefined' : _typeof(left)) !== 'object' || (typeof right === 'undefined' ? 'undefined' : _typeof(right)) !== 'object') {
+    return left === right;
+  }
+
+  if (left === null || right === null) return left === right;
+
+  var leftArray = Array.isArray(left);
+  var rightArray = Array.isArray(right);
+
+  if (leftArray !== rightArray) return false;
+
+  var leftPlainObject = Object.prototype.toString.call(left) === PLAIN_OBJECT_STR;
+  var rightPlainObject = Object.prototype.toString.call(right) === PLAIN_OBJECT_STR;
+
+  if (leftPlainObject !== rightPlainObject) return false;
+
+  if (!leftPlainObject && !leftArray) return false;
+
+  var leftKeys = Object.keys(left);
+  var rightKeys = Object.keys(right);
+
+  if (leftKeys.length !== rightKeys.length) return false;
+
+  var keySet = {};
+  for (var i = 0; i < leftKeys.length; i += 1) {
+    keySet[leftKeys[i]] = true;
+  }
+  for (var _i = 0; _i < rightKeys.length; _i += 1) {
+    keySet[rightKeys[_i]] = true;
+  }
+  var allKeys = Object.keys(keySet);
+  if (allKeys.length !== leftKeys.length) {
+    return false;
+  }
+
+  var l = left;
+  var r = right;
+  var pred = function pred(key) {
+    return isEqual(l[key], r[key]);
+  };
+
+  return allKeys.every(pred);
+};
+
+exports.default = isEqual;
+
+/***/ }),
+
+/***/ "./node_modules/react-stripe-elements/es/utils/shallowEqual.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/react-stripe-elements/es/utils/shallowEqual.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var shallowEqual = function shallowEqual(a, b) {
+  var keysA = Object.keys(a);
+  var keysB = Object.keys(b);
+
+  return keysA.length === keysB.length && keysA.every(function (key) {
+    return b.hasOwnProperty(key) && b[key] === a[key];
+  });
+};
+
+exports.default = shallowEqual;
+
+/***/ }),
+
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
   !*** delegated ./node_modules/react/index.js from dll-reference dll_2adc2403d89adc16ead0 ***!
@@ -34519,33 +35755,27 @@ if (hasSymbols()) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _lib_blocks___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib/blocks/ */ "./lib/blocks/index.js");
-/* harmony import */ var _lib_reducers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../lib/reducers */ "./lib/reducers.js");
-/* harmony import */ var _lib_interface_useObserver__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../lib/interface/useObserver */ "./lib/interface/useObserver.js");
-/* harmony import */ var _lib_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../lib/components */ "./lib/components/index.js");
-/* harmony import */ var _lib_theme__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../lib/theme */ "./lib/theme.js");
-/* harmony import */ var _lib_util__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../lib/util */ "./lib/util.js");
-/* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-spring */ "./node_modules/react-spring/web.js");
-/* harmony import */ var _lib_static___WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../lib/static/ */ "./lib/static/index.js");
-/* harmony import */ var _lib_forms_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../lib/forms/forms */ "./lib/forms/forms.js");
-/* harmony import */ var _lib_interface_withAuth__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../lib/interface/withAuth */ "./lib/interface/withAuth.js");
-
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _lib_blocks___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/blocks/ */ "./lib/blocks/index.js");
+/* harmony import */ var _lib_reducers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib/reducers */ "./lib/reducers.js");
+/* harmony import */ var _lib_interface_useObserver__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../lib/interface/useObserver */ "./lib/interface/useObserver.js");
+/* harmony import */ var _lib_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../lib/components */ "./lib/components/index.js");
+/* harmony import */ var _lib_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../lib/util */ "./lib/util.js");
+/* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-spring */ "./node_modules/react-spring/web.js");
+/* harmony import */ var _lib_forms_Forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../lib/forms/Forms */ "./lib/forms/Forms.js");
+/* harmony import */ var _lib_animations_spring__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../lib/animations/spring */ "./lib/animations/spring.js");
+/* harmony import */ var _lib_interface_withAuth__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../lib/interface/withAuth */ "./lib/interface/withAuth.js");
+/* harmony import */ var _lib_blocks_home_Index_Styles__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../lib/blocks/home/Index_Styles */ "./lib/blocks/home/Index_Styles.js");
 
 
 var _jsxFileName = "/Users/ryanbreaux/Projects/Web/Clients/nps_v2/pages/index.js",
     _this = undefined;
 
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
@@ -34558,39 +35788,42 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-
-var Body = _lib_components__WEBPACK_IMPORTED_MODULE_7__["Layout"].Body,
-    Container = _lib_components__WEBPACK_IMPORTED_MODULE_7__["Layout"].Container,
-    Viewport_Container = _lib_components__WEBPACK_IMPORTED_MODULE_7__["Layout"].Viewport_Container;
+var Body = _lib_components__WEBPACK_IMPORTED_MODULE_6__["Layout"].Body,
+    Viewport_Container = _lib_components__WEBPACK_IMPORTED_MODULE_6__["Layout"].Viewport_Container;
 var initalState = {
   scrolled: false,
   modal: false
 };
 var Forms = {
-  Login: _lib_forms_forms__WEBPACK_IMPORTED_MODULE_12__["Login"],
-  Registration: _lib_forms_forms__WEBPACK_IMPORTED_MODULE_12__["Registration"]
+  Login_Form: _lib_forms_Forms__WEBPACK_IMPORTED_MODULE_9__["Login_Form"],
+  User_Registration_Form: _lib_forms_Forms__WEBPACK_IMPORTED_MODULE_9__["User_Registration_Form"]
 };
 
 function HomePage(_ref) {
   var user = _ref.user;
 
-  var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_2__["useReducer"])(_lib_reducers__WEBPACK_IMPORTED_MODULE_5__["default"].HomePage, initalState),
+  var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_1__["useReducer"])(_lib_reducers__WEBPACK_IMPORTED_MODULE_4__["default"].HomePage, initalState),
       store = _useReducer[0],
       dispatch = _useReducer[1];
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(),
       formType = _useState[0],
       setForm = _useState[1];
 
   var Modal_Form = Forms[formType];
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    window.scrollY > 0 && dispatch({
+      type: "SCROLLED"
+    });
+  }, []);
   return __jsx(Body, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 32,
       columnNumber: 5
     }
-  }, __jsx(_lib_blocks___WEBPACK_IMPORTED_MODULE_4__["Nav"], {
+  }, __jsx(_lib_blocks___WEBPACK_IMPORTED_MODULE_3__["Nav"], {
     fixed: true,
     setForm: setForm,
     isLoggedIn: user,
@@ -34599,7 +35832,7 @@ function HomePage(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 33,
       columnNumber: 7
     }
   }), __jsx(Container_1, {
@@ -34608,7 +35841,7 @@ function HomePage(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 40,
       columnNumber: 7
     }
   }), __jsx(Container_2, {
@@ -34617,17 +35850,10 @@ function HomePage(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 41,
       columnNumber: 7
     }
-  }), __jsx(Container_3, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 7
-    }
-  }), store.modal && __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_7__["Modal"], {
+  }), store.modal && __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_6__["Modal"], {
     show: store.modal,
     hideModal: function hideModal() {
       return dispatch({
@@ -34639,51 +35865,41 @@ function HomePage(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 44,
       columnNumber: 9
     }
   }, __jsx(Modal_Form, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 50,
       columnNumber: 11
     }
   })));
 }
 
-var Container_1_Styles = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
-  displayName: "pages__Container_1_Styles",
-  componentId: "sc-1bxujxe-0"
-})(["overflow:hidden;.Splash_Image{width:100%;height:100%;background-image:url(\"https://res.cloudinary.com/dxjse9tsv/image/upload/v1556242581/NationalYouthSports/action-activity-athlete.jpg\");background-size:cover;position:absolute;top:0%;left:0%;z-index:-1;transition:1s cubic-bezier(0.075,0.82,0.165,1);}.Splash_Logo{position:absolute;margin:15px;}.Splash_Nav_Container{position:absolute;bottom:0;max-width:500px;width:100%;.Splash_Nav_Background{position:absolute;background-color:", ";top:0;left:0;width:250vw;height:300%;}.Splash_Nav_SubContainer{position:relative;padding:20px;}}"], _lib_theme__WEBPACK_IMPORTED_MODULE_8__["default"].colors.c1);
-
 var Container_1 = function Container_1(_ref2) {
   var dispatch = _ref2.dispatch,
       store = _ref2.store;
 
-  var _useObserver = Object(_lib_interface_useObserver__WEBPACK_IMPORTED_MODULE_6__["default"])({
-    threshold: Object(_lib_util__WEBPACK_IMPORTED_MODULE_9__["buildThresholdList"])(20)
+  var _useObserver = Object(_lib_interface_useObserver__WEBPACK_IMPORTED_MODULE_5__["default"])({
+    threshold: Object(_lib_util__WEBPACK_IMPORTED_MODULE_7__["buildThresholdList"])(20)
   }),
-      _useObserver2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useObserver, 2),
+      _useObserver2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useObserver, 2),
       ref = _useObserver2[0],
       entries = _useObserver2[1];
 
-  var _useSpring = Object(react_spring__WEBPACK_IMPORTED_MODULE_10__["useSpring"])(function () {
+  var _useSpring = Object(react_spring__WEBPACK_IMPORTED_MODULE_8__["useSpring"])(function () {
     return {
-      opacity: 1,
-      xyr: [-32, 0, 17],
-      y: 0
+      opacity: 1
     };
   }),
-      _useSpring2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useSpring, 2),
-      _useSpring2$ = _useSpring2[0],
-      xyr = _useSpring2$.xyr,
-      opacity = _useSpring2$.opacity,
-      y = _useSpring2$.y,
+      _useSpring2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useSpring, 2),
+      opacity = _useSpring2[0].opacity,
       setAnim = _useSpring2[1];
 
   var isIntersecting = entries.isIntersecting;
-  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var Scrolled_Threshold = 0.1;
 
     if (isIntersecting) {
@@ -34696,25 +35912,17 @@ var Container_1 = function Container_1(_ref2) {
       }); //Set Animations
 
       setAnim({
-        opacity: ir,
-        xyr: [-10 - 52 * ir, -10, ir * 17]
+        opacity: ir < 0.6 || store.scrolled ? 0 : ir
       });
     }
-  });
-  return __jsx(Container_1_Styles, {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 123,
-      columnNumber: 5
-    }
-  }, __jsx(Viewport_Container, {
+  }, [store.scrolled, entries.intersectionRatio]);
+  return __jsx(_lib_blocks_home_Index_Styles__WEBPACK_IMPORTED_MODULE_12__["Container_1_Styles"], {
     ref: ref,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 124,
-      columnNumber: 7
+      lineNumber: 87,
+      columnNumber: 5
     }
   }, __jsx("img", {
     className: "Splash_Logo",
@@ -34722,68 +35930,64 @@ var Container_1 = function Container_1(_ref2) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 125,
-      columnNumber: 9
+      lineNumber: 88,
+      columnNumber: 7
+    }
+  }), __jsx(react_spring__WEBPACK_IMPORTED_MODULE_8__["animated"].div, {
+    className: "Splash_Image",
+    style: {
+      opacity: opacity
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 92,
+      columnNumber: 7
     }
   }), __jsx("div", {
     className: "Splash_Nav_Container",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 129,
+      lineNumber: 93,
+      columnNumber: 7
+    }
+  }, __jsx(react_spring__WEBPACK_IMPORTED_MODULE_8__["animated"].div, {
+    style: {
+      opacity: opacity
+    },
+    className: "Splash_Nav_Container_SubContainer",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 94,
       columnNumber: 9
     }
-  }, __jsx(react_spring__WEBPACK_IMPORTED_MODULE_10__["animated"].div, {
-    className: "Splash_Nav_Background",
-    style: {
-      transform: xyr.interpolate(function (x, y, r) {
-        return "translate(".concat(x, "%,").concat(y, "%) rotate(").concat(r, "deg)");
-      })
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 130,
-      columnNumber: 11
-    }
-  }), __jsx(react_spring__WEBPACK_IMPORTED_MODULE_10__["animated"].div, {
-    style: {
-      opacity: opacity.interpolate(function (val) {
-        return val;
-      })
-    },
-    className: "Splash_Nav_SubContainer",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 138,
-      columnNumber: 11
-    }
-  }, __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_7__["Heading"], {
+  }, __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_6__["Heading"], {
     type: "Big",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 142,
-      columnNumber: 13
+      lineNumber: 98,
+      columnNumber: 11
     }
-  }, "Spring"), __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_7__["Heading"], {
+  }, "Spring"), __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_6__["Heading"], {
     type: "Sub",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 143,
-      columnNumber: 13
+      lineNumber: 99,
+      columnNumber: 11
     }
-  }, "Register Today"), __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+  }, "Register Today"), __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_6__["Button"], {
     type: "Small",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 144,
-      columnNumber: 13
+      lineNumber: 100,
+      columnNumber: 11
     }
-  }, "Sign Up"), __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+  }, "Sign Up"), __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_6__["Button"], {
     onClick: function onClick() {
       return dispatch({
         type: "SHOW_LOGIN"
@@ -34793,30 +35997,15 @@ var Container_1 = function Container_1(_ref2) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145,
-      columnNumber: 13
+      lineNumber: 101,
+      columnNumber: 11
     }
-  }, "Login"))), __jsx("div", {
-    className: "Splash_Image",
-    style: {
-      opacity: store.login ? 0 : 1
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 153,
-      columnNumber: 9
-    }
-  })));
+  }, "Login"))));
 };
 
-var Container_2_Styles = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
-  displayName: "pages__Container_2_Styles",
-  componentId: "sc-1bxujxe-1"
-})(["display:flex;align-items:center;height:100%;transition:opacity 2s cubic-bezier(0.23,1,0.32,1);.Heading_Container{position:absolute;top:0;left:0;height:100%;.Heading_Container_Headings{position:sticky;top:70vh;margin-top:80vh;white-space:pre-line;align-self:self-start;z-index:1;& > *{margin-bottom:-45px;}}}.Card_Background_Container{width:100%;}.Card_Container{display:flex;flex-direction:column;justify-content:space-around;z-index:1;.Card{height:80vh;margin-top:84px;margin-bottom:20rem;background-size:cover;}& > *{}}.Background_Container{display:none;position:absolute;top:0;left:0;height:100%;width:100%;z-index:0;}.Background_Sub_Container{position:relative;height:100%;width:100%;overflow:hidden;}"]);
-var Background_Stripe = Object(react_spring__WEBPACK_IMPORTED_MODULE_10__["animated"])(styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
+var Background_Stripe = Object(react_spring__WEBPACK_IMPORTED_MODULE_8__["animated"])(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "pages__Background_Stripe",
-  componentId: "sc-1bxujxe-2"
+  componentId: "sc-1bxujxe-0"
 })(["position:absolute;height:15vh;width:500vw;top:0;transform:rotate(40deg) translate(0%,", "%);will-change:opacity;background-color:", ";"], function (_ref3) {
   var index = _ref3.index;
   return index * 500;
@@ -34824,27 +36013,26 @@ var Background_Stripe = Object(react_spring__WEBPACK_IMPORTED_MODULE_10__["anima
   var index = _ref4.index;
   return index % 2 === 0 ? "#ffffff1f" : "#0e0d0d38";
 }));
-var Card_Anim = Object(react_spring__WEBPACK_IMPORTED_MODULE_10__["animated"])(_lib_blocks___WEBPACK_IMPORTED_MODULE_4__["Card"]);
 
 var Container_2 = function Container_2(_ref5) {
   var store = _ref5.store;
-  var fadeIn = Object(react_spring__WEBPACK_IMPORTED_MODULE_10__["useTrail"])(10, {
+  var fadeIn = Object(react_spring__WEBPACK_IMPORTED_MODULE_8__["useTrail"])(10, {
     opacity: store.scrolled ? 1 : 0
   });
 
-  var _useObserver3 = Object(_lib_interface_useObserver__WEBPACK_IMPORTED_MODULE_6__["default"])({
-    threshold: Object(_lib_util__WEBPACK_IMPORTED_MODULE_9__["buildThresholdList"])(40)
+  var _useObserver3 = Object(_lib_interface_useObserver__WEBPACK_IMPORTED_MODULE_5__["default"])({
+    threshold: Object(_lib_util__WEBPACK_IMPORTED_MODULE_7__["buildThresholdList"])(40)
   }),
-      _useObserver4 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useObserver3, 2),
+      _useObserver4 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useObserver3, 2),
       ref = _useObserver4[0],
       entries = _useObserver4[1];
 
-  var _useSpring3 = Object(react_spring__WEBPACK_IMPORTED_MODULE_10__["useSpring"])(function () {
+  var _useSpring3 = Object(react_spring__WEBPACK_IMPORTED_MODULE_8__["useSpring"])(function () {
     return {
       xy: [0, 0]
     };
   }),
-      _useSpring4 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useSpring3, 2),
+      _useSpring4 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useSpring3, 2),
       swoopIn = _useSpring4[0],
       setAnim = _useSpring4[1];
 
@@ -34854,7 +36042,7 @@ var Container_2 = function Container_2(_ref5) {
     return [0, 0];
   };
 
-  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var isIntersecting = entries.isIntersecting;
 
     if (isIntersecting) {
@@ -34868,73 +36056,28 @@ var Container_2 = function Container_2(_ref5) {
   });
   return __jsx(Viewport_Container, {
     style: {
-      background: "black",
+      background: "whtie",
       height: "100%"
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 269,
+      lineNumber: 150,
       columnNumber: 5
     }
-  }, __jsx(Container_2_Styles, {
+  }, __jsx(_lib_blocks_home_Index_Styles__WEBPACK_IMPORTED_MODULE_12__["Container_2_Styles"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 275,
+      lineNumber: 156,
       columnNumber: 7
     }
   }, __jsx("div", {
-    className: "Heading_Container",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 276,
-      columnNumber: 9
-    }
-  }, __jsx(react_spring__WEBPACK_IMPORTED_MODULE_10__["animated"].div, {
-    className: "Heading_Container_Headings",
-    style: _objectSpread({}, fadeIn[4], {
-      transform: swoopIn.xy.interpolate(function (x, y) {
-        return "translate(".concat(x, "px,").concat(y, "px)");
-      })
-    }),
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 277,
-      columnNumber: 11
-    }
-  }, __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_7__["Heading"], {
-    type: "Big",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 286,
-      columnNumber: 13
-    }
-  }, "The Best"), __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_7__["Heading"], {
-    type: "Big",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 287,
-      columnNumber: 13
-    }
-  }, "League In"), __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_7__["Heading"], {
-    type: "Big",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 288,
-      columnNumber: 13
-    }
-  }, "Scottsdale"))), __jsx("div", {
     className: "Card_Background_Container",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 291,
+      lineNumber: 171,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -34942,59 +36085,91 @@ var Container_2 = function Container_2(_ref5) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 292,
+      lineNumber: 172,
       columnNumber: 11
     }
-  }, __jsx(Card_Anim, {
+  }, __jsx(_lib_animations_spring__WEBPACK_IMPORTED_MODULE_10__["FadeIn_Wrapper"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 173,
+      columnNumber: 13
+    }
+  }, __jsx(_lib_blocks___WEBPACK_IMPORTED_MODULE_3__["Card"], {
     title: "Awards",
-    background: "https://res.cloudinary.com/dxjse9tsv/image/upload/v1586591862/NationalYouthSports/abigail-keenan-8-s5QuUBtyM-unsplash.jpg",
+    background: "https://res.cloudinary.com/dxjse9tsv/image/upload/v1586905436/NationalYouthSports/ball-basketball-basketball-court-basketball-hoop-1752757.jpg",
     caption: "GYS is part of the ONLY major multi-sport league based in the east valley!",
-    style: fadeIn[0],
+    button: __jsx(_lib_components__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+      type: "Small",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 180,
+        columnNumber: 25
+      }
+    }, "Join Us"),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 293,
-      columnNumber: 13
+      lineNumber: 174,
+      columnNumber: 15
     }
-  }), __jsx(Card_Anim, {
-    background: "https://res.cloudinary.com/dxjse9tsv/image/upload/v1586595987/NationalYouthSports/adria-crehuet-cano-yndHHu2kJAw-unsplash.jpg",
-    title: "Fun",
-    style: fadeIn[1],
-    img: _lib_static___WEBPACK_IMPORTED_MODULE_11__["Hand_Slap"],
+  })), __jsx(_lib_animations_spring__WEBPACK_IMPORTED_MODULE_10__["FadeIn_Wrapper"], {
+    className: "Cards_Wrapper Double",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 301,
+      lineNumber: 183,
       columnNumber: 13
     }
-  }), __jsx(Card_Anim, {
+  }, __jsx(_lib_blocks___WEBPACK_IMPORTED_MODULE_3__["Card"], {
+    background: "https://res.cloudinary.com/dxjse9tsv/image/upload/v1586910899/a-boy-seated-holding-a-basket-ball.jpg",
+    title: "Believe",
+    caption: "",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 184,
+      columnNumber: 15
+    }
+  }), __jsx(_lib_blocks___WEBPACK_IMPORTED_MODULE_3__["Card"], {
     background: "https://res.cloudinary.com/dxjse9tsv/image/upload/v1586593941/NationalYouthSports/johann-rosch-JgDjK1c4UIU-unsplash.jpg",
-    title: "Tournament",
-    style: fadeIn[2],
-    img: _lib_static___WEBPACK_IMPORTED_MODULE_11__["Horn"],
+    title: "Fulfillment",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 307,
+      lineNumber: 189,
+      columnNumber: 15
+    }
+  })), __jsx(_lib_animations_spring__WEBPACK_IMPORTED_MODULE_10__["FadeIn_Wrapper"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 194,
       columnNumber: 13
     }
-  }), __jsx(Card_Anim, {
+  }), __jsx(_lib_animations_spring__WEBPACK_IMPORTED_MODULE_10__["FadeIn_Wrapper"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 195,
+      columnNumber: 13
+    }
+  }, __jsx(_lib_blocks___WEBPACK_IMPORTED_MODULE_3__["Card"], {
     background: "https://res.cloudinary.com/dxjse9tsv/image/upload/v1586594243/NationalYouthSports/ben-hershey-Ql2n3JsUpww-unsplash.jpg",
     title: "Modern",
-    style: fadeIn[3],
-    img: _lib_static___WEBPACK_IMPORTED_MODULE_11__["Computer"],
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 313,
-      columnNumber: 13
+      lineNumber: 196,
+      columnNumber: 15
     }
-  })), __jsx("div", {
+  }))), __jsx("div", {
     className: "Background_Container",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 320,
+      lineNumber: 202,
       columnNumber: 11
     }
   }, __jsx("div", {
@@ -35002,7 +36177,7 @@ var Container_2 = function Container_2(_ref5) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 321,
+      lineNumber: 203,
       columnNumber: 13
     }
   }, __jsx(Background_Stripe, {
@@ -35011,7 +36186,7 @@ var Container_2 = function Container_2(_ref5) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 322,
+      lineNumber: 204,
       columnNumber: 15
     }
   }), __jsx(Background_Stripe, {
@@ -35020,7 +36195,7 @@ var Container_2 = function Container_2(_ref5) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 323,
+      lineNumber: 205,
       columnNumber: 15
     }
   }), __jsx(Background_Stripe, {
@@ -35029,7 +36204,7 @@ var Container_2 = function Container_2(_ref5) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 324,
+      lineNumber: 206,
       columnNumber: 15
     }
   }), __jsx(Background_Stripe, {
@@ -35038,7 +36213,7 @@ var Container_2 = function Container_2(_ref5) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 325,
+      lineNumber: 207,
       columnNumber: 15
     }
   }), __jsx(Background_Stripe, {
@@ -35047,15 +36222,15 @@ var Container_2 = function Container_2(_ref5) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 326,
+      lineNumber: 208,
       columnNumber: 15
     }
   }))))));
 };
 
-var Container_3_Styles = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
+var Container_3_Styles = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "pages__Container_3_Styles",
-  componentId: "sc-1bxujxe-3"
+  componentId: "sc-1bxujxe-1"
 })(["background:beige;height:100%;"]);
 
 var Container_3 = function Container_3() {
@@ -35063,20 +36238,20 @@ var Container_3 = function Container_3() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 342,
+      lineNumber: 224,
       columnNumber: 5
     }
   }, __jsx(Container_3_Styles, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 343,
+      lineNumber: 225,
       columnNumber: 7
     }
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_lib_interface_withAuth__WEBPACK_IMPORTED_MODULE_13__["default"])(HomePage));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_lib_interface_withAuth__WEBPACK_IMPORTED_MODULE_11__["default"])(HomePage));
 
 /***/ }),
 

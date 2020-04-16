@@ -339,8 +339,8 @@ var QueryData = (function (_super) {
                     loading: false,
                     networkStatus: apollo_client__WEBPACK_IMPORTED_MODULE_3__["NetworkStatus"].ready,
                     called: false,
-                    data: undefined
-                }
+                    data: undefined,
+                },
             ]
             : [this.runLazyQuery, this.execute()];
     };
@@ -353,15 +353,10 @@ var QueryData = (function (_super) {
         return currentResult.loading ? obs.result() : false;
     };
     QueryData.prototype.afterExecute = function (_a) {
-        var _this = this;
         var _b = (_a === void 0 ? {} : _a).lazy, lazy = _b === void 0 ? false : _b;
         this.isMounted = true;
         if (!lazy || this.runLazy) {
             this.handleErrorOrCompleted();
-            setTimeout(function () {
-                _this.currentObservable.query &&
-                    _this.currentObservable.query.resetQueryStoreErrors();
-            });
         }
         this.previousOptions = this.getOptions();
         return this.unmount.bind(this);
@@ -388,13 +383,9 @@ var QueryData = (function (_super) {
     QueryData.prototype.getExecuteSsrResult = function () {
         var ssrDisabled = this.getOptions().ssr === false;
         var fetchDisabled = this.refreshClient().client.disableNetworkFetches;
-        var ssrLoading = {
-            loading: true,
-            networkStatus: apollo_client__WEBPACK_IMPORTED_MODULE_3__["NetworkStatus"].loading,
-            called: true,
-            data: undefined
-        };
+        var ssrLoading = Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__assign"])({ loading: true, networkStatus: apollo_client__WEBPACK_IMPORTED_MODULE_3__["NetworkStatus"].loading, called: true, data: undefined, stale: false, client: this.client }, this.observableQueryFields());
         if (ssrDisabled && (this.ssrInitiated() || fetchDisabled)) {
+            this.previousData.result = ssrLoading;
             return ssrLoading;
         }
         var result;
@@ -469,7 +460,7 @@ var QueryData = (function (_super) {
                     _this.previousData.error = error;
                     _this.onNewData();
                 }
-            }
+            },
         });
     };
     QueryData.prototype.resubscribeToQuery = function () {
@@ -480,7 +471,7 @@ var QueryData = (function (_super) {
         this.startQuerySubscription();
         Object.assign(this.currentObservable.query, {
             lastError: lastError,
-            lastResult: lastResult
+            lastResult: lastResult,
         });
     };
     QueryData.prototype.getQueryResult = function () {
@@ -508,7 +499,7 @@ var QueryData = (function (_super) {
             else if (error) {
                 Object.assign(result, {
                     data: (this.currentObservable.query.getLastResult() || {})
-                        .data
+                        .data,
                 });
             }
             else {
@@ -520,7 +511,7 @@ var QueryData = (function (_super) {
                     fetchPolicy !== 'cache-only') {
                     Object.assign(result, {
                         loading: true,
-                        networkStatus: apollo_client__WEBPACK_IMPORTED_MODULE_3__["NetworkStatus"].loading
+                        networkStatus: apollo_client__WEBPACK_IMPORTED_MODULE_3__["NetworkStatus"].loading,
                     });
                     result.refetch();
                     return result;
@@ -532,13 +523,15 @@ var QueryData = (function (_super) {
         this.previousData.loading =
             (this.previousData.result && this.previousData.result.loading) || false;
         this.previousData.result = result;
+        this.currentObservable.query &&
+            this.currentObservable.query.resetQueryStoreErrors();
         return result;
     };
     QueryData.prototype.handleErrorOrCompleted = function () {
         var obsQuery = this.currentObservable.query;
-        if (!obsQuery)
+        if (!obsQuery || !this.previousData.result)
             return;
-        var _a = obsQuery.getCurrentResult(), data = _a.data, loading = _a.loading, error = _a.error;
+        var _a = this.previousData.result, data = _a.data, loading = _a.loading, error = _a.error;
         if (!loading) {
             var _b = this.getOptions(), query = _b.query, variables = _b.variables, onCompleted = _b.onCompleted, onError = _b.onError;
             if (this.previousOptions &&
@@ -570,7 +563,7 @@ var QueryData = (function (_super) {
             updateQuery: this.obsUpdateQuery,
             startPolling: this.obsStartPolling,
             stopPolling: this.obsStopPolling,
-            subscribeToMore: this.obsSubscribeToMore
+            subscribeToMore: this.obsSubscribeToMore,
         };
     };
     return QueryData;
@@ -589,21 +582,19 @@ function useBaseQuery(query, options, lazy) {
     var context = Object(react__WEBPACK_IMPORTED_MODULE_2__["useContext"])(Object(_apollo_react_common__WEBPACK_IMPORTED_MODULE_0__["getApolloContext"])());
     var _a = Object(react__WEBPACK_IMPORTED_MODULE_2__["useReducer"])(function (x) { return x + 1; }, 0), tick = _a[0], forceUpdate = _a[1];
     var updatedOptions = options ? Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__assign"])(Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__assign"])({}, options), { query: query }) : { query: query };
-    var isRendering = Object(react__WEBPACK_IMPORTED_MODULE_2__["useRef"])(true);
-    var isRenderScheduled = Object(react__WEBPACK_IMPORTED_MODULE_2__["useRef"])(false);
     var queryDataRef = Object(react__WEBPACK_IMPORTED_MODULE_2__["useRef"])();
     var queryData = queryDataRef.current ||
         new QueryData({
             options: updatedOptions,
             context: context,
             onNewData: function () {
-                if (!queryData.ssrInitiated() && isRendering.current) {
-                    isRenderScheduled.current = true;
+                if (!queryData.ssrInitiated()) {
+                    Promise.resolve().then(forceUpdate);
                 }
                 else {
                     forceUpdate();
                 }
-            }
+            },
         });
     queryData.setOptions(updatedOptions);
     queryData.context = context;
@@ -613,7 +604,7 @@ function useBaseQuery(query, options, lazy) {
     var memo = {
         options: Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__assign"])(Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__assign"])({}, updatedOptions), { onError: undefined, onCompleted: undefined }),
         context: context,
-        tick: tick
+        tick: tick,
     };
     var result = useDeepMemo(function () { return (lazy ? queryData.executeLazy() : queryData.execute()); }, memo);
     var queryResult = lazy
@@ -623,21 +614,14 @@ function useBaseQuery(query, options, lazy) {
         if (!queryDataRef.current) {
             queryDataRef.current = queryData;
         }
-        isRendering.current = false;
-        if (isRenderScheduled.current) {
-            isRenderScheduled.current = false;
-            forceUpdate();
-        }
-    });
+        return function () { return queryData.cleanup(); };
+    }, []);
     Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () { return queryData.afterExecute({ lazy: lazy }); }, [
         queryResult.loading,
         queryResult.networkStatus,
         queryResult.error,
-        queryResult.data
+        queryResult.data,
     ]);
-    Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
-        return function () { return queryData.cleanup(); };
-    }, []);
     return result;
 }
 
@@ -5195,7 +5179,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HttpLink", function() { return HttpLink; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createHttpLink", function() { return createHttpLink; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apollo-link */ "./node_modules/apollo-link/lib/bundle.esm.js");
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apollo-link */ "./node_modules/apollo-link-http/node_modules/apollo-link/lib/bundle.esm.js");
 /* harmony import */ var apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! apollo-link-http-common */ "./node_modules/apollo-link-http-common/lib/bundle.esm.js");
 
 
@@ -5340,6 +5324,252 @@ var HttpLink = (function (_super) {
     return HttpLink;
 }(apollo_link__WEBPACK_IMPORTED_MODULE_1__["ApolloLink"]));
 
+
+//# sourceMappingURL=bundle.esm.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/apollo-link-http/node_modules/apollo-link/lib/bundle.esm.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/apollo-link-http/node_modules/apollo-link/lib/bundle.esm.js ***!
+  \**********************************************************************************/
+/*! exports provided: Observable, getOperationName, ApolloLink, concat, createOperation, empty, execute, from, fromError, fromPromise, makePromise, split, toPromise */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApolloLink", function() { return ApolloLink; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "concat", function() { return concat; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createOperation", function() { return createOperation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "empty", function() { return empty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "execute", function() { return execute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "from", function() { return from; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromError", function() { return fromError; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromPromise", function() { return fromPromise; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makePromise", function() { return makePromise; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "split", function() { return split; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toPromise", function() { return toPromise; });
+/* harmony import */ var zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! zen-observable-ts */ "./node_modules/apollo-link-http/node_modules/zen-observable-ts/lib/bundle.esm.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Observable", function() { return zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var ts_invariant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ts-invariant */ "./node_modules/ts-invariant/lib/invariant.esm.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! apollo-utilities */ "./node_modules/apollo-utilities/lib/bundle.esm.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getOperationName", function() { return apollo_utilities__WEBPACK_IMPORTED_MODULE_3__["getOperationName"]; });
+
+
+
+
+
+
+
+
+function validateOperation(operation) {
+    var OPERATION_FIELDS = [
+        'query',
+        'operationName',
+        'variables',
+        'extensions',
+        'context',
+    ];
+    for (var _i = 0, _a = Object.keys(operation); _i < _a.length; _i++) {
+        var key = _a[_i];
+        if (OPERATION_FIELDS.indexOf(key) < 0) {
+            throw  false ? undefined : new ts_invariant__WEBPACK_IMPORTED_MODULE_1__["InvariantError"]("illegal argument: " + key);
+        }
+    }
+    return operation;
+}
+var LinkError = (function (_super) {
+    Object(tslib__WEBPACK_IMPORTED_MODULE_2__["__extends"])(LinkError, _super);
+    function LinkError(message, link) {
+        var _this = _super.call(this, message) || this;
+        _this.link = link;
+        return _this;
+    }
+    return LinkError;
+}(Error));
+function isTerminating(link) {
+    return link.request.length <= 1;
+}
+function toPromise(observable) {
+    var completed = false;
+    return new Promise(function (resolve, reject) {
+        observable.subscribe({
+            next: function (data) {
+                if (completed) {
+                     false || ts_invariant__WEBPACK_IMPORTED_MODULE_1__["invariant"].warn("Promise Wrapper does not support multiple results from Observable");
+                }
+                else {
+                    completed = true;
+                    resolve(data);
+                }
+            },
+            error: reject,
+        });
+    });
+}
+var makePromise = toPromise;
+function fromPromise(promise) {
+    return new zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"](function (observer) {
+        promise
+            .then(function (value) {
+            observer.next(value);
+            observer.complete();
+        })
+            .catch(observer.error.bind(observer));
+    });
+}
+function fromError(errorValue) {
+    return new zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"](function (observer) {
+        observer.error(errorValue);
+    });
+}
+function transformOperation(operation) {
+    var transformedOperation = {
+        variables: operation.variables || {},
+        extensions: operation.extensions || {},
+        operationName: operation.operationName,
+        query: operation.query,
+    };
+    if (!transformedOperation.operationName) {
+        transformedOperation.operationName =
+            typeof transformedOperation.query !== 'string'
+                ? Object(apollo_utilities__WEBPACK_IMPORTED_MODULE_3__["getOperationName"])(transformedOperation.query)
+                : '';
+    }
+    return transformedOperation;
+}
+function createOperation(starting, operation) {
+    var context = Object(tslib__WEBPACK_IMPORTED_MODULE_2__["__assign"])({}, starting);
+    var setContext = function (next) {
+        if (typeof next === 'function') {
+            context = Object(tslib__WEBPACK_IMPORTED_MODULE_2__["__assign"])({}, context, next(context));
+        }
+        else {
+            context = Object(tslib__WEBPACK_IMPORTED_MODULE_2__["__assign"])({}, context, next);
+        }
+    };
+    var getContext = function () { return (Object(tslib__WEBPACK_IMPORTED_MODULE_2__["__assign"])({}, context)); };
+    Object.defineProperty(operation, 'setContext', {
+        enumerable: false,
+        value: setContext,
+    });
+    Object.defineProperty(operation, 'getContext', {
+        enumerable: false,
+        value: getContext,
+    });
+    Object.defineProperty(operation, 'toKey', {
+        enumerable: false,
+        value: function () { return getKey(operation); },
+    });
+    return operation;
+}
+function getKey(operation) {
+    var query = operation.query, variables = operation.variables, operationName = operation.operationName;
+    return JSON.stringify([operationName, query, variables]);
+}
+
+function passthrough(op, forward) {
+    return forward ? forward(op) : zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of();
+}
+function toLink(handler) {
+    return typeof handler === 'function' ? new ApolloLink(handler) : handler;
+}
+function empty() {
+    return new ApolloLink(function () { return zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of(); });
+}
+function from(links) {
+    if (links.length === 0)
+        return empty();
+    return links.map(toLink).reduce(function (x, y) { return x.concat(y); });
+}
+function split(test, left, right) {
+    var leftLink = toLink(left);
+    var rightLink = toLink(right || new ApolloLink(passthrough));
+    if (isTerminating(leftLink) && isTerminating(rightLink)) {
+        return new ApolloLink(function (operation) {
+            return test(operation)
+                ? leftLink.request(operation) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of()
+                : rightLink.request(operation) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of();
+        });
+    }
+    else {
+        return new ApolloLink(function (operation, forward) {
+            return test(operation)
+                ? leftLink.request(operation, forward) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of()
+                : rightLink.request(operation, forward) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of();
+        });
+    }
+}
+var concat = function (first, second) {
+    var firstLink = toLink(first);
+    if (isTerminating(firstLink)) {
+         false || ts_invariant__WEBPACK_IMPORTED_MODULE_1__["invariant"].warn(new LinkError("You are calling concat on a terminating link, which will have no effect", firstLink));
+        return firstLink;
+    }
+    var nextLink = toLink(second);
+    if (isTerminating(nextLink)) {
+        return new ApolloLink(function (operation) {
+            return firstLink.request(operation, function (op) { return nextLink.request(op) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of(); }) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of();
+        });
+    }
+    else {
+        return new ApolloLink(function (operation, forward) {
+            return (firstLink.request(operation, function (op) {
+                return nextLink.request(op, forward) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of();
+            }) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of());
+        });
+    }
+};
+var ApolloLink = (function () {
+    function ApolloLink(request) {
+        if (request)
+            this.request = request;
+    }
+    ApolloLink.prototype.split = function (test, left, right) {
+        return this.concat(split(test, left, right || new ApolloLink(passthrough)));
+    };
+    ApolloLink.prototype.concat = function (next) {
+        return concat(this, next);
+    };
+    ApolloLink.prototype.request = function (operation, forward) {
+        throw  false ? undefined : new ts_invariant__WEBPACK_IMPORTED_MODULE_1__["InvariantError"]('request is not implemented');
+    };
+    ApolloLink.empty = empty;
+    ApolloLink.from = from;
+    ApolloLink.split = split;
+    ApolloLink.execute = execute;
+    return ApolloLink;
+}());
+function execute(link, operation) {
+    return (link.request(createOperation(operation.context, transformOperation(validateOperation(operation)))) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of());
+}
+
+
+//# sourceMappingURL=bundle.esm.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/apollo-link-http/node_modules/zen-observable-ts/lib/bundle.esm.js":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/apollo-link-http/node_modules/zen-observable-ts/lib/bundle.esm.js ***!
+  \****************************************************************************************/
+/*! exports provided: default, Observable */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Observable", function() { return Observable; });
+/* harmony import */ var zen_observable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! zen-observable */ "./node_modules/zen-observable/index.js");
+/* harmony import */ var zen_observable__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(zen_observable__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Observable = zen_observable__WEBPACK_IMPORTED_MODULE_0___default.a;
+
+/* harmony default export */ __webpack_exports__["default"] = (Observable);
 
 //# sourceMappingURL=bundle.esm.js.map
 
@@ -7925,7 +8155,7 @@ module.exports = self.fetch.bind(self);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var e,t=(e=__webpack_require__(/*! querystring */ "./node_modules/querystring-es3/index.js"))&&"object"==typeof e&&"default"in e?e.default:e,r=/https?|ftp|gopher|file/;function o(e){"string"==typeof e&&(e=f(e));var o=function(e,t,r){var o=e.auth,a=e.hostname,s=e.protocol||"",h=e.pathname||"",c=e.hash||"",p=e.query||"",n=!1;o=o?encodeURIComponent(o).replace(/%3A/i,":")+"@":"",e.host?n=o+e.host:a&&(n=o+(~a.indexOf(":")?"["+a+"]":a),e.port&&(n+=":"+e.port)),p&&"object"==typeof p&&(p=t.encode(p));var l=e.search||p&&"?"+p||"";return s&&":"!==s.substr(-1)&&(s+=":"),e.slashes||(!s||r.test(s))&&!1!==n?(n="//"+(n||""),h&&"/"!==h[0]&&(h="/"+h)):n||(n=""),c&&"#"!==c[0]&&(c="#"+c),l&&"?"!==l[0]&&(l="?"+l),{protocol:s,host:n,pathname:h=h.replace(/[?#]/g,encodeURIComponent),search:l=l.replace("#","%23"),hash:c}}(e,t,r);return""+o.protocol+o.host+o.pathname+o.search+o.hash}var a="http://",s="w.w",h=a+s,c=/^https?|ftp|gopher|file/,p=/^(.*?)([#?].*)/,n=/^([a-z0-9.+-]*:)(\/{0,3})(.*)/i,l=/^([a-z0-9.+-]*:)?\/\/\/*/i,i=/^([a-z0-9.+-]*:)(\/{0,2})\[(.*)\]$/i;function u(e){try{return decodeURI(e)}catch(t){return e}}function f(e,r,a){void 0===r&&(r=!1),void 0===a&&(a=!1);var f=(e=e.trim()).match(p);e=f?u(f[1]).replace(/\\/g,"/")+f[2]:u(e).replace(/\\/g,"/"),i.test(e)&&"/"!==e.slice(-1)&&(e+="/");var m=!/(^javascript)/.test(e)&&e.match(n),v=l.test(e),d="";m&&(c.test(m[1])||(d=m[1].toLowerCase(),e=""+m[2]+m[3]),m[2]||(v=!1,c.test(m[1])?(d=m[1],e=""+m[3]):e="//"+m[3]),3!==m[2].length&&1!==m[2].length||(d=m[1],e="/"+m[3]));var g,b=e.match(/(:[0-9]+)/),y="";b&&b[1]&&3===b[1].length&&(e=e.replace(y=b[1],y+"00"));var w={},x="",R="";try{g=new URL(e)}catch(t){x=t,d||a||!/^\/\//.test(e)||/^\/\/.+[@.]/.test(e)||(R="/",e=e.substr(1));try{g=new URL(e,h)}catch(e){return w.protocol=d,w.href=d,w}}w.slashes=v&&!R,w.host=g.host===s?"":g.host,w.hostname=g.hostname===s?"":g.hostname.replace(/(\[|\])/g,""),w.protocol=x?d||null:g.protocol,w.search=g.search.replace(/\\/g,"%5C"),w.hash=g.hash.replace(/\\/g,"%5C");var U=e.split("#");!w.search&&~U[0].indexOf("?")&&(w.search="?"),w.hash||""!==U[1]||(w.hash="#"),w.query=r?t.decode(g.search.substr(1)):w.search.substr(1),w.pathname=R+u(g.pathname).replace(/"/g,"%22"),"about:"===w.protocol&&"blank"===w.pathname&&(w.protocol="",w.pathname=""),x&&"/"!==e[0]&&(w.pathname=w.pathname.substr(1)),d&&!c.test(d)&&"/"!==e.slice(-1)&&"/"===w.pathname&&(w.pathname=""),w.path=w.pathname+w.search,w.auth=[g.username,g.password].map(decodeURIComponent).filter(Boolean).join(":"),w.port=g.port,y&&(w.host=w.host.replace(y+"00",y),w.port=w.port.slice(0,-2)),w.href=R?""+w.pathname+w.search+w.hash:o(w);var j=/^(file)/.test(w.href)?["host","hostname"]:[];return Object.keys(w).forEach(function(e){~j.indexOf(e)||(w[e]=w[e]||null)}),w}var m=/^([a-z0-9.+-]*:\/\/\/)([a-z0-9.+-]:\/*)?/i,v=/https?|ftp|gopher|file/;function d(e,t){var r="string"==typeof e?f(e):e;e="object"==typeof e?o(e):e;var s=f(t),c="";r.protocol&&!r.slashes&&(c=r.protocol,e=e.replace(r.protocol,""),c+="/"===t[0]||"/"===e[0]?"/":""),c&&s.protocol&&(c="",s.slashes||(c=s.protocol,t=t.replace(s.protocol,"")));var p=e.match(m);p&&!s.protocol&&(e=e.substr((c=p[1]+(p[2]||"")).length),/^\/\/[^\/]/.test(t)&&(c=c.slice(0,-1)));var n=new URL(e,h+"/"),l=new URL(t,n).toString().replace(h,""),i=s.protocol||r.protocol;return i+=r.slashes||s.slashes?"//":"",!c&&i?l=l.replace(a,i):c&&(l=l.replace(a,"")),v.test(l)||~t.indexOf(".")||"/"===e.slice(-1)||"/"===t.slice(-1)||"/"!==l.slice(-1)||(l=l.slice(0,-1)),c&&(l=c+("/"===l[0]?l.substr(1):l)),l}exports.parse=f,exports.format=o,exports.resolve=d,exports.resolveObject=function(e,t){return f(d(e,t))};
+var e,t=(e=__webpack_require__(/*! querystring */ "./node_modules/querystring-es3/index.js"))&&"object"==typeof e&&"default"in e?e.default:e,r=/https?|ftp|gopher|file/;function o(e){"string"==typeof e&&(e=g(e));var o=function(e,t,r){var o=e.auth,a=e.hostname,s=e.protocol||"",c=e.pathname||"",h=e.hash||"",p=e.query||"",n=!1;o=o?encodeURIComponent(o).replace(/%3A/i,":")+"@":"",e.host?n=o+e.host:a&&(n=o+(~a.indexOf(":")?"["+a+"]":a),e.port&&(n+=":"+e.port)),p&&"object"==typeof p&&(p=t.encode(p));var l=e.search||p&&"?"+p||"";return s&&":"!==s.substr(-1)&&(s+=":"),e.slashes||(!s||r.test(s))&&!1!==n?(n="//"+(n||""),c&&"/"!==c[0]&&(c="/"+c)):n||(n=""),h&&"#"!==h[0]&&(h="#"+h),l&&"?"!==l[0]&&(l="?"+l),{protocol:s,host:n,pathname:c=c.replace(/[?#]/g,encodeURIComponent),search:l=l.replace("#","%23"),hash:h}}(e,t,r);return""+o.protocol+o.host+o.pathname+o.search+o.hash}var a="http://",s="w.w",c=a+s,h=/^([a-z0-9.+-]*:\/\/\/)([a-z0-9.+-]:\/*)?/i,p=/https?|ftp|gopher|file/;function n(e,t){var r="string"==typeof e?g(e):e;e="object"==typeof e?o(e):e;var s=g(t),n="";r.protocol&&!r.slashes&&(n=r.protocol,e=e.replace(r.protocol,""),n+="/"===t[0]||"/"===e[0]?"/":""),n&&s.protocol&&(n="",s.slashes||(n=s.protocol,t=t.replace(s.protocol,"")));var l=e.match(h);l&&!s.protocol&&(e=e.substr((n=l[1]+(l[2]||"")).length),/^\/\/[^/]/.test(t)&&(n=n.slice(0,-1)));var i=new URL(e,c+"/"),f=new URL(t,i).toString().replace(c,""),u=s.protocol||r.protocol;return u+=r.slashes||s.slashes?"//":"",!n&&u?f=f.replace(a,u):n&&(f=f.replace(a,"")),p.test(f)||~t.indexOf(".")||"/"===e.slice(-1)||"/"===t.slice(-1)||"/"!==f.slice(-1)||(f=f.slice(0,-1)),n&&(f=n+("/"===f[0]?f.substr(1):f)),f}function l(){}l.parse=g,l.format=o,l.resolve=n,l.resolveObject=n;var i=/^https?|ftp|gopher|file/,f=/^(.*?)([#?].*)/,u=/^([a-z0-9.+-]*:)(\/{0,3})(.*)/i,m=/^([a-z0-9.+-]*:)?\/\/\/*/i,v=/^([a-z0-9.+-]*:)(\/{0,2})\[(.*)\]$/i;function d(e){try{return decodeURI(e)}catch(t){return e}}function g(e,r,a){if(void 0===r&&(r=!1),void 0===a&&(a=!1),e&&"object"==typeof e&&e instanceof l)return e;var h=(e=e.trim()).match(f);e=h?d(h[1]).replace(/\\/g,"/")+h[2]:d(e).replace(/\\/g,"/"),v.test(e)&&"/"!==e.slice(-1)&&(e+="/");var p=!/(^javascript)/.test(e)&&e.match(u),n=m.test(e),g="";p&&(i.test(p[1])||(g=p[1].toLowerCase(),e=""+p[2]+p[3]),p[2]||(n=!1,i.test(p[1])?(g=p[1],e=""+p[3]):e="//"+p[3]),3!==p[2].length&&1!==p[2].length||(g=p[1],e="/"+p[3]));var b,y=(h?h[1]:e).match(/(:[0-9]+)/),j="";y&&y[1]&&3===y[1].length&&(e=e.replace(j=y[1],j+"00"));var w=new l,x="",U="";try{b=new URL(e)}catch(t){x=t,g||a||!/^\/\//.test(e)||/^\/\/.+[@.]/.test(e)||(U="/",e=e.substr(1));try{b=new URL(e,c)}catch(e){return w.protocol=g,w.href=g,w}}w.slashes=n&&!U,w.host=b.host===s?"":b.host,w.hostname=b.hostname===s?"":b.hostname.replace(/(\[|\])/g,""),w.protocol=x?g||null:b.protocol,w.search=b.search.replace(/\\/g,"%5C"),w.hash=b.hash.replace(/\\/g,"%5C");var R=e.split("#");!w.search&&~R[0].indexOf("?")&&(w.search="?"),w.hash||""!==R[1]||(w.hash="#"),w.query=r?t.decode(b.search.substr(1)):w.search.substr(1),w.pathname=U+d(b.pathname).replace(/"/g,"%22"),"about:"===w.protocol&&"blank"===w.pathname&&(w.protocol="",w.pathname=""),x&&"/"!==e[0]&&(w.pathname=w.pathname.substr(1)),g&&!i.test(g)&&"/"!==e.slice(-1)&&"/"===w.pathname&&(w.pathname=""),w.path=w.pathname+w.search,w.auth=[b.username,b.password].map(decodeURIComponent).filter(Boolean).join(":"),w.port=b.port,j&&(w.host=w.host.replace(j+"00",j),w.port=w.port.slice(0,-2)),w.href=U?""+w.pathname+w.search+w.hash:o(w);var O=/^(file)/.test(w.href)?["host","hostname"]:[];return Object.keys(w).forEach(function(e){~O.indexOf(e)||(w[e]=w[e]||null)}),w}exports.parse=g,exports.format=o,exports.resolve=n,exports.resolveObject=function(e,t){return g(n(e,t))},exports.Url=l;
 //# sourceMappingURL=index.js.map
 
 
@@ -8020,7 +8250,7 @@ var singletonRouter = {
   }
 }; // Create public properties and methods of the router in the singletonRouter
 
-var urlPropertyFields = ['pathname', 'route', 'query', 'asPath', 'components', 'isFallback'];
+var urlPropertyFields = ['pathname', 'route', 'query', 'asPath', 'components', 'isFallback', 'basePath'];
 var routerEvents = ['routeChangeStart', 'beforeHistoryChange', 'routeChangeComplete', 'routeChangeError', 'hashChangeStart', 'hashChangeComplete'];
 var coreMethodFields = ['push', 'replace', 'reload', 'back', 'prefetch', 'beforePopState']; // Events is a static property on the router, the router doesn't have to be initialized to use it
 
@@ -8271,6 +8501,10 @@ var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/
 
 exports.RouterContext = React.createContext(null);
 
+if (true) {
+  exports.RouterContext.displayName = 'RouterContext';
+}
+
 /***/ }),
 
 /***/ "./node_modules/next/dist/next-server/lib/router/router.js":
@@ -8313,10 +8547,16 @@ var route_matcher_1 = __webpack_require__(/*! ./utils/route-matcher */ "./node_m
 
 var route_regex_1 = __webpack_require__(/*! ./utils/route-regex */ "./node_modules/next/dist/next-server/lib/router/utils/route-regex.js");
 
+var basePath =  false || '';
+
 function addBasePath(path) {
-  // variable is always a string
-  var p = "";
-  return path.indexOf(p) !== 0 ? p + path : path;
+  return path.indexOf(basePath) !== 0 ? basePath + path : path;
+}
+
+exports.addBasePath = addBasePath;
+
+function delBasePath(path) {
+  return path.indexOf(basePath) === 0 ? path.substr(basePath.length) || '/' : path;
 }
 
 function toRoute(path) {
@@ -8488,6 +8728,7 @@ var Router = /*#__PURE__*/function () {
 
     this.asPath = // @ts-ignore this is temporarily global (attached to window)
     is_dynamic_1.isDynamicRoute(pathname) && __NEXT_DATA__.autoExport ? pathname : as;
+    this.basePath = basePath;
     this.sub = subscription;
     this.clc = null;
     this._wrapApp = wrapApp; // make sure to ignore extra popState in safari on navigating
@@ -8594,7 +8835,9 @@ var Router = /*#__PURE__*/function () {
 
 
         var url = typeof _url === 'object' ? utils_1.formatWithValidation(_url) : _url;
-        var as = typeof _as === 'object' ? utils_1.formatWithValidation(_as) : _as; // Add the ending slash to the paths. So, we can serve the
+        var as = typeof _as === 'object' ? utils_1.formatWithValidation(_as) : _as;
+        url = addBasePath(url);
+        as = addBasePath(as); // Add the ending slash to the paths. So, we can serve the
         // "<page>/index.html" directly for the SSR page.
 
         if (false) { var rewriteUrlForNextExport; }
@@ -8610,7 +8853,7 @@ var Router = /*#__PURE__*/function () {
           _this2.asPath = as;
           Router.events.emit('hashChangeStart', as);
 
-          _this2.changeState(method, url, addBasePath(as), options);
+          _this2.changeState(method, url, as, options);
 
           _this2.scrollToHash(as);
 
@@ -8680,7 +8923,7 @@ var Router = /*#__PURE__*/function () {
 
           Router.events.emit('beforeHistoryChange', as);
 
-          _this2.changeState(method, url, addBasePath(as), options);
+          _this2.changeState(method, url, as, options);
 
           if (true) {
             var appComp = _this2.components['/_app'].Component;
@@ -8950,7 +9193,8 @@ var Router = /*#__PURE__*/function () {
           return;
         }
 
-        Promise.all([_this4.pageLoader.prefetchData(url, asPath), _this4.pageLoader[options.priority ? 'loadPage' : 'prefetch'](toRoute(pathname))]).then(function () {
+        var route = delBasePath(toRoute(pathname));
+        Promise.all([_this4.pageLoader.prefetchData(url, delBasePath(asPath)), _this4.pageLoader[options.priority ? 'loadPage' : 'prefetch'](route)]).then(function () {
           return resolve();
         }, reject);
       });
@@ -8969,14 +9213,15 @@ var Router = /*#__PURE__*/function () {
                 cancelled = true;
               };
 
-              _context.next = 4;
+              route = delBasePath(route);
+              _context.next = 5;
               return _regeneratorRuntime.awrap(this.pageLoader.loadPage(route));
 
-            case 4:
+            case 5:
               componentResult = _context.sent;
 
               if (!cancelled) {
-                _context.next = 9;
+                _context.next = 10;
                 break;
               }
 
@@ -8984,14 +9229,14 @@ var Router = /*#__PURE__*/function () {
               error.cancelled = true;
               throw error;
 
-            case 9:
+            case 10:
               if (cancel === this.clc) {
                 this.clc = null;
               }
 
               return _context.abrupt("return", componentResult);
 
-            case 11:
+            case 12:
             case "end":
               return _context.stop();
           }
@@ -9120,7 +9365,16 @@ function getRouteMatcher(routeRegex) {
       return false;
     }
 
-    var decode = decodeURIComponent;
+    var decode = function decode(param) {
+      try {
+        return decodeURIComponent(param);
+      } catch (_) {
+        var err = new Error('failed to decode param');
+        err.code = 'DECODE_FAILED';
+        throw err;
+      }
+    };
+
     var params = {};
     Object.keys(groups).forEach(function (slugName) {
       var g = groups[slugName];
@@ -9202,19 +9456,12 @@ var url_1 = __webpack_require__(/*! url */ "./node_modules/native-url/dist/index
 
 
 function execOnce(fn) {
-  var _this = this;
-
   var used = false;
-  var result = null;
+  var result;
   return function () {
     if (!used) {
       used = true;
-
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      result = fn.apply(_this, args);
+      result = fn.apply(void 0, arguments);
     }
 
     return result;

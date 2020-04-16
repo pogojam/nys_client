@@ -6,7 +6,7 @@ import useObserver from "../lib/interface/useObserver";
 import { Button, Heading, Modal, Layout } from "../lib/components";
 import { buildThresholdList } from "../lib/util";
 import { animated, useSpring, useTrail } from "react-spring";
-import { Login_Form, User_Registration_Form } from "../lib/forms/Forms";
+import { Login_Form, User_Registration_Form } from "../lib/forms/forms";
 import { FadeIn_Wrapper } from "../lib/animations/spring";
 import withAuth from "../lib/interface/withAuth";
 import {

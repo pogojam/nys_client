@@ -29,7 +29,7 @@
   "scripts": {
     "dev": "next",
     "build": "npm run build --prefix server && next build",
-    "start": "npm start --prefix server && next start -p 4000"
+    "start": "npm start --prefix server & next start -p 4000 &"
   },
   "author": "",
   "license": "ISC"

@@ -16,7 +16,7 @@ const corsOptions = {
 };
 
 const app = express();
-
+console.log(process.env);
 db.init(DB_PATH);
 // Middleware
 app.use(cors(corsOptions));

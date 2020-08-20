@@ -11,7 +11,7 @@
     "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
-    "graphql": "^15.0.0",
+    "graphql": "^15.3.0",
     "graphql-tag": "^2.10.3",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.24.0",

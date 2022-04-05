@@ -14,7 +14,7 @@
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "isomorphic-fetch": "^2.2.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "next": "^9.3.5",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",

@@ -9,13 +9,13 @@
     "apollo-client": "^2.6.8",
     "apollo-link-http": "^1.5.17",
     "axios": "^0.19.2",
-    "babel-plugin-styled-components": "^1.10.7",
+    "babel-plugin-styled-components": "^2.1.1",
     "dotenv": "^8.2.0",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.24.0",
-    "next": "^9.3.5",
+    "next": "^12.0.9",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -23,7 +23,7 @@
     "react-icons": "^3.9.0",
     "react-spring": "^8.0.27",
     "react-stripe-elements": "^6.1.1",
-    "styled-components": "^5.1.0"
+    "styled-components": "^6.1.0"
   },
   "devDependencies": {},
   "scripts": {
